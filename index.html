@@ -1,9 +1,9 @@
 <!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SLI RESOURCES</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
       --primary-color: #0b3d91;
@@ -13,190 +13,122 @@
       --highlight-bg: #fff8e1;
       --button-color: #555;
     }
+    * {
+      box-sizing: border-box;
+    }
     body {
       font-family: 'Poppins', sans-serif;
-      background-color: var(--bg-color);
       margin: 0;
-      padding: 0;
+      background-color: var(--bg-color);
       color: var(--text-color);
-      line-height: 1.7;
-      scroll-behavior: smooth;
+      line-height: 1.8;
     }
     header {
-      background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
-      color: #fff;
-      padding: 40px 20px;
+      background: url('https://images.unsplash.com/photo-1581093458791-130ae2cb9f53?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') center/cover no-repeat;
+      color: white;
+      padding: 60px 20px;
       text-align: center;
-      animation: slideDown 1s ease-out;
-    }
-    @keyframes slideDown {
-      from { transform: translateY(-50px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
     }
     header h1 {
-      font-size: 3.5rem;
+      font-size: 3.2rem;
       margin: 0;
       text-transform: uppercase;
     }
     header p {
       font-size: 1.3rem;
       margin-top: 10px;
-    }
-    .home-intro {
-      max-width: 1100px;
-      margin: auto;
-      padding: 40px 20px;
-      text-align: center;
-      animation: fadeIn 2s ease-in;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .home-intro h2 {
-      font-size: 2.2rem;
-      color: var(--primary-color);
-    }
-    .home-intro p {
-      font-size: 1.1rem;
-      margin-top: 15px;
-    }
-    .cta-button {
-      background-color: var(--accent-color);
-      border: none;
-      padding: 15px 30px;
-      color: #000;
-      font-weight: bold;
-      border-radius: 8px;
-      margin-top: 20px;
-      cursor: pointer;
-      font-size: 1rem;
-      transition: transform 0.3s;
-    }
-    .cta-button:hover {
-      transform: scale(1.05);
+      color: var(--accent-color);
     }
     nav {
       display: flex;
-      justify-content: center;
       flex-wrap: wrap;
-      margin-top: 30px;
-      animation: fadeIn 2s ease-in;
+      justify-content: center;
+      background: var(--primary-color);
     }
     nav button {
       padding: 15px 25px;
-      background-color: var(--button-color);
+      background: var(--button-color);
       color: white;
       border: none;
       margin: 10px;
-      font-weight: 600;
       font-size: 1rem;
+      font-weight: bold;
       border-radius: 5px;
       cursor: pointer;
-      transition: background-color 0.3s;
     }
     nav button:hover {
-      background-color: var(--accent-color);
+      background: var(--accent-color);
       color: black;
     }
-    .content-section {
+    .section {
       display: none;
-      max-width: 1100px;
-      margin: auto;
-      padding: 50px 20px;
-      animation: fadeIn 1s ease-in;
+      padding: 60px 20px;
+      background: url('https://images.unsplash.com/photo-1528756514091-dee5ecaa3278?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') center/cover no-repeat;
+      color: #222;
     }
-    .content-section.active {
+    .section.active {
       display: block;
     }
-    h2 {
-      color: var(--primary-color);
+    .section h2 {
       font-size: 2rem;
-      margin-bottom: 15px;
-      border-left: 5px solid var(--accent-color);
+      color: var(--primary-color);
+      border-left: 6px solid var(--accent-color);
       padding-left: 15px;
     }
-    .highlight {
-      background-color: var(--highlight-bg);
-      padding: 20px;
-      border-left: 5px solid var(--accent-color);
-      border-radius: 10px;
-      font-style: italic;
-      margin: 20px 0;
+    .section p {
+      font-size: 1.05rem;
+      max-width: 900px;
+      margin: 20px auto;
     }
     footer {
-      background-color: var(--primary-color);
-      color: #fff;
       text-align: center;
+      background: var(--primary-color);
+      color: white;
       padding: 30px 20px;
-      font-size: 0.95rem;
-      margin-top: 50px;
     }
   </style>
+  <script>
+    function showSection(id) {
+      const sections = document.querySelectorAll('.section');
+      sections.forEach(section => section.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+  </script>
 </head>
 <body>
   <header>
-    <h1>Sli Resources</h1>
+    <h1>SLI RESOURCES</h1>
     <p>We Light Up the Future</p>
-  </header>  <div class="home-intro">
-    <h2>Welcome to Sli Resources</h2>
-    <p>Sli Resources is an innovative Nigerian tech company that champions the power of local innovation to solve African problems. We specialize in the development of automated systems, smart devices, and educational tools that are both user-friendly and impactful. From sustainable water systems to smart classrooms, our work touches homes, schools, farms, and industries alike.</p>
-    <p>We operate with a vision of empowering the African continent through technology that's homegrown, affordable, and accessible. Every product we build reflects a commitment to excellence, sustainability, and future-forward thinking.</p>
-    <p>We invite you to explore, connect, and innovate with us. Your next solution might just be one click away.</p>
-    <button class="cta-button" onclick="document.querySelector('nav').scrollIntoView({behavior: 'smooth'});">Get Started</button>
-  </div>  <nav>
+  </header>  <nav>
     <button onclick="showSection('about')">About</button>
     <button onclick="showSection('services')">Services</button>
     <button onclick="showSection('hydrolynk')">Hydrolynk</button>
     <button onclick="showSection('founder')">Founder</button>
     <button onclick="showSection('contact')">Contact</button>
-  </nav>  <div class="content-section" id="about">
-    <h2>About Sli Resources</h2>
-    <p>Sli Resources is more than a company — it’s a vision. Established to bridge the gap between innovation and practical needs, we are a team of thinkers, creators, and technologists determined to build smart solutions tailored for the African environment.</p>
-    <p>Our approach blends creativity, science, and engineering to provide solutions that are not only functional but also scalable. From smart home devices to educational innovations and automated systems, we continue to prove that great technology doesn't have to come from outside Africa — it can rise from within.</p>
-    <p>We foster a work culture rooted in purpose, learning, and community-driven progress. Through collaboration, research, and real-world testing, we develop tech that solves real problems. Our belief is simple: Africa can lead the next wave of global innovation — and we’re proud to be part of that journey.</p>
-    <div class="highlight">“We don’t just create products — we design progress.”</div>
-  </div>  <div class="content-section" id="services">
+  </nav>  <div class="section active" id="about">
+    <h2>About SLI RESOURCES</h2>
+    <p>SLI RESOURCES is a Nigerian innovation-driven company committed to creating technological solutions that meet the pressing needs of our society. From inception, our mission has been to bring African ingenuity to the forefront of global innovation. We believe that technology should be accessible, affordable, and adaptable. Whether solving water management problems or designing classroom automation, we ensure our solutions align with both local realities and international standards.</p>
+    <p>With a deep commitment to research and community impact, SLI RESOURCES operates with transparency, creativity, and collaboration at the core of everything we do. Our products span across smart utilities, educational devices, control systems, and emerging tech, all developed by a passionate team with a vision for a smarter Africa. We’re not just building tools — we’re building the future.</p>
+  </div>  <div class="section" id="services">
     <h2>Our Services</h2>
-    <ul>
-      <li><strong>IoT & Automation Solutions:</strong> Design and development of smart systems for water management, energy use, and security.</li>
-      <li><strong>Custom Product Development:</strong> We build tailored tech solutions for schools, farms, households, and small industries.</li>
-      <li><strong>STEM Education Support:</strong> We create interactive kits and training modules to support science and tech learning in African classrooms.</li>
-      <li><strong>Tech Consultancy:</strong> We help startups and institutions plan, prototype, and launch impactful tech-driven projects.</li>
-      <li><strong>Embedded Systems & Software Integration:</strong> Our team specializes in microcontroller programming and real-time data systems.</li>
-    </ul>
-    <p>We empower clients to move from concept to creation, ensuring support every step of the way. Your idea can become reality — let us help you make it happen.</p>
-  </div>  <div class="content-section" id="hydrolynk">
-    <h2>Hydrolynk - Smart Water Controller</h2>
-    <p>Hydrolynk is our flagship smart water pump control system. It brings automation to your water system, ensuring seamless tank monitoring, automatic refill control, and pump safety protection. Designed for both domestic and industrial use, Hydrolynk is ideal for houses, farms, schools, and hotels.</p>
-    <p>Features include:</p>
-    <ul>
-      <li>Automatic start/stop based on water tank level</li>
-      <li>Dry-run pump protection</li>
-      <li>Energy-efficient operation</li>
-      <li>Durable and weatherproof casing</li>
-      <li>LED indicators and troubleshooting feedback</li>
-    </ul>
-    <p>With Hydrolynk, managing water becomes hands-free and worry-free. It’s affordable, easy to install, and built with the user in mind.</p>
-  </div>  <div class="content-section" id="founder">
-    <h2>Founder - Saviour Lawrence Inyang</h2>
-    <p>Saviour Lawrence Inyang is a passionate innovator, hardware developer, and the driving force behind Sli Resources. With a Bachelor’s degree in Chemistry Science from Akwa Ibom State University, Saviour combines academic knowledge with self-taught engineering and coding skills to solve real-life problems through technology.</p>
-    <p>He is a firm believer in homegrown solutions and is on a mission to prove that African youth can lead the global innovation space. Under his leadership, Sli Resources has grown from an idea into a thriving innovation hub, creating tools and systems used by people in everyday life.</p>
-    <p>When he's not building tech, he mentors upcoming inventors, speaks at innovation events, and leads community-based tech literacy campaigns.</p>
-  </div>  <div class="content-section" id="contact">
+    <p>SLI RESOURCES delivers a range of services tailored for technological transformation. We specialize in custom embedded system design, smart automation, IoT solutions, and educational devices. Our services cater to individuals, businesses, and institutions looking to integrate intelligence into everyday tools.</p>
+    <p>From concept prototyping to mass deployment, our development cycle ensures that innovation remains user-friendly and sustainable. We also provide technical consulting, system installations, project collaborations, and offer workshops to empower youth with practical knowledge in electronics, programming, and automation. Innovation is not just our service — it's our culture.</p>
+  </div>  <div class="section" id="hydrolynk">
+    <h2>Our Flagship Product: Hydrolynk</h2>
+    <p>Hydrolynk is our revolutionary smart water pump control system designed to solve water wastage and manual pumping inefficiencies in homes, farms, and facilities. This intelligent system automatically manages your water tank and pump operations, ensuring water never overflows and the pump doesn't run dry or overwork itself.</p>
+    <p>Hydrolynk combines sensors, logic control, and wireless alerting into one sleek unit. It minimizes utility bills, prolongs pump life, and ensures consistent water availability — all without human intervention. It is easy to install, affordable, and customizable, making it ideal for both rural and urban users.</p>
+  </div>  <div class="section" id="founder">
+    <h2>Meet the Founder</h2>
+    <p>Saviour Lawrence Inyang, the visionary founder and CEO of SLI RESOURCES, is a Chemistry Science graduate from Akwa Ibom State University. With a passion for innovation and solving real-world problems, he transitioned from scientific research to engineering application, using his deep understanding of systems and matter to craft life-changing solutions.</p>
+    <p>Saviour believes that Africa’s greatest resource is the creativity of its youth. He leads with purpose, mentors with compassion, and develops with excellence. Under his leadership, SLI RESOURCES has grown into a brand known for integrity, resilience, and progress — lighting up homes, schools, and businesses with intelligent technology.</p>
+  </div>  <div class="section" id="contact">
     <h2>Contact Us</h2>
-    <p>Have a project in mind? Want to collaborate or request a demo? Reach out to us today. We are ready to innovate with you.</p>
-    <p>Email: <a href="mailto:sliresourcess@gmail.com">sliresourcess@gmail.com</a></p>
-    <p>WhatsApp: <a href="tel:+2349023226544">+234 902 322 6544</a></p>
-    <p>LinkedIn: <a href="https://www.linkedin.com/in/sliresources" target="_blank">linkedin.com/in/sliresources</a></p>
+    <p>Have a question, idea, or want to collaborate? We would love to hear from you! Reach out to us for product inquiries, partnership opportunities, custom projects, or training sessions. We are always open to new connections and creative problem solving.</p>
+    <p><strong>Email:</strong> sliresourcess@gmail.com<br />
+    <strong>WhatsApp:</strong> +2349023226544<br />
+    <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/sliresources" target="_blank">sliresources</a></p>
   </div>  <footer>
-    <p>&copy; 2025 Sli Resources. All rights reserved. | We Light Up the Future</p>
-  </footer>  <script>
-    function showSection(id) {
-      const sections = document.querySelectorAll('.content-section');
-      sections.forEach(section => section.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
-      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-    }
-  </script></body>
+    &copy; 2025 SLI RESOURCES — We Light Up the Future
+  </footer>
+</body>
       </html>

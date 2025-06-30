@@ -2,15 +2,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SLI RESOURCES - We Light Up the Future</title>
+  <title>SLI RESOURCES</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --primary-color: #0b3d91;
-      --accent-color: #1e88e5;
+      --accent-color: #d4af37;
       --bg-color: #f5f9ff;
       --text-color: #222;
-      --highlight-bg: #e3efff;
+      --highlight-bg: #fff8e1;
+      --button-color: #555;
     }body {
   font-family: 'Poppins', sans-serif;
   background-color: var(--bg-color);
@@ -18,62 +19,129 @@
   padding: 0;
   color: var(--text-color);
   line-height: 1.7;
+  scroll-behavior: smooth;
 }
 
 header {
   background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
   color: #fff;
-  padding: 20px;
+  padding: 40px 20px;
   text-align: center;
+  animation: slideDown 1s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 header h1 {
-  font-size: 3rem;
+  font-size: 3.5rem;
   margin: 0;
+  text-transform: uppercase;
 }
 
 header p {
-  font-size: 1.2rem;
-  margin-top: 5px;
+  font-size: 1.3rem;
+  margin-top: 10px;
+}
+
+.home-intro {
+  max-width: 1100px;
+  margin: auto;
+  padding: 40px 20px;
+  text-align: center;
+  animation: fadeIn 2s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.home-intro h2 {
+  font-size: 2.2rem;
+  color: var(--primary-color);
+}
+
+.home-intro p {
+  font-size: 1.1rem;
+  margin-top: 15px;
+}
+
+.cta-button {
+  background-color: var(--accent-color);
+  border: none;
+  padding: 15px 30px;
+  color: #000;
+  font-weight: bold;
+  border-radius: 8px;
+  margin-top: 20px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: transform 0.3s;
+}
+
+.cta-button:hover {
+  transform: scale(1.05);
 }
 
 nav {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  background-color: #ffffff;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-top: 30px;
+  animation: fadeIn 2s ease-in;
 }
 
-nav a {
+nav button {
   padding: 15px 25px;
-  text-decoration: none;
-  color: var(--primary-color);
+  background-color: var(--button-color);
+  color: white;
+  border: none;
+  margin: 10px;
   font-weight: 600;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
   transition: background-color 0.3s;
 }
 
-nav a:hover {
-  background-color: var(--highlight-bg);
+nav button:hover {
+  background-color: var(--accent-color);
+  color: black;
 }
 
-section {
+.content-section {
+  display: none;
   max-width: 1100px;
   margin: auto;
   padding: 50px 20px;
+  animation: fadeIn 1s ease-in;
+}
+
+.content-section.active {
+  display: block;
 }
 
 h2 {
   color: var(--primary-color);
   font-size: 2rem;
-  margin-top: 50px;
+  margin-bottom: 15px;
   border-left: 5px solid var(--accent-color);
   padding-left: 15px;
-}
-
-h3 {
-  color: var(--accent-color);
-  margin-top: 30px;
 }
 
 .highlight {
@@ -85,96 +153,69 @@ h3 {
   margin: 20px 0;
 }
 
-ul {
-  padding-left: 20px;
-  margin: 20px 0;
-}
-
 footer {
   background-color: var(--primary-color);
   color: #fff;
   text-align: center;
   padding: 30px 20px;
   font-size: 0.95rem;
-}
-
-a {
-  color: var(--accent-color);
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-@media screen and (max-width: 768px) {
-  header h1 {
-    font-size: 2.2rem;
-  }
-  nav {
-    flex-direction: column;
-    align-items: center;
-  }
-  nav a {
-    padding: 10px 20px;
-  }
+  margin-top: 50px;
 }
 
   </style>
 </head>
 <body>
   <header>
-    <h1>Sli_Resources</h1>
+    <h1>Sli Resources</h1>
     <p>We Light Up the Future</p>
-  </header>  <nav>
-    <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <a href="#hydrolynk">Hydrolynk</a>
-    <a href="#founder">Founder</a>
-    <a href="#contact">Contact</a>
-  </nav>  <section id="about">
-    <h2>About Us</h2>
-    <p>Sli_Resources is an innovation-driven tech startup based in Nigeria. Our core focus is solving Africa’s pressing challenges through smart, affordable, and scalable technology solutions. We bring innovation into the lives of everyday people, making their environments safer, more efficient, and more intelligent. With a passion for technology and a deep commitment to community development, Sli_Resources delivers impactful solutions for real-life problems.</p><p>We’re building Africa’s next-generation tech ecosystem one invention at a time. Our team consists of young visionaries, engineers, designers, and creators passionate about positive transformation. From clean water systems to smart classrooms, we develop tools that empower and enlighten.</p>
-
-<div class="highlight">
-  "Our innovations are powered by local knowledge, inspired by global standards, and designed for everyday use."
-</div>
-
-  </section>  <section id="services">
+  </header>  <div class="home-intro">
+    <h2>Welcome to Sli Resources</h2>
+    <p>Sli Resources is an innovative technology company focused on designing smart solutions for everyday African challenges. From water automation to educational tools, we develop products that are affordable, intelligent, and impactful.</p>
+    <p>We believe in African-made technology that empowers people, improves efficiency, and builds a future where innovation is homegrown. With passion, precision, and purpose, we are building solutions that serve homes, schools, hospitals, and industries.</p>
+    <p>Explore our innovations, meet our visionary founder, or connect with us to become part of our mission. We are more than a company—we are a movement for change through innovation.</p>
+    <button class="cta-button" onclick="document.querySelector('nav').scrollIntoView({behavior: 'smooth'});">Get Started</button>
+  </div>  <nav>
+    <button onclick="showSection('about')">About</button>
+    <button onclick="showSection('services')">Services</button>
+    <button onclick="showSection('hydrolynk')">Hydrolynk</button>
+    <button onclick="showSection('founder')">Founder</button>
+    <button onclick="showSection('contact')">Contact</button>
+  </nav>  <div class="content-section" id="about">
+    <h2>About Sli Resources</h2>
+    <p>Sli Resources is a cutting-edge innovation and technology company based in Nigeria, committed to solving Africa’s challenges with practical and intelligent solutions. We fuse creativity with science to develop smart technologies that work for homes, schools, farms, and industries.</p>
+    <p>Our mission is to bridge the gap between invention and need, creating a future where technology is not just imported but born here—designed for us, by us. We believe that by fostering young talent and empowering communities, we can build a future rich in opportunity and innovation.</p>
+    <div class="highlight">“We don’t just create products—we design progress.”</div>
+  </div>  <div class="content-section" id="services">
     <h2>Our Services</h2>
     <ul>
-      <li>Product Design and Engineering (IoT, automation, electronics)</li>
-      <li>Prototype Development and Fabrication</li>
-      <li>Home and Industrial Automation Solutions</li>
-      <li>Embedded Systems Programming and Custom Microcontroller Projects</li>
-      <li>STEM Kits and Educational Electronics for Schools</li>
-      <li>Tech Workshops, Bootcamps, and Hands-on Training</li>
-    </ul><p>Our services are tailored to serve clients ranging from individuals to schools, farms, NGOs, and enterprises. We believe in building solutions from scratch—crafted, tested, and refined in Africa for Africa.</p>
-
-  </section>  <section id="hydrolynk">
-    <h2>Hydrolynk – Smart Water Pump Controller</h2>
-    <p>Hydrolynk is a revolutionary water pump automation system that intelligently manages your water supply. Built to withstand African conditions, it monitors your tank levels and automatically switches your pump ON or OFF—no more overflows or dry tanks.</p>
-    <ul>
-      <li>✅ Prevents pump burnout and water wastage</li>
-      <li>✅ Works with boreholes, overhead tanks, and wells</li>
-      <li>✅ Optional solar-powered design for off-grid areas</li>
-      <li>✅ Easy to install, use, and maintain</li>
+      <li>Custom IoT Systems & Automation</li>
+      <li>Water Management & Pump Control Solutions</li>
+      <li>STEM and Technical Education Kits</li>
+      <li>Solar-Powered and Energy-Saving Devices</li>
+      <li>Tech Training & Product Development Consultancy</li>
     </ul>
-    <p>Hydrolynk is ideal for households, farms, schools, and hotels—saving time, reducing energy use, and protecting valuable resources. It is one of our flagship products and represents the future of smart water management in Africa.</p>
-  </section>  <section id="founder">
-    <h2>Meet the Founder</h2>
-    <p><strong>Saviour Lawrence Inyang</strong> is the visionary behind Sli_Resources. He holds a degree in <strong>Chemistry Science</strong> from <strong>Akwa Ibom State University</strong> and has a deep passion for invention, innovation, and social impact.</p><p>Raised in a community where access to functional tools and infrastructure was limited, Saviour saw technology as a tool for liberation and progress. Over the years, he has designed several tech solutions focused on home automation, education, and water management. His goal is to solve African problems with African-built solutions.</p>
-
-<p>As a young entrepreneur and community educator, he leads workshops, mentors tech talents, and advocates for inclusive STEM education across Nigeria. His motto? "Dream it, Build it, Share it."</p>
-
-  </section>  <section id="contact">
+    <p>We work with startups, schools, NGOs, and communities to turn technology into transformation.</p>
+  </div>  <div class="content-section" id="hydrolynk">
+    <h2>Hydrolynk - Smart Water Controller</h2>
+    <p>Hydrolynk is a smart water pump automation system that turns your ordinary water system into an intelligent one. With automatic ON/OFF control based on tank levels, energy saving, and protection against pump damage, it’s perfect for homes, farms, hotels, and hospitals.</p>
+    <p>It works silently, efficiently, and gives you peace of mind. Never worry about your tank overflowing or running dry again.</p>
+  </div>  <div class="content-section" id="founder">
+    <h2>Founder - Saviour Lawrence Inyang</h2>
+    <p>Saviour Lawrence Inyang is a visionary tech innovator and the CEO of Sli Resources. A graduate of Chemistry Science from Akwa Ibom State University, he merges scientific knowledge with technological creativity to bring real-world solutions to life.</p>
+    <p>Driven by purpose, Saviour believes in building Africa’s tech from the ground up—empowering youth, communities, and industries along the way.</p>
+  </div>  <div class="content-section" id="contact">
     <h2>Contact Us</h2>
-    <p>📧 Email: <a href="mailto:sliresourcess@gmail.com">sliresourcess@gmail.com</a></p>
-    <p>📱 WhatsApp: <a href="tel:+2349023226544">+234 902 322 6544</a></p>
-    <p>🔗 LinkedIn: <a href="https://www.linkedin.com/in/sliresources" target="_blank">linkedin.com/in/sliresources</a></p>
-    <p>🌐 Website: <a href="https://rexphenom.github.io/Sli_Resources/" target="_blank">Visit our Website</a></p>
-  </section>  <footer>
-    <p>&copy; 2025 Sli_Resources. All rights reserved. | We Light Up the Future</p>
-  </footer>
-</body>
-</html>
+    <p>Email: <a href="mailto:sliresourcess@gmail.com">sliresourcess@gmail.com</a></p>
+    <p>WhatsApp: <a href="tel:+2349023226544">+234 902 322 6544</a></p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/sliresources" target="_blank">linkedin.com/in/sliresources</a></p>
+  </div>  <footer>
+    <p>&copy; 2025 Sli Resources. All rights reserved. | We Light Up the Future</p>
+  </footer>  <script>
+    function showSection(id) {
+      const sections = document.querySelectorAll('.content-section');
+      sections.forEach(section => section.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }
+  </script></body>
+  </html>

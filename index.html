@@ -25,7 +25,7 @@
       line-height: 1.8;
     }
     header {
-      background: url('https://cdn.pixabay.com/photo/2016/05/15/20/38/gear-1394739_1280.jpg') center/cover no-repeat;
+      background: url('https://cdn.pixabay.com/photo/2017/06/20/20/49/chain-2420683_1280.jpg') center/cover no-repeat;
       color: white;
       padding: 60px 20px;
       text-align: center;
@@ -82,10 +82,42 @@
       border-left: 6px solid var(--accent-color);
       padding-left: 15px;
     }
-    .section p {
-      font-size: 1.05rem;
-      max-width: 900px;
+    .product {
       margin: 20px auto;
+      max-width: 900px;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .product h3 {
+      margin: 0;
+      font-size: 1.3rem;
+      cursor: pointer;
+      color: var(--primary-color);
+    }
+    .product p {
+      display: none;
+      margin-top: 10px;
+    }
+    .product.active p,
+    .product.active .buy-btn {
+      display: block;
+    }
+    .buy-btn {
+      display: none;
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: var(--button-color);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .buy-btn:hover {
+      background-color: var(--accent-color);
+      color: black;
     }
     footer {
       text-align: center;
@@ -107,29 +139,6 @@
       z-index: 1001;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     }
-    .stats {
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      margin-top: 40px;
-      flex-wrap: wrap;
-    }
-    .stat {
-      background: white;
-      padding: 20px 30px;
-      border-radius: 12px;
-      text-align: center;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      width: 200px;
-    }
-    .stat h3 {
-      color: var(--primary-color);
-      font-size: 2.5rem;
-    }
-    .stat p {
-      margin: 0;
-      font-weight: bold;
-    }
     @media (max-width: 600px) {
       nav button {
         padding: 10px;
@@ -137,10 +146,6 @@
       }
       header h1 {
         font-size: 2rem;
-      }
-      .stats {
-        flex-direction: column;
-        align-items: center;
       }
     }
   </style>
@@ -150,7 +155,17 @@
       sections.forEach(section => section.classList.remove('active'));
       document.getElementById(id).classList.add('active');
       document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-    }window.addEventListener('scroll', () => {
+    }function toggleProductDetails(element) {
+  element.parentElement.classList.toggle('active');
+}
+
+function trackClick(productName) {
+  console.log(`Buy Now clicked for: ${productName}`);
+  const link = `https://wa.me/2349023226544?text=Hello%20SLI%20RESOURCES,%20I%20am%20interested%20in%20buying%20${encodeURIComponent(productName)}`;
+  window.open(link, '_blank');
+}
+
+window.addEventListener('scroll', () => {
   const scrollBtn = document.getElementById('scrollBtn');
   if (window.scrollY > 300) {
     scrollBtn.style.display = 'block';
@@ -163,25 +178,6 @@ function scrollToTop() {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-  const counters = document.querySelectorAll('.count');
-  counters.forEach(counter => {
-    counter.innerText = '0';
-    const update = () => {
-      const target = +counter.getAttribute('data-target');
-      const count = +counter.innerText;
-      const speed = target / 100;
-      if (count < target) {
-        counter.innerText = Math.ceil(count + speed);
-        setTimeout(update, 30);
-      } else {
-        counter.innerText = target;
-      }
-    };
-    update();
-  });
-});
-
   </script>
 </head>
 <body>
@@ -192,46 +188,38 @@ document.addEventListener("DOMContentLoaded", function() {
     <button onclick="showSection('about')">About</button>
     <button onclick="showSection('services')">Services</button>
     <button onclick="showSection('hydrolynk')">Hydrolynk</button>
+    <button onclick="showSection('products')">Products</button>
     <button onclick="showSection('founder')">Founder</button>
     <button onclick="showSection('contact')">Contact</button>
-  </nav>  <div class="section active" id="about">
-    <h2>About SLI RESOURCES</h2>
-    <p>SLI RESOURCES is a Nigerian innovation-driven company committed to creating technological solutions that meet the pressing needs of our society. From inception, our mission has been to bring African ingenuity to the forefront of global innovation. We believe that technology should be accessible, affordable, and adaptable. Whether solving water management problems or designing classroom automation, we ensure our solutions align with both local realities and international standards.</p>
-    <p>With a deep commitment to research and community impact, SLI RESOURCES operates with transparency, creativity, and collaboration at the core of everything we do. Our products span across smart utilities, educational devices, control systems, and emerging tech, all developed by a passionate team with a vision for a smarter Africa. We’re not just building tools — we’re building the future.</p><div class="stats">
-  <div class="stat">
-    <h3 class="count" data-target="300">0</h3>
-    <p>Projects Delivered</p>
-  </div>
-  <div class="stat">
-    <h3 class="count" data-target="150">0</h3>
-    <p>Satisfied Clients</p>
-  </div>
-  <div class="stat">
-    <h3 class="count" data-target="10">0</h3>
-    <p>Products Launched</p>
-  </div>
-</div>
-
-  </div>  <div class="section" id="services">
-    <h2>Our Services</h2>
-    <p>SLI RESOURCES delivers a range of services tailored for technological transformation. We specialize in custom embedded system design, smart automation, IoT solutions, and educational devices. Our services cater to individuals, businesses, and institutions looking to integrate intelligence into everyday tools.</p>
-    <p>From concept prototyping to mass deployment, our development cycle ensures that innovation remains user-friendly and sustainable. We also provide technical consulting, system installations, project collaborations, and offer workshops to empower youth with practical knowledge in electronics, programming, and automation. Innovation is not just our service — it's our culture.</p>
-  </div>  <div class="section" id="hydrolynk">
-    <h2>Our Flagship Product: Hydrolynk</h2>
-    <p>Hydrolynk is our revolutionary smart water pump control system designed to solve water wastage and manual pumping inefficiencies in homes, farms, and facilities. This intelligent system automatically manages your water tank and pump operations, ensuring water never overflows and the pump doesn't run dry or overwork itself.</p>
-    <p>Hydrolynk combines sensors, logic control, and wireless alerting into one sleek unit. It minimizes utility bills, prolongs pump life, and ensures consistent water availability — all without human intervention. It is easy to install, affordable, and customizable, making it ideal for both rural and urban users.</p>
-  </div>  <div class="section" id="founder">
-    <h2>Meet the Founder</h2>
-    <p>Saviour Lawrence Inyang, the visionary founder and CEO of SLI RESOURCES, is a Chemistry Science graduate from Akwa Ibom State University. With a passion for innovation and solving real-world problems, he transitioned from scientific research to engineering application, using his deep understanding of systems and matter to craft life-changing solutions.</p>
-    <p>Saviour believes that Africa’s greatest resource is the creativity of its youth. He leads with purpose, mentors with compassion, and develops with excellence. Under his leadership, SLI RESOURCES has grown into a brand known for integrity, resilience, and progress — lighting up homes, schools, and businesses with intelligent technology.</p>
-  </div>  <div class="section" id="contact">
-    <h2>Contact Us</h2>
-    <p>Have a question, idea, or want to collaborate? We would love to hear from you! Reach out to us for product inquiries, partnership opportunities, custom projects, or training sessions. We are always open to new connections and creative problem solving.</p>
-    <p><strong>Email:</strong> sliresourcess@gmail.com<br />
-    <strong>WhatsApp:</strong> +2349023226544<br />
-    <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/sliresources" target="_blank">sliresources</a></p>
+  </nav>  <div class="section" id="products">
+    <h2>Upcoming Products</h2>
+    <div class="product">
+      <h3 onclick="toggleProductDetails(this)">Rechargeable Whiteboard with Automatic Eraser</h3>
+      <p>A smart whiteboard designed for modern classrooms and offices. Features include battery-powered operation, automatic erasing mechanism, and digital interface options.</p>
+      <button class="buy-btn" onclick="trackClick('Rechargeable Whiteboard with Automatic Eraser')">Buy Now</button>
+    </div>
+    <div class="product">
+      <h3 onclick="toggleProductDetails(this)">Water Level Indicator</h3>
+      <p>Monitors tank levels and alerts for overflows or shortages. Perfect for homes, schools, and farms.</p>
+      <button class="buy-btn" onclick="trackClick('Water Level Indicator')">Buy Now</button>
+    </div>
+    <div class="product">
+      <h3 onclick="toggleProductDetails(this)">IR Blaster</h3>
+      <p>Control all your home devices like TVs and ACs with a single app. Smart and programmable.</p>
+      <button class="buy-btn" onclick="trackClick('IR Blaster')">Buy Now</button>
+    </div>
+    <div class="product">
+      <h3 onclick="toggleProductDetails(this)">Smart Home Modules</h3>
+      <p>Automate your home with smart switches for lights, fans, and appliances. Easy to install and integrate.</p>
+      <button class="buy-btn" onclick="trackClick('Smart Home Modules')">Buy Now</button>
+    </div>
+    <div class="product">
+      <h3 onclick="toggleProductDetails(this)">More Innovative Tech Solutions</h3>
+      <p>Stay tuned for more devices solving daily challenges through technology — from healthcare to education and beyond.</p>
+      <button class="buy-btn" onclick="trackClick('More Innovative Tech Solutions')">Buy Now</button>
+    </div>
   </div>  <div class="scroll-to-top" id="scrollBtn" onclick="scrollToTop()">↑</div>  <footer>
     &copy; 2025 SLI RESOURCES — We Light Up the Future
   </footer>
 </body>
-  </html>
+        </html>

@@ -15,6 +15,7 @@
     }
     * {
       box-sizing: border-box;
+      scroll-behavior: smooth;
     }
     body {
       font-family: 'Poppins', sans-serif;
@@ -24,7 +25,7 @@
       line-height: 1.8;
     }
     header {
-      background: url('https://images.unsplash.com/photo-1581093458791-130ae2cb9f53?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') center/cover no-repeat;
+      background: url('https://cdn.pixabay.com/photo/2016/05/15/20/38/gear-1394739_1280.jpg') center/cover no-repeat;
       color: white;
       padding: 60px 20px;
       text-align: center;
@@ -33,9 +34,6 @@
       font-size: 3.2rem;
       margin: 0;
       text-transform: uppercase;
-      background: url('https://images.unsplash.com/photo-1581093458791-130ae2cb9f53?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') center/cover no-repeat;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
     }
     header p {
       font-size: 1.3rem;
@@ -47,6 +45,9 @@
       flex-wrap: wrap;
       justify-content: center;
       background: var(--primary-color);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
     nav button {
       padding: 15px 25px;
@@ -67,6 +68,9 @@
       display: none;
       padding: 60px 20px;
       background: url('https://images.unsplash.com/photo-1528756514091-dee5ecaa3278?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') center/cover no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center;
       color: #222;
     }
     .section.active {
@@ -89,13 +93,95 @@
       color: white;
       padding: 30px 20px;
     }
+    .scroll-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: var(--accent-color);
+      color: #000;
+      padding: 10px 15px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 20px;
+      display: none;
+      z-index: 1001;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+    .stat {
+      background: white;
+      padding: 20px 30px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      width: 200px;
+    }
+    .stat h3 {
+      color: var(--primary-color);
+      font-size: 2.5rem;
+    }
+    .stat p {
+      margin: 0;
+      font-weight: bold;
+    }
+    @media (max-width: 600px) {
+      nav button {
+        padding: 10px;
+        font-size: 0.9rem;
+      }
+      header h1 {
+        font-size: 2rem;
+      }
+      .stats {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
   </style>
   <script>
     function showSection(id) {
       const sections = document.querySelectorAll('.section');
       sections.forEach(section => section.classList.remove('active'));
       document.getElementById(id).classList.add('active');
-    }
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }window.addEventListener('scroll', () => {
+  const scrollBtn = document.getElementById('scrollBtn');
+  if (window.scrollY > 300) {
+    scrollBtn.style.display = 'block';
+  } else {
+    scrollBtn.style.display = 'none';
+  }
+});
+
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+  const counters = document.querySelectorAll('.count');
+  counters.forEach(counter => {
+    counter.innerText = '0';
+    const update = () => {
+      const target = +counter.getAttribute('data-target');
+      const count = +counter.innerText;
+      const speed = target / 100;
+      if (count < target) {
+        counter.innerText = Math.ceil(count + speed);
+        setTimeout(update, 30);
+      } else {
+        counter.innerText = target;
+      }
+    };
+    update();
+  });
+});
+
   </script>
 </head>
 <body>
@@ -111,7 +197,21 @@
   </nav>  <div class="section active" id="about">
     <h2>About SLI RESOURCES</h2>
     <p>SLI RESOURCES is a Nigerian innovation-driven company committed to creating technological solutions that meet the pressing needs of our society. From inception, our mission has been to bring African ingenuity to the forefront of global innovation. We believe that technology should be accessible, affordable, and adaptable. Whether solving water management problems or designing classroom automation, we ensure our solutions align with both local realities and international standards.</p>
-    <p>With a deep commitment to research and community impact, SLI RESOURCES operates with transparency, creativity, and collaboration at the core of everything we do. Our products span across smart utilities, educational devices, control systems, and emerging tech, all developed by a passionate team with a vision for a smarter Africa. We’re not just building tools — we’re building the future.</p>
+    <p>With a deep commitment to research and community impact, SLI RESOURCES operates with transparency, creativity, and collaboration at the core of everything we do. Our products span across smart utilities, educational devices, control systems, and emerging tech, all developed by a passionate team with a vision for a smarter Africa. We’re not just building tools — we’re building the future.</p><div class="stats">
+  <div class="stat">
+    <h3 class="count" data-target="300">0</h3>
+    <p>Projects Delivered</p>
+  </div>
+  <div class="stat">
+    <h3 class="count" data-target="150">0</h3>
+    <p>Satisfied Clients</p>
+  </div>
+  <div class="stat">
+    <h3 class="count" data-target="10">0</h3>
+    <p>Products Launched</p>
+  </div>
+</div>
+
   </div>  <div class="section" id="services">
     <h2>Our Services</h2>
     <p>SLI RESOURCES delivers a range of services tailored for technological transformation. We specialize in custom embedded system design, smart automation, IoT solutions, and educational devices. Our services cater to individuals, businesses, and institutions looking to integrate intelligence into everyday tools.</p>
@@ -130,7 +230,7 @@
     <p><strong>Email:</strong> sliresourcess@gmail.com<br />
     <strong>WhatsApp:</strong> +2349023226544<br />
     <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/sliresources" target="_blank">sliresources</a></p>
-  </div>  <footer>
+  </div>  <div class="scroll-to-top" id="scrollBtn" onclick="scrollToTop()">↑</div>  <footer>
     &copy; 2025 SLI RESOURCES — We Light Up the Future
   </footer>
 </body>

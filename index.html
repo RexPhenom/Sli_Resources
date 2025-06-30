@@ -25,7 +25,7 @@
       line-height: 1.8;
     }
     header {
-      background: url('https://cdn.pixabay.com/photo/2017/06/20/20/49/chain-2420683_1280.jpg') center/cover no-repeat;
+      background: var(--accent-color);
       color: white;
       padding: 60px 20px;
       text-align: center;
@@ -38,7 +38,8 @@
     header p {
       font-size: 1.3rem;
       margin-top: 10px;
-      color: var(--accent-color);
+      color: #000;
+      font-weight: bold;
     }
     nav {
       display: flex;
@@ -81,6 +82,10 @@
       color: var(--primary-color);
       border-left: 6px solid var(--accent-color);
       padding-left: 15px;
+    }
+    .section p {
+      font-size: 1.1rem;
+      margin-top: 15px;
     }
     .product {
       margin: 20px auto;
@@ -191,33 +196,24 @@ function scrollToTop() {
     <button onclick="showSection('products')">Products</button>
     <button onclick="showSection('founder')">Founder</button>
     <button onclick="showSection('contact')">Contact</button>
-  </nav>  <div class="section" id="products">
-    <h2>Upcoming Products</h2>
-    <div class="product">
-      <h3 onclick="toggleProductDetails(this)">Rechargeable Whiteboard with Automatic Eraser</h3>
-      <p>A smart whiteboard designed for modern classrooms and offices. Features include battery-powered operation, automatic erasing mechanism, and digital interface options.</p>
-      <button class="buy-btn" onclick="trackClick('Rechargeable Whiteboard with Automatic Eraser')">Buy Now</button>
-    </div>
-    <div class="product">
-      <h3 onclick="toggleProductDetails(this)">Water Level Indicator</h3>
-      <p>Monitors tank levels and alerts for overflows or shortages. Perfect for homes, schools, and farms.</p>
-      <button class="buy-btn" onclick="trackClick('Water Level Indicator')">Buy Now</button>
-    </div>
-    <div class="product">
-      <h3 onclick="toggleProductDetails(this)">IR Blaster</h3>
-      <p>Control all your home devices like TVs and ACs with a single app. Smart and programmable.</p>
-      <button class="buy-btn" onclick="trackClick('IR Blaster')">Buy Now</button>
-    </div>
-    <div class="product">
-      <h3 onclick="toggleProductDetails(this)">Smart Home Modules</h3>
-      <p>Automate your home with smart switches for lights, fans, and appliances. Easy to install and integrate.</p>
-      <button class="buy-btn" onclick="trackClick('Smart Home Modules')">Buy Now</button>
-    </div>
-    <div class="product">
-      <h3 onclick="toggleProductDetails(this)">More Innovative Tech Solutions</h3>
-      <p>Stay tuned for more devices solving daily challenges through technology — from healthcare to education and beyond.</p>
-      <button class="buy-btn" onclick="trackClick('More Innovative Tech Solutions')">Buy Now</button>
-    </div>
+  </nav>  <div class="section" id="about">
+    <h2>About SLI RESOURCES</h2>
+    <p>SLI RESOURCES is a forward-thinking tech innovation company based in Nigeria, dedicated to creating sustainable, smart, and scalable solutions for real-world problems. Founded on the principle of blending creativity with technology, we provide both hardware and software solutions that meet today’s challenges across households, industries, and institutions. We believe in innovation that not only serves but transforms.</p>
+    <p>Our goal is to be a leading African brand that delivers global-standard products with a local touch — building a smarter, more connected future for everyone.</p>
+  </div>  <div class="section" id="services">
+    <h2>Our Services</h2>
+    <p>We offer a diverse range of engineering and technological services tailored to meet evolving needs in automation, energy, education, and smart living. From product prototyping and design, to smart device installations and IoT integrations, we combine passion and precision to make innovation accessible and reliable. We serve individuals, institutions, and industries with a commitment to quality and excellence.</p>
+  </div>  <div class="section" id="hydrolynk">
+    <h2>Hydrolynk Smart Water Pump Control</h2>
+    <p>Hydrolynk is one of our flagship products designed to automate and optimize water pumping operations. It prevents dry running, overflows, and manual guesswork. Whether you're managing a borehole, tank system, or industrial water facility, Hydrolynk ensures seamless water management with smart sensors, automatic shutoff, and remote access features. It's reliable, eco-friendly, and built for African terrain.</p>
+  </div>  <div class="section" id="founder">
+    <h2>Meet the Founder</h2>
+    <p>Saviour Lawrence Inyang is the visionary founder and CEO of SLI RESOURCES. A graduate of Chemistry Science from Akwa Ibom State University, his passion for innovation and practical problem-solving birthed the company. With a background rooted in science and a strong drive for social impact, he leads a team of creators, engineers, and thinkers determined to innovate Africa forward. He believes every challenge is a hidden opportunity for smart solutions.</p>
+  </div>  <div class="section" id="contact">
+    <h2>Contact Us</h2>
+    <p>📞 WhatsApp: +2349023226544<br>
+    💼 LinkedIn: <a href="https://www.linkedin.com/in/sliresources" target="_blank">SLI RESOURCES</a><br>
+    📧 Email: sliresourcess@gmail.com</p>
   </div>  <div class="scroll-to-top" id="scrollBtn" onclick="scrollToTop()">↑</div>  <footer>
     &copy; 2025 SLI RESOURCES — We Light Up the Future
   </footer>

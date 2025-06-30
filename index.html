@@ -150,10 +150,12 @@
   </style>
   <script>
     function showSection(id) {
-      const sections = document.querySelectorAll('.section');
-      sections.forEach(section => section.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
-      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+  const sections = document.querySelectorAll('.section');
+  sections.forEach(section => section.classList.remove('active'));
+  const target = document.getElementById(id);
+  target.classList.add('active');
+  window.scrollTo({ top: target.offsetTop - 50, behavior: 'smooth' });
+});
     }function toggleProductDetails(element) {
   element.parentElement.classList.toggle('active');
 }
@@ -183,18 +185,18 @@ function scrollToTop() {
   <header style="background: url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;">
     <h1>SLI RESOURCES</h1>
     <p>We Light Up the Future</p>
-  </header>  <nav>
-    <button onclick="showSection('about')">About</button>
-    <button onclick="showSection('services')">Services</button>
-    <button onclick="showSection('hydrolynk')">Hydrolynk</button>
-    <button onclick="showSection('products')">Products</button>
-    <button onclick="showSection('founder')">Founder</button>
-    <button onclick="showSection('contact')">Contact</button>
-  </nav>  <div class="section" id="about" style="background: url('https://images.unsplash.com/photo-1504198453319-5ce911bafcde?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;">
+  </header>
+
+  <div class="section active" id="home" style="background: url('https://images.unsplash.com/photo-1504198453319-5ce911bafcde?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;">
+    <h2>Welcome to SLI RESOURCES</h2>
+    <p>SLI RESOURCES is a hub of innovation, technology, and creativity dedicated to solving real-life challenges with smart, efficient, and affordable solutions. We specialize in automation, IoT, product engineering, and innovative devices tailored for the African terrain and beyond. Our mission is to make technology work for everyone—simplifying processes, empowering lives, and lighting up the future with every invention.</p>
+    <p>Whether you're a business, student, home owner, or organization, SLI RESOURCES is here to guide you through the future of smart living and digital transformation.</p>
+  </div>
+    <div class="section" id="about" style="background: url('https://images.unsplash.com/photo-1498579809087-ef1e558fd1da?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;">
     <h2>About SLI RESOURCES</h2>
     <p>SLI RESOURCES is a visionary technology and innovation company established to drive transformative change in Africa and beyond. Our mission is to develop intuitive, efficient, and intelligent solutions that solve real-world challenges across industries such as water management, smart homes, education, and sustainability.</p>
     <p>With a team of forward-thinkers, engineers, and creative minds, we craft products and services that blend practical innovation with futuristic goals. We believe that access to smart technology should be simple, affordable, and scalable.</p>
-  </div>  <div class="section" id="services" style="background: url('https://images.unsplash.com/photo-1529257414771-1960d4c2ef5c?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;">
+  </div>  <div class="section" id="services" style="background: url('https://images.unsplash.com/photo-1586855582708-57a86b03f9e0?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;">
     <h2>Our Services</h2>
     <p>We offer services tailored to individuals, institutions, and organizations who seek transformation through innovation. Our services include:</p>
     <ul>
@@ -205,7 +207,7 @@ function scrollToTop() {
       <li>Hardware/software customization for business or domestic use</li>
     </ul>
     <p>Our passion is to turn ideas into products that matter, delivering impactful results for every client.</p>
-  </div>  <div class="section" id="hydrolynk" style="background: url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;">
+  </div>  <div class="section" id="hydrolynk" style="background: url('https://images.unsplash.com/photo-1621609767523-837b7b0b2b14?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;">
     <h2>Hydrolynk Smart Water Pump Control</h2>
     <p>Hydrolynk is our flagship smart water pump control system engineered to solve common water management issues in homes, farms, and industrial setups. The device uses advanced sensors to detect water levels and automates the switching of water pumps, eliminating dry running, overflows, and human error.</p>
     <p>Key features include wireless remote monitoring, solar support, low power consumption, and compatibility with existing water systems. Hydrolynk is user-friendly, highly durable, and perfect for regions with irregular power or water supply.</p>
@@ -251,11 +253,11 @@ function scrollToTop() {
     <p>We are continually developing future-forward technologies across industries — from healthcare automation tools to educational kits and agricultural systems. Our R&D team is working tirelessly to deliver value, simplify lives, and solve local problems with global standards. Join our mailing list or follow us on LinkedIn to be the first to know when we launch something groundbreaking.</p>
     <button class="buy-btn" onclick="trackClick('More Innovative Tech Solutions')">Buy Now</button>
   </div>
-</div>  <div class="section" id="founder" style="background: url('https://images.unsplash.com/photo-1515442261605-cd4a4d3ec8ff?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;">
+</div>  <div class="section" id="founder" style="background: url('https://images.unsplash.com/photo-1604709177225-c30337a8e3f1?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;">
     <h2>Meet the Founder</h2>
     <p>Saviour Lawrence Inyang is a tech visionary, innovator, and the founder of SLI RESOURCES. He holds a degree in Chemistry Science from Akwa Ibom State University and is known for his exceptional problem-solving abilities and entrepreneurial spirit.</p>
     <p>His background in science combined with his passion for community empowerment drives the mission of SLI RESOURCES. Under his leadership, the company is making waves in tech development and creating solutions that benefit society at large.</p>
-  </div>  <div class="section" id="contact" style="background: url('https://images.unsplash.com/photo-1504198453319-5ce911bafcde?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;">
+  </div>  <div class="section" id="contact" style="background: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;">
     <h2>Contact Us</h2>
     <p>We are excited to connect with potential partners, customers, and collaborators. Feel free to reach out via any of the following platforms:</p>
     <ul>
@@ -268,4 +270,4 @@ function scrollToTop() {
     &copy; 2025 SLI RESOURCES — We Light Up the Future
   </footer>
 </body>
-    </html>
+  </html>

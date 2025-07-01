@@ -4,171 +4,199 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>SLI RESOURCES</title>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Open+Sans:wght@300;500&display=swap" rel="stylesheet">
   <style>
     html, body {
       margin: 0;
-      font-family: 'Anton', sans-serif;
+      font-family: 'Open Sans', sans-serif;
       scroll-behavior: smooth;
-      background: url('https://www.transparenttextures.com/patterns/floral-white.png');
+      background-color: #fff;
+      color: #1e2d3a;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: url('https://www.transparenttextures.com/patterns/floral.png');
       background-size: cover;
-      background-attachment: fixed;
-      color: #2C3E50;
+      background-repeat: repeat;
+      opacity: 0.12;
+      z-index: -1;
     }
     .floating-menu {
       position: fixed;
       top: 0;
-      left: 0;
       width: 100%;
-      background: rgba(0,0,0,0.8);
       display: flex;
       justify-content: center;
+      background: rgba(0, 0, 0, 0.85);
+      z-index: 999;
+      padding: 10px 0;
       gap: 15px;
-      padding: 10px;
-      z-index: 1000;
     }
     .floating-menu button {
-      padding: 10px 20px;
-      background: #00AEEF;
-      color: white;
+      background: #006d77;
+      color: #fff;
       border: none;
+      padding: 10px 18px;
+      font-size: 15px;
       border-radius: 6px;
       cursor: pointer;
-      font-size: 14px;
-      transition: 0.3s ease;
+      font-family: 'Open Sans', sans-serif;
     }
     .floating-menu button:hover {
-      background-color: #008ecf;
+      background: #005259;
     }
     .section {
-      display: none;
-      padding: 100px 30px 60px;
+      padding: 100px 20px;
       min-height: 100vh;
-      background: rgba(255, 255, 255, 0.9);
       box-sizing: border-box;
-      line-height: 1.6;
+      display: none;
+      animation-duration: 1s;
     }
-    .section.show {
+    .show {
       display: block;
-      animation: fadeIn 1s ease;
     }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
+    .fade { animation-name: fade; }
+    .slide-left { animation-name: slideLeft; }
+    .slide-right { animation-name: slideRight; }
+    .zoom { animation-name: zoom; }
+    .flip { animation-name: flip; }
+
+    @keyframes fade {
+      from { opacity: 0; } to { opacity: 1; }
     }
+    @keyframes slideLeft {
+      from { transform: translateX(-100%); opacity: 0; } to { transform: translateX(0); opacity: 1; }
+    }
+    @keyframes slideRight {
+      from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; }
+    }
+    @keyframes zoom {
+      from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; }
+    }
+    @keyframes flip {
+      from { transform: rotateY(90deg); opacity: 0; } to { transform: rotateY(0); opacity: 1; }
+    }
+
     h1 {
+      font-family: 'Playfair Display', serif;
       text-align: center;
-      color: #00AEEF;
-      margin-bottom: 20px;
+      font-size: 40px;
+      color: #003f5c;
+      margin-bottom: 30px;
     }
+
     p, li {
       font-size: 18px;
-      max-width: 900px;
-      margin: 10px auto;
-    }
-    ul {
+      line-height: 1.7;
       max-width: 900px;
       margin: 20px auto;
     }
+
+    ul {
+      max-width: 880px;
+      margin: 20px auto;
+    }
+
     .buy-button {
       display: block;
-      width: fit-content;
       margin: 30px auto;
       padding: 12px 24px;
-      background-color: #FFC107;
-      color: #2C3E50;
+      background-color: #ffb703;
+      color: #003049;
       text-decoration: none;
       border-radius: 6px;
-      transition: background-color 0.3s ease;
+      font-weight: bold;
+      font-size: 16px;
     }
+
     .buy-button:hover {
-      background-color: #e6ac00;
+      background-color: #ffa200;
     }
   </style>
 </head>
 <body>
-  <div class="floating-menu">
-    <button onclick="showSection('products')">Products</button>
-    <button onclick="showSection('hydrolynk')">Hydrolynk</button>
-    <button onclick="showSection('services')">Services</button>
-    <button onclick="showSection('founder')">Founder</button>
-    <button onclick="showSection('contact')">Contact</button>
-  </div>
 
-  <div id="home">
-    <h1>Welcome to SLI RESOURCES</h1>
-    <p>SLI RESOURCES is a forward-thinking Nigerian technology company committed to creating affordable, smart, and reliable innovations for everyday life. Founded by Saviour Lawrence Inyang, our mission is to empower Africa through automation, sustainability, and smart systems integration.</p>
-    <p>Our vision is to simplify complex processes by building intelligent solutions that address water management, power conservation, remote control, and educational technology. Whether it's a smart water pump controller or a rechargeable whiteboard, our products are tailored for real-world problems.</p>
-    <p>At SLI RESOURCES, we don't just build gadgets — we develop lasting solutions that serve homes, farms, schools, and industries. We’re continuously innovating and expanding our range with new devices that are locally made but globally competitive.</p>
-    <p>We light up the future with passion, integrity, and purpose. Join us on our journey to transform the African continent through affordable tech.</p>
-  </div>
-  <div id="products" class="section">
-    <h1>Our Products</h1>
-    <p>At SLI RESOURCES, we develop innovative products that solve real-life challenges in homes, farms, and offices. Our product lineup is growing and includes:</p>
-    <ul>
-      <li><strong>Hydrolynk</strong> – Our flagship smart water pump controller that prevents overflow and wastage while automating borehole and tank systems.</li>
-      <li><strong>Rechargeable Whiteboard with Auto Eraser</strong> – A whiteboard that saves power and time by erasing itself with a built-in rechargeable system.</li>
-      <li><strong>Smart Water Level Indicator</strong> – A simple yet effective solution to monitor and display tank water levels in real-time.</li>
-      <li><strong>IR Blaster Device</strong> – Control all your infrared-based home devices with one compact gadget using your phone or voice command.</li>
-    </ul>
-    <p>We are constantly improving our designs and working on new projects that will revolutionize energy, education, and water systems in Nigeria and across Africa.</p>
-  </div>
+<!-- Floating Menu -->
+<div class="floating-menu">
+  <button onclick="showSection('products', 'slide-left')">Products</button>
+  <button onclick="showSection('hydrolynk', 'zoom')">Hydrolynk</button>
+  <button onclick="showSection('services', 'slide-right')">Services</button>
+  <button onclick="showSection('founder', 'flip')">Founder</button>
+  <button onclick="showSection('contact', 'fade')">Contact</button>
+</div>
 
-  <div id="hydrolynk" class="section">
-    <h1>Hydrolynk</h1>
-    <p>Hydrolynk is a revolutionary smart water pump controller that automates your water tank and borehole operations. Designed for homes, farms, hotels, and businesses, it helps save time, reduce power waste, and eliminate overflow or dry-run damage.</p>
-    <p>Features include:</p>
-    <ul>
-      <li>Automatic ON/OFF pump control based on water level</li>
-      <li>Overfill prevention with smart float sensors</li>
-      <li>Dry-run protection that detects empty sources</li>
-      <li>LED indicator system for tank status monitoring</li>
-      <li>Built-in fuse protection and long-life battery circuit</li>
-    </ul>
-    <p>It is locally built, affordable, reliable, and tested. It also comes with 3 months support and warranty from SLI RESOURCES.</p>
-    <a href="https://wa.me/2349023226544?text=I%20want%20to%20buy%20Hydrolynk%20Smart%20Water%20Pump%20Controller" class="buy-button">Buy Now – ₦30,000 (Opay 9063650986)</a>
-  </div>
+<!-- Landing Page -->
+<div id="home" class="section show fade">
+  <h1>Welcome to SLI RESOURCES</h1>
+  <p>SLI RESOURCES is a visionary technology company founded to solve everyday African problems with smart, cost-effective innovations. We build intelligent systems that help individuals, schools, and businesses automate key parts of their lives — starting from water control to smart education tools.</p>
+  <p>Our products are affordable, tested, and locally supported. We don’t just sell devices — we provide intelligent solutions to enhance your life. SLI RESOURCES believes in lighting up the future with innovation, one smart tool at a time.</p>
+</div>
 
-  <div id="services" class="section">
-    <h1>Our Services</h1>
-    <p>We are not just product creators; we are solution providers. At SLI RESOURCES, we offer a variety of technical services designed to empower businesses and individuals, including:</p>
-    <ul>
-      <li>Custom Electronics Design & Fabrication</li>
-      <li>IoT Device Integration and Smart Automation</li>
-      <li>Tech Consulting and Product Development</li>
-      <li>Smart Classrooms and Educational Boards</li>
-      <li>Online/Offline Tech Trainings and Workshops</li>
-      <li>Embedded Systems Programming</li>
-    </ul>
-    <p>We work closely with startups, schools, and businesses to provide personalized solutions that deliver real value and performance.</p>
-  </div>
-  <div id="founder" class="section">
-    <h1>Meet the Founder</h1>
-    <p>Saviour Lawrence Inyang is a passionate inventor and tech entrepreneur from Nigeria. He founded SLI RESOURCES with the dream of making Africa more self-reliant through localized tech innovations.</p>
-    <p>With a background in electronics and embedded systems, he designs and develops smart solutions that are affordable, durable, and impactful. He believes that technology should be tailored to the specific problems of the African people — not imported blindly from abroad.</p>
-    <p>He leads a team of brilliant minds in building tools that empower families, farmers, schools, and entrepreneurs to improve their lives and operations. Saviour’s goal is to light up the future with real, scalable, and sustainable innovations.</p>
-  </div>
+<!-- Products Section -->
+<div id="products" class="section slide-left">
+  <h1>Our Product Line</h1>
+  <p>We are proud to present a lineup of functional, practical, and reliable devices designed specifically for the African market.</p>
+  <ul>
+    <li><strong>Hydrolynk</strong>: A smart water pump controller that automatically detects water level and controls your pump to prevent overflow and dry-run.</li>
+    <li><strong>Rechargeable Whiteboard with Auto-Eraser</strong>: A smart board that wipes itself clean after lectures — great for schools, training rooms, and business pitches.</li>
+    <li><strong>Water Level Indicator</strong>: A clear level monitor for overhead tanks that eliminates guesswork and ensures timely water management.</li>
+    <li><strong>Universal IR Blaster</strong>: Control multiple home devices like TVs, ACs, fans with a single compact gadget.</li>
+  </ul>
+</div>
 
-  <div id="contact" class="section">
-    <h1>Contact Us</h1>
-    <p>Want to place an order, partner with us, or ask questions? We're ready to hear from you. Reach us via:</p>
-    <ul>
-      <li>Email: <a href="mailto:sliresourcess@gmail.com">sliresourcess@gmail.com</a></li>
-      <li>WhatsApp: <a href="https://wa.me/2349023226544">+2349023226544</a></li>
-      <li>LinkedIn: <a href="https://www.linkedin.com/in/sliresources" target="_blank">SLI RESOURCES on LinkedIn</a></li>
-      <li>Bank Payment: Opay Account Number – <strong>9063650986</strong></li>
-    </ul>
-    <p>We’re based in Nigeria but serve clients across Africa. Your next innovation starts here.</p>
-  </div>
+<!-- Hydrolynk Section -->
+<div id="hydrolynk" class="section zoom">
+  <h1>Hydrolynk - Intelligent Pump Control</h1>
+  <p>Hydrolynk is the heartbeat of automated water systems. It ensures your pump works only when it’s needed — turning ON when your tank is low and OFF when it’s full. This smart device helps you save water, save electricity, and extend the lifespan of your pump.</p>
+  <p>It works perfectly for homes, schools, farms, and hotels — anywhere you need reliable, automated water management. Built with embedded technology and precision engineering, Hydrolynk is proudly made and supported in Nigeria.</p>
+  <a href="https://wa.me/2349023226544?text=I%20want%20to%20buy%20Hydrolynk" class="buy-button">Buy Now - ₦30,000</a>
+</div>
 
-  <script>
-    function showSection(id) {
-      document.querySelectorAll('.section').forEach(section => {
-        section.classList.remove('show');
-      });
-      const el = document.getElementById(id);
-      if (el) el.classList.add('show');
-    }
-  </script>
+<!-- Services Section -->
+<div id="services" class="section slide-right">
+  <h1>Our Services</h1>
+  <p>At SLI RESOURCES, we don’t just build — we innovate, support, and train. Our services include:</p>
+  <ul>
+    <li>Custom Electronics & Microcontroller Development</li>
+    <li>IoT Smart Systems Design (home, farm, industry)</li>
+    <li>Prototype Design & Testing</li>
+    <li>One-on-One Training & Workshops in Tech/Hardware</li>
+    <li>Tech Consulting for Schools, Startups, and Individuals</li>
+  </ul>
+  <p>Our team is dedicated to helping you achieve your smart system goals using practical, cost-effective methods.</p>
+</div>
+
+<!-- Founder Section -->
+<div id="founder" class="section flip">
+  <h1>Meet the Founder</h1>
+  <p><strong>Saviour Lawrence Inyang</strong> is a passionate Nigerian innovator and engineer with a strong vision to transform Africa using embedded technology. As the founder of SLI RESOURCES, his goal is to bring real solutions to communities using affordable devices that solve real challenges.</p>
+  <p>With years of experience in electronics, IoT, and system design, he continues to mentor, develop, and deliver value across various sectors.</p>
+</div>
+
+<!-- Contact Section -->
+<div id="contact" class="section fade">
+  <h1>Contact Us</h1>
+  <p>We’d love to hear from you! Whether you're interested in a product, need a service, or just have a question — reach out to us through any of the options below.</p>
+  <ul>
+    <li>Email: sliresourcess@gmail.com</li>
+    <li>WhatsApp: <a href="https://wa.me/2349023226544">+2349023226544</a></li>
+    <li>LinkedIn: <a href="https://www.linkedin.com/in/sliresources" target="_blank">linkedin.com/in/sliresources</a></li>
+    <li>Bank Account for Payment: <strong>Opay 9063650986</strong></li>
+  </ul>
+</div>
+
+<script>
+  function showSection(id, effect) {
+    document.querySelectorAll('.section').forEach(sec => {
+      sec.classList.remove('show', 'fade', 'slide-left', 'slide-right', 'zoom', 'flip');
+    });
+    const section = document.getElementById(id);
+    if (section) section.classList.add('show', effect);
+  }
+</script>
+
 </body>
-</html>
+      </html>

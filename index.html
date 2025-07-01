@@ -14,20 +14,18 @@
       background-color: #f7f7f7;
       color: #1e2d3a;
     }
-
     body::before {
       content: "";
       position: fixed;
       top: 0; left: 0;
       width: 100%; height: 100%;
-      background-image: url('https://www.toptal.com/designers/subtlepatterns/uploads/floral-pattern.png');
+      background-image: url('https://i.imgur.com/C8sFdLZ.jpg');
       background-size: cover;
       background-repeat: no-repeat;
       background-position: center;
-      opacity: 0.2;
+      opacity: 0.25;
       z-index: -1;
     }
-
     .floating-menu {
       position: fixed;
       top: 0;
@@ -39,7 +37,6 @@
       padding: 12px 0;
       gap: 15px;
     }
-
     .floating-menu button {
       background: #006d77;
       color: #fff;
@@ -48,13 +45,10 @@
       font-size: 14px;
       border-radius: 6px;
       cursor: pointer;
-      font-family: 'Open Sans', sans-serif;
     }
-
     .floating-menu button:hover {
       background: #005259;
     }
-
     .section {
       padding: 100px 20px;
       min-height: 100vh;
@@ -62,17 +56,14 @@
       display: none;
       animation-duration: 1s;
     }
-
     .show {
       display: block;
     }
-
     .fade { animation-name: fade; }
     .slide-left { animation-name: slideLeft; }
     .slide-right { animation-name: slideRight; }
     .zoom { animation-name: zoom; }
     .flip { animation-name: flip; }
-
     @keyframes fade {
       from { opacity: 0; } to { opacity: 1; }
     }
@@ -88,7 +79,6 @@
     @keyframes flip {
       from { transform: rotateY(90deg); opacity: 0; } to { transform: rotateY(0); opacity: 1; }
     }
-
     h1 {
       font-family: 'Playfair Display', serif;
       text-align: center;
@@ -96,52 +86,12 @@
       color: #003f5c;
       margin-bottom: 30px;
     }
-
     p, li {
       font-size: 18px;
       line-height: 1.7;
       max-width: 900px;
       margin: 20px auto;
     }
-
-    ul {
-      max-width: 880px;
-      margin: 20px auto;
-    }
-
-    .buy-button {
-      display: block;
-      margin: 30px auto;
-      padding: 12px 24px;
-      background-color: #ffb703;
-      color: #003049;
-      text-decoration: none;
-      border-radius: 6px;
-      font-weight: bold;
-      font-size: 16px;
-    }
-
-    .buy-button:hover {
-      background-color: #ffa200;
-    }
-
-    .footer {
-      background-color: #003f5c;
-      color: #fff;
-      padding: 30px 20px;
-      text-align: center;
-      font-size: 14px;
-    }
-
-    .testimonial {
-      background: #e8f1f2;
-      padding: 20px;
-      margin: 40px auto;
-      max-width: 700px;
-      border-left: 5px solid #0096c7;
-      font-style: italic;
-    }
-
     .social-icons {
       position: fixed;
       top: 45%;
@@ -151,7 +101,6 @@
       gap: 10px;
       z-index: 999;
     }
-
     .social-icons a {
       background-color: #006d77;
       color: white;
@@ -160,28 +109,24 @@
       text-align: center;
       display: block;
     }
-
     @media (max-width: 600px) {
       .floating-menu {
         flex-wrap: wrap;
         gap: 8px;
       }
-      h1 {
-        font-size: 28px;
-      }
       .social-icons {
-        top: unset;
         bottom: 20px;
-        flex-direction: row;
         left: 50%;
         transform: translateX(-50%);
+        top: unset;
+        flex-direction: row;
       }
     }
   </style>
 </head>
 <body>
 
-<!-- Floating Menu -->
+<!-- Floating Buttons -->
 <div class="floating-menu">
   <button onclick="showSection('products', 'slide-left')">Products</button>
   <button onclick="showSection('hydrolynk', 'zoom')">Hydrolynk</button>
@@ -190,7 +135,7 @@
   <button onclick="showSection('contact', 'fade')">Contact</button>
 </div>
 
-<!-- Floating Social Icons -->
+<!-- Floating Icons -->
 <div class="social-icons">
   <a href="https://wa.me/2349023226544" target="_blank"><i class="fab fa-whatsapp"></i></a>
   <a href="mailto:sliresourcess@gmail.com"><i class="fas fa-envelope"></i></a>
@@ -200,66 +145,109 @@
 <!-- Landing Page -->
 <div id="home" class="section show fade">
   <h1>Welcome to SLI RESOURCES</h1>
-  <p>SLI RESOURCES is a Nigerian-based technology innovation company focused on solving everyday challenges using embedded systems and smart automation devices. We believe in transforming lives through innovation, affordability, and simplicity. Whether it’s automatic water control, intelligent whiteboards, or power-saving gadgets, we aim to make life easier, smarter, and more efficient across homes, schools, and industries.</p>
-  <div class="testimonial">
-    “Hydrolynk helped us eliminate daily water wastage. It's the most reliable pump controller we’ve ever used!” — Estate Manager, Uyo
+  <p>
+    At SLI RESOURCES, we don’t just build products—we design practical, life-enhancing technologies for communities, homes, and institutions.
+    We are a fast-growing Nigerian tech company devoted to solving daily problems using smart automation systems. Whether it's water management,
+    classroom enhancement, or energy efficiency, we innovate to make lives easier, safer, and more efficient.
+  </p>
+  <p>
+    Founded by a visionary embedded systems expert, SLI RESOURCES is at the forefront of integrating affordable microcontroller solutions
+    into the African ecosystem. We believe in creating tech for real people with real needs. Our clients include residential users, schools,
+    real estate developers, and SMEs across Nigeria. Explore our innovations, from Hydrolynk to smart whiteboards.
+  </p>
+  <p>
+    This is just the beginning. With our motto "We Light Up The Future", we invite you to journey with us into a smarter tomorrow.
+  </p>
   </div>
-</div>
-
-<!-- Other Sections -->
+  <!-- PRODUCTS SECTION -->
 <div id="products" class="section slide-left">
-  <h1>Our Product Line</h1>
+  <h1>Our Products</h1>
+  <p>
+    SLI RESOURCES offers a unique range of practical, smart-tech devices aimed at improving everyday life in Nigeria and Africa at large.
+    Our product line is carefully researched, tested, and built for local conditions. We design for durability, simplicity, and performance.
+  </p>
   <ul>
-    <li><strong>Hydrolynk:</strong> Smart water pump controller with automatic tank level management.</li>
-    <li><strong>Rechargeable Whiteboard:</strong> Erases itself with a single tap – perfect for schools and meetings.</li>
-    <li><strong>Water Level Indicator:</strong> Shows real-time tank levels – no more guesswork.</li>
-    <li><strong>Universal IR Blaster:</strong> Control all your infrared home devices with one smart remote.</li>
+    <li><strong>Hydrolynk</strong> – Smart automatic water pump controller that prevents dry pumping, overflow, and optimizes energy use.</li>
+    <li><strong>Smart Whiteboard (Upcoming)</strong> – A rechargeable whiteboard system with an automatic eraser and digital content saver.</li>
+    <li><strong>IR Blaster (Upcoming)</strong> – Control your home appliances with a single smart infrared device using your phone.</li>
+    <li><strong>Water Level Indicator</strong> – Affordable, precise level monitoring system with audio alerts and LED indicators.</li>
   </ul>
 </div>
 
+<!-- HYDROLYNK SECTION -->
 <div id="hydrolynk" class="section zoom">
-  <h1>Hydrolynk - Smart Pump Control</h1>
-  <p>Hydrolynk is an automatic pump switch that helps households, schools, and companies control their borehole or tank pumps automatically. It starts or stops the pump based on real-time tank water levels and protects the pump from dry runs. Durable, affordable, and easy to install.</p>
-  <a href="https://wa.me/2349023226544?text=I%20want%20to%20buy%20Hydrolynk" class="buy-button">Buy Now - ₦30,000</a>
+  <h1>Hydrolynk - Smart Water Pump Controller</h1>
+  <p>
+    Hydrolynk is our flagship product and Nigeria's first locally-developed automatic water pumping system with intelligent control.
+    Designed for households, hotels, hostels, and schools, it ensures your tank never runs dry and your pump never runs dry either.
+  </p>
+  <p>
+    With sensor-based control and auto shutoff, Hydrolynk prevents common water wastage, reduces energy bills, and increases pump life span.
+    It comes with a mobile notification module (coming soon), easy-to-install design, and operates silently with rugged weatherproof casing.
+  </p>
+  <p>
+    Price: <strong>₦30,000</strong>  
+    <br>
+    Payment: Opay Account – <strong>9063650986</strong>  
+    <br>
+    Name: <strong>SLI RESOURCES</strong>
+  </p>
+  <a href="https://wa.me/2349023226544?text=I%20want%20to%20buy%20Hydrolynk%20(₦30,000)" class="buy-button" target="_blank">Buy Now via WhatsApp</a>
 </div>
 
+<!-- SERVICES SECTION -->
 <div id="services" class="section slide-right">
   <h1>Our Services</h1>
+  <p>
+    At SLI RESOURCES, our expertise in embedded systems, IoT design, and control engineering allows us to offer tailored tech services across different sectors:
+  </p>
   <ul>
-    <li>Custom electronics hardware development</li>
-    <li>Embedded system & microcontroller programming</li>
-    <li>IoT automation for homes, farms & businesses</li>
-    <li>Digital training, workshops & product design consulting</li>
+    <li><strong>Custom Electronics Development:</strong> We build solutions for security, automation, energy, and industrial control.</li>
+    <li><strong>Educational Tools:</strong> Design of teaching aids like electronic kits, smart learning devices, and STEM boards.</li>
+    <li><strong>Consultancy:</strong> We help schools and SMEs integrate affordable automation into daily operations.</li>
+    <li><strong>Workshops & Training:</strong> Learn embedded systems, Arduino, PCB design, IoT networking, and more.</li>
   </ul>
 </div>
 
+<!-- FOUNDER SECTION -->
 <div id="founder" class="section flip">
   <h1>Meet the Founder</h1>
-  <p>Saviour Lawrence Inyang is an innovative Nigerian embedded systems engineer and the founder of SLI RESOURCES. He is driven by a vision to localize advanced tech for African needs. With over 5 years of hands-on experience, his mission is to bring meaningful, affordable tech innovations to the everyday user.</p>
+  <p>
+    <strong>Saviour Lawrence Inyang</strong>, a passionate innovator and embedded systems engineer, is the CEO and founder of SLI RESOURCES.
+    Driven by the desire to solve real-world problems with local, cost-effective solutions, he has developed over a dozen hardware prototypes
+    used in homes, institutions, and businesses.
+  </p>
+  <p>
+    Saviour believes in democratizing technology for Africans. With deep knowledge of microcontrollers, sensors, and automation,
+    he leads a growing team working to make smart living affordable and accessible. His vision is to see locally made tech dominate
+    the African tech landscape. He continues to mentor students and inspire engineers to build boldly.
+  </p>
 </div>
 
+<!-- CONTACT SECTION -->
 <div id="contact" class="section fade">
   <h1>Contact Us</h1>
+  <p>
+    We'd love to hear from you. Whether you want to make an order, schedule a demo, or discuss your custom tech idea, we’re available.
+  </p>
   <ul>
-    <li>Email: sliresourcess@gmail.com</li>
-    <li>WhatsApp: <a href="https://wa.me/2349023226544">+2349023226544</a></li>
-    <li>LinkedIn: <a href="https://www.linkedin.com/in/sliresources" target="_blank">linkedin.com/in/sliresources</a></li>
-    <li>Bank: Opay - 9063650986</li>
+    <li><strong>WhatsApp:</strong> <a href="https://wa.me/2349023226544">+234 902 322 6544</a></li>
+    <li><strong>Email:</strong> <a href="mailto:sliresourcess@gmail.com">sliresourcess@gmail.com</a></li>
+    <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/sliresources" target="_blank">linkedin.com/in/sliresources</a></li>
+    <li><strong>Location:</strong> Uyo, Akwa Ibom, Nigeria</li>
   </ul>
 </div>
 
-<!-- Footer -->
-<div class="footer">
-  &copy; 2025 SLI RESOURCES. All Rights Reserved. | We Light Up The Future
-</div>
-
+<!-- SCRIPT TO SWITCH SECTIONS -->
 <script>
-  function showSection(id, effect) {
-    document.querySelectorAll('.section').forEach(sec => {
-      sec.classList.remove('show', 'fade', 'slide-left', 'slide-right', 'zoom', 'flip');
-    });
-    const section = document.getElementById(id);
-    if (section) section.classList.add('show', effect);
+  function showSection(id, animation) {
+    const sections = document.querySelectorAll('.section');
+    sections.forEach(sec => sec.classList.remove('show', 'fade', 'slide-left', 'slide-right', 'zoom', 'flip'));
+    const active = document.getElementById(id);
+    if (active) {
+      active.classList.add('show', animation);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   }
 </script>
 

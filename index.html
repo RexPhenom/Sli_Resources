@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -60,70 +61,99 @@
       font-size: 16px;
     }
     #home {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      height: auto;
       text-align: center;
       background: url('floral-background.jpg') no-repeat center center;
       background-size: cover;
+      padding: 80px 20px;
     }
     #home p {
       max-width: 90%;
       font-size: 18px;
       line-height: 1.8;
+      margin: auto;
     }
   </style>
 </head>
-<body><div class="floating-menu">
+<body>
+
+<div class="floating-menu">
   <button onclick="showSection('products')">🛍 Products</button>
   <button onclick="showSection('hydrolynk')">💧 Hydrolynk</button>
   <button onclick="showSection('services')">🛠 Services</button>
   <button onclick="showSection('founder')">👤 Founder</button>
   <button onclick="showSection('contact')">📞 Contact</button>
-</div><section id="home">
-  <h1 class="title">Welcome to SLI RESOURCES</h1>
-  <p>SLI RESOURCES is more than just a technology company — it is a vision of a smarter and more efficient world. From humble beginnings, we have built our brand around innovation, problem-solving, and a deep-rooted desire to improve everyday living through advanced, affordable, and reliable tech products.</p>
-  <p>We specialize in designing and developing electronic solutions tailored to local and global challenges. Our flagship products and services serve homes, businesses, and industries with the assurance of efficiency and intelligence. Whether it’s automating water systems or pioneering new inventions, SLI RESOURCES is dedicated to pushing the boundaries of what is possible.</p>
-  <p>Our commitment to excellence and creativity fuels everything we do. We are proud to be lighting up the future through innovation, invention, and empowerment. We welcome you to explore our ecosystem of products, services, and groundbreaking solutions.</p>
-</section><section class="section" id="products">
+</div>
+
+<section id="home" class="active">
+  <h1 class="title">SLI RESOURCES</h1>
+  <p><strong>We Light Up the Future</strong></p>
+  <p>SLI RESOURCES is a leading Nigerian innovation-based tech company founded to solve real-world challenges through intelligent engineering. We specialize in smart automation, embedded systems, and custom product design. With a deep commitment to excellence, we are reimagining the future—one invention at a time.</p>
+  <p><strong>Mission:</strong> To develop practical, affordable, and futuristic solutions for people, businesses, and industries.</p>
+  <p><strong>Vision:</strong> To be Africa’s number one innovation hub producing smart, world-class technology products.</p>
+  <p><strong>Core Values:</strong> Innovation, Simplicity, Reliability, Empowerment, Integrity</p>
+  <p>SLI RESOURCES was born out of the need to provide local solutions to global problems. Every product and service we offer is driven by passion, technical excellence, and a desire to make life easier and smarter for all. Whether you’re a student, a business, or a homeowner — we’re here to help you unlock the future.</p>
+</section>
+
+<section class="section" id="products">
   <h1 class="title">Our Products</h1>
-  <p>SLI RESOURCES develops and supplies a range of advanced technological products built for performance, sustainability, and ease-of-use. We focus on the future, designing tools that not only meet today’s needs but anticipate tomorrow’s challenges. Here are a few of our highly anticipated offerings:</p>
   <ul>
-    <li><strong>Rechargeable Whiteboard with Automatic Eraser:</strong> A modern upgrade to traditional boards. Designed for classrooms and offices, this device saves time and ensures an eco-friendly teaching and presentation experience.<br><a class="buy-button" href="#">Buy Now</a></li>
-    <li><strong>Smart Water Level Indicator:</strong> Real-time water tank monitoring using sensor technology. It helps users save water, reduce energy waste, and protect their infrastructure.<br><a class="buy-button" href="#">Buy Now</a></li>
-    <li><strong>IR Blaster Home Automation Kit:</strong> Simplify your life by controlling your electronics remotely with your smartphone. Smart living made simple.<br><a class="buy-button" href="#">Buy Now</a></li>
+    <li><strong>Rechargeable Whiteboard with Auto Eraser:</strong> Ideal for classrooms, offices, and boardrooms. Environmentally friendly, quick to use, and elegant in appearance. No more messy markers or dirty sleeves!</li>
+    <li><strong>Smart Water Level Indicator:</strong> Monitor your tank’s water level remotely with sensor-driven updates. Avoid wastage and dry taps forever.</li>
+    <li><strong>IR Blaster:</strong> Control your TVs, fans, decoders, and other electronics remotely from your phone. Sleek, smart, and universal.</li>
+    <li><strong>Hydrolynk (Flagship Product):</strong> Intelligent pump controller with auto switch ON/OFF based on tank levels. Prevents overflow, dry pumping, and manual stress.</li>
   </ul>
-</section><section class="section" id="hydrolynk">
-  <h1 class="title">Hydrolynk</h1>
-  <p>Hydrolynk is a smart water pump control system that uses embedded electronics and smart sensors to automate the water pumping process. It is designed to turn pumps ON or OFF depending on the water levels in your tank or borehole. This eliminates the risk of overflow or dry-run conditions, making it perfect for domestic, agricultural, and industrial applications.</p>
-  <p>Hydrolynk not only saves water but also extends the lifespan of your pumping equipment. It is simple to install, user-friendly, and highly reliable. Whether you are managing a home, a small farm, or a large business facility, Hydrolynk is your go-to solution for hassle-free water automation.</p>
+</section>
+
+<section class="section" id="hydrolynk">
+  <h1 class="title">Hydrolynk - Smart Pump Controller</h1>
+  <p>Hydrolynk is a revolutionary automatic pump control system that takes the stress out of managing your water. It works seamlessly by using sensors to determine when your water tank needs filling and automatically powers the pump ON or OFF without human intervention.</p>
+  <ul>
+    <li>Auto shutoff at full tank level</li>
+    <li>Auto startup at low tank level</li>
+    <li>Low power consumption</li>
+    <li>Works with boreholes and water reservoirs</li>
+    <li>Built-in surge protection</li>
+    <li>Easy to install and durable</li>
+  </ul>
   <p><strong>Price:</strong> ₦30,000<br><strong>Pay to:</strong> OPay 9063650986</p>
   <a class="buy-button" href="https://wa.me/2349023226544?text=I%20want%20to%20buy%20Hydrolynk%20for%20₦30000">Buy on WhatsApp</a>
-</section><section class="section" id="services">
-  <h1 class="title">Services</h1>
-  <p>At SLI RESOURCES, we don’t just create products — we provide full-service solutions to meet the needs of individuals and organizations in the technology space. Our professional services include:</p>
+</section>
+
+<section class="section" id="services">
+  <h1 class="title">Our Services</h1>
   <ul>
-    <li><strong>Custom Electronics Prototyping:</strong> We design, test, and build unique electronic solutions to suit specific applications.</li>
-    <li><strong>Smart Home Automation:</strong> Integration of smart systems into homes for lighting, appliances, and water control automation.</li>
-    <li><strong>IoT and Embedded Systems Development:</strong> End-to-end development for Internet of Things (IoT) projects with hardware and software support.</li>
-    <li><strong>Innovation Training and Mentorship:</strong> We offer workshops, courses, and mentoring programs to empower students and young inventors.</li>
-    <li><strong>Tech Product Consultation:</strong> Need help turning an idea into a physical tech solution? We are here to guide you through the entire process.</li>
+    <li><strong>Electronics Prototyping:</strong> Bring your tech ideas to life. We design, build, and test prototypes to get your invention to market.</li>
+    <li><strong>IoT Solutions:</strong> Integration of smart technologies to automate and control everyday tasks using wireless communication and sensors.</li>
+    <li><strong>Embedded System Design:</strong> Programming and building microcontroller-based systems for real-world automation.</li>
+    <li><strong>Home Automation:</strong> Convert your house into a smart home—control lights, fans, pumps, and appliances with one click.</li>
+    <li><strong>Tech Mentorship:</strong> We guide young tech enthusiasts in learning to invent, code, and build useful technology.</li>
   </ul>
-</section><section class="section" id="founder">
+</section>
+
+<section class="section" id="founder">
   <h1 class="title">Meet the Founder</h1>
-  <p>Saviour Lawrence Inyang is the founder and CEO of SLI RESOURCES. With a passion for solving problems using technology, he leads with vision and determination. Saviour’s journey started with a desire to bring change through innovation. His engineering background, paired with a hands-on approach to technology, has led to the creation of devices that are transforming lives.</p>
-  <p>He believes that the key to Africa’s future lies in empowering youth through innovation. By fostering creativity, encouraging experimentation, and building functional solutions, Saviour is on a mission to equip the next generation of inventors, engineers, and entrepreneurs.</p>
-</section><section class="section" id="contact">
-  <h1 class="title">Contact Us</h1>
-  <p>We’d love to hear from you! Whether you have questions, feedback, or would like to partner with us, don’t hesitate to get in touch. Here’s how to reach us:</p>
-  <p><strong>Phone/WhatsApp:</strong> +2349023226544<br><strong>Email:</strong> sliresourcess@gmail.com<br><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/sliresources" style="color: #00ffff;">SLI Resources</a></p>
-</section><script>
+  <p><strong>Saviour Lawrence Inyang</strong> is the visionary founder of SLI RESOURCES. As an inventor, engineer, and entrepreneur, Saviour’s mission is to use technology to make lives easier across Africa. With a background in electronics and embedded systems, he started SLI RESOURCES with the goal of designing affordable solutions that solve real problems.</p>
+  <p>From building early prototypes in his room to leading a company recognized for quality and ingenuity, Saviour continues to inspire the next generation through mentorship, creativity, and a deep belief that “anything is possible.”</p>
+</section>
+
+<section class="section" id="contact">
+  <h1 class="title">Get in Touch</h1>
+  <p>We're here to answer all your questions and support you. Connect with us today:</p>
+  <ul>
+    <li><strong>Phone / WhatsApp:</strong> +2349023226544</li>
+    <li><strong>Email:</strong> sliresourcess@gmail.com</li>
+    <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/sliresources" style="color: #00ffff;">SLI Resources</a></li>
+  </ul>
+</section>
+
+<script>
   function showSection(id) {
     document.querySelectorAll('.section').forEach(el => el.classList.remove('active'));
     const section = document.getElementById(id);
     if (section) section.classList.add('active');
   }
-</script></body>
-                                                                                                                                                                          </html>
+</script>
+
+</body>
+      </html>

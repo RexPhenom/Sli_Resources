@@ -3,271 +3,123 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SLI RESOURCES</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --primary-color: #0b3d91;
-      --accent-color: #d4af37;
-      --bg-color: #f5f9ff;
-      --text-color: #222;
-      --button-color: #555;
-    }
-    * {
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
     body {
-      font-family: 'Poppins', sans-serif;
       margin: 0;
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      line-height: 1.8;
-    }
-    header {
-      background: var(--accent-color);
-      color: white;
-      padding: 60px 20px;
-      text-align: center;
-    }
-    header h1 {
-      font-size: 3.2rem;
-      margin: 0;
-      text-transform: uppercase;
-    }
-    header p {
-      font-size: 1.3rem;
-      margin-top: 10px;
-      color: #000;
-      font-weight: bold;
-    }
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      background: var(--primary-color);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-    nav button {
-      padding: 15px 25px;
-      background: var(--button-color);
-      color: white;
-      border: none;
-      margin: 10px;
-      font-size: 1rem;
-      font-weight: bold;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    nav button:hover {
-      background: var(--accent-color);
-      color: black;
+      font-family: 'Anton', sans-serif;
+      background: url('animated-keys-background.gif') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
     }
     .section {
-      display: none;
-      padding: 60px 20px;
+      padding: 60px 30px;
+      background-color: rgba(0, 0, 0, 0.7);
     }
-    .section.active {
-      display: block;
+    .floating-menu {
+      position: fixed;
+      top: 50%;
+      right: 20px;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 999;
     }
-    .section h2 {
-      font-size: 2rem;
-      color: var(--primary-color);
-      border-left: 6px solid var(--accent-color);
-      padding-left: 15px;
-    }
-    .section p {
-      font-size: 1.1rem;
-      margin-top: 15px;
-    }
-    .product {
-      margin: 20px auto;
-      max-width: 900px;
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
-    .product h3 {
-      margin: 0;
-      font-size: 1.3rem;
-      cursor: pointer;
-      color: var(--primary-color);
-    }
-    .product p {
-      display: none;
-      margin-top: 10px;
-    }
-    .product.active p,
-    .product.active .buy-btn {
-      display: block;
-    }
-    .buy-btn {
-      display: none;
-      margin-top: 10px;
-      padding: 10px 20px;
-      background-color: var(--button-color);
+    .floating-menu button {
+      padding: 12px 20px;
+      background: #008080;
       color: white;
       border: none;
-      border-radius: 5px;
+      border-radius: 8px;
       cursor: pointer;
       font-weight: bold;
     }
-    .buy-btn:hover {
-      background-color: var(--accent-color);
-      color: black;
-    }
-    footer {
+    .title {
       text-align: center;
-      background: var(--primary-color);
-      color: white;
-      padding: 30px 20px;
+      font-size: 48px;
+      margin-top: 0;
+      color: #00ffff;
     }
-    .scroll-to-top {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      background: var(--accent-color);
-      color: #000;
-      padding: 10px 15px;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 20px;
-      display: none;
-      z-index: 1001;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
-    @media (max-width: 600px) {
-      nav button {
-        padding: 10px;
-        font-size: 0.9rem;
-      }
-      header h1 {
-        font-size: 2rem;
-      }
+    .buy-button {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: #28a745;
+      color: #fff;
+      border-radius: 5px;
+      text-decoration: none;
     }
   </style>
-  <script>
-    function showSection(id) {
-  const sections = document.querySelectorAll('.section');
-  sections.forEach(section => section.classList.remove('active'));
-  const target = document.getElementById(id);
-  target.classList.add('active');
-  window.scrollTo({ top: target.offsetTop - 50, behavior: 'smooth' });
-});
-    }function toggleProductDetails(element) {
-  element.parentElement.classList.toggle('active');
-}
-
-function trackClick(productName) {
-  console.log(`Buy Now clicked for: ${productName}`);
-  const link = `https://wa.me/2349023226544?text=Hello%20SLI%20RESOURCES,%20I%20am%20interested%20in%20buying%20${encodeURIComponent(productName)}`;
-  window.open(link, '_blank');
-}
-
-window.addEventListener('scroll', () => {
-  const scrollBtn = document.getElementById('scrollBtn');
-  if (window.scrollY > 300) {
-    scrollBtn.style.display = 'block';
-  } else {
-    scrollBtn.style.display = 'none';
-  }
-});
-
-function scrollToTop() {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-  </script>
 </head>
 <body>
-  <header style="background: url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;">
-    <h1>SLI RESOURCES</h1>
-    <p>We Light Up the Future</p>
-  </header>
-
-  <div class="section active" id="home" style="background: url('https://images.unsplash.com/photo-1504198453319-5ce911bafcde?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover; display: block;">
-    <h2>Welcome to SLI RESOURCES</h2>
-    <p>SLI RESOURCES is a hub of innovation, technology, and creativity dedicated to solving real-life challenges with smart, efficient, and affordable solutions. We specialize in automation, IoT, product engineering, and innovative devices tailored for the African terrain and beyond. Our mission is to make technology work for everyone—simplifying processes, empowering lives, and lighting up the future with every invention.</p>
-    <p>Whether you're a business, student, home owner, or organization, SLI RESOURCES is here to guide you through the future of smart living and digital transformation.</p>
-  </div>
-    <div class="section" id="about" style="background: url('https://images.unsplash.com/photo-1498579809087-ef1e558fd1da?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover; display: block;" style="background: url('https://images.unsplash.com/photo-1498579809087-ef1e558fd1da?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;">
-    <h2>About SLI RESOURCES</h2>
-    <p>SLI RESOURCES is a visionary technology and innovation company established to drive transformative change in Africa and beyond. Our mission is to develop intuitive, efficient, and intelligent solutions that solve real-world challenges across industries such as water management, smart homes, education, and sustainability.</p>
-    <p>With a team of forward-thinkers, engineers, and creative minds, we craft products and services that blend practical innovation with futuristic goals. We believe that access to smart technology should be simple, affordable, and scalable.</p>
-  </div>  <div class="section" id="services" style="background: url('https://images.unsplash.com/photo-1586855582708-57a86b03f9e0?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover; display: block;" style="background: url('https://images.unsplash.com/photo-1586855582708-57a86b03f9e0?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;">
-    <h2>Our Services</h2>
-    <p>We offer services tailored to individuals, institutions, and organizations who seek transformation through innovation. Our services include:</p>
+  <div class="floating-menu">
+    <button onclick="scrollToSection('products')">Products</button>
+    <button onclick="scrollToSection('hydrolynk')">Hydrolynk</button>
+    <button onclick="scrollToSection('services')">Services</button>
+    <button onclick="scrollToSection('founder')">Founder</button>
+    <button onclick="scrollToSection('contact')">Contact</button>
+  </div>  <section class="section" id="home">
+    <h1 class="title">Welcome to SLI RESOURCES</h1>
+    <p>
+      SLI RESOURCES is a forward-thinking tech company dedicated to providing innovative solutions to modern-day challenges.
+      We specialize in smart technologies that improve daily life — from water automation systems to intelligent home devices.
+      Our mission is to bring accessible, sustainable, and intelligent products to every household and industry.
+    </p>
+    <p>
+      Our core values include innovation, reliability, affordability, and customer satisfaction.
+      We believe in lighting up the future with groundbreaking products that are easy to use and built to last.
+    </p>
+  </section>  <section class="section" id="products">
+    <h1 class="title">Our Products</h1>
+    <h2>Upcoming Products</h2>
     <ul>
-      <li>Smart device development and integration (IoT)</li>
-      <li>Automation and energy management solutions</li>
-      <li>Custom product prototyping and engineering design</li>
-      <li>Consultancy and training in tech development</li>
-      <li>Hardware/software customization for business or domestic use</li>
+      <li>Rechargeable whiteboard with automatic eraser <a class="buy-button" href="#">Buy Now</a></li>
+      <li>Smart Water Level Indicator <a class="buy-button" href="#">Buy Now</a></li>
+      <li>IR Blaster for Home Automation <a class="buy-button" href="#">Buy Now</a></li>
     </ul>
-    <p>Our passion is to turn ideas into products that matter, delivering impactful results for every client.</p>
-  </div>  <div class="section" id="hydrolynk" style="background: url('https://images.unsplash.com/photo-1621609767523-837b7b0b2b14?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover; display: block;" style="background: url('https://images.unsplash.com/photo-1621609767523-837b7b0b2b14?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;">
-    <h2>Hydrolynk Smart Water Pump Control</h2>
-    <p>Hydrolynk is our flagship smart water pump control system engineered to solve common water management issues in homes, farms, and industrial setups. The device uses advanced sensors to detect water levels and automates the switching of water pumps, eliminating dry running, overflows, and human error.</p>
-    <p>Key features include wireless remote monitoring, solar support, low power consumption, and compatibility with existing water systems. Hydrolynk is user-friendly, highly durable, and perfect for regions with irregular power or water supply.</p>
-  </div>  <div class="section" id="products" style="background: url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1500&q=80') no-repeat center center/cover; display: block;" style="background: url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1500&q=80') no-repeat center center/cover;">
-  <h2>Upcoming Products</h2>
-  <div class="product">
-    <h3 onclick="toggleProductDetails(this)">Rechargeable Whiteboard with Automatic Eraser</h3>
-    <p>This advanced whiteboard is designed for professionals, educators, and students who seek a modern solution to traditional writing. Equipped with a powerful battery and auto-cleaning mechanism, this smart whiteboard allows you to erase with a button, digitize your notes, and connect with mobile or cloud platforms. Ideal for eco-conscious spaces aiming to reduce paper waste.</p>
-    <button class="buy-btn" onclick="trackClick('Rechargeable Whiteboard with Automatic Eraser')">Buy Now</button>
-  </div>
-  <div class="product">
-    <h3 onclick="toggleProductDetails(this)">Water Level Indicator</h3>
-    <p>Ensure your water resources are efficiently managed with this real-time monitoring device. It detects high, medium, and low water levels in tanks or boreholes, providing audible or visual alerts. The system prevents overflow, saves water, and supports solar power, making it ideal for homes, farms, and businesses in areas with inconsistent water supply.</p>
-    <button class="buy-btn" onclick="trackClick('Water Level Indicator')">Buy Now</button>
-  </div>
-  <div class="product">
-    <h3 onclick="toggleProductDetails(this)">IR Blaster</h3>
-    <p>Transform your space into a smart hub by controlling all IR-supported devices from your phone or voice assistant. This compact blaster integrates with TVs, fans, ACs, and other appliances, letting you create automation routines and schedule operations even when you’re away from home. Perfect for smart homes and businesses seeking centralized control.</p>
-    <button class="buy-btn" onclick="trackClick('IR Blaster')">Buy Now</button>
-  </div>
-  <div class="product">
-    <h3 onclick="toggleProductDetails(this)">Smart Home Modules</h3>
-    <p>These plug-and-play smart modules convert your traditional electrical appliances into smart devices. Control lighting, fans, doors, and sockets from your phone. With built-in timers, energy monitoring, and security features, these modules are perfect for upgrading home and office automation while keeping installation simple and budget-friendly.</p>
-    <button class="buy-btn" onclick="trackClick('Smart Home Modules')">Buy Now</button>
-  </div>
-  <div class="product">
-    <h3 onclick="toggleProductDetails(this)">Energy-Efficient Power Bank</h3>
-    <p>This durable and fast-charging power bank is designed to support multiple devices with high efficiency. Features include USB-C fast charging, wireless pad, solar recharging, and intelligent charge optimization. Built for travel and emergencies, it’s an essential companion for tech users in unpredictable power environments.</p>
-    <button class="buy-btn" onclick="trackClick('Energy-Efficient Power Bank')">Buy Now</button>
-  </div>
-  <div class="product">
-    <h3 onclick="toggleProductDetails(this)">Mobile Controlled Circuit Breakers</h3>
-    <p>Take control of your power systems from anywhere. These breakers allow you to shut off, schedule, and monitor circuits from your smartphone. They offer real-time alerts for overload, short circuits, or abnormal current. Built for safety, convenience, and energy management, they are suited for smart homes, schools, and businesses.</p>
-    <button class="buy-btn" onclick="trackClick('Mobile Controlled Circuit Breakers')">Buy Now</button>
-  </div>
-  <div class="product">
-    <h3 onclick="toggleProductDetails(this)">Eco Smart Fan Controller</h3>
-    <p>With this intelligent controller, manage fan operations automatically based on room temperature or occupancy. Adjust fan speed, set timers, and enable night mode. It helps conserve energy while improving comfort. A great upgrade for hostels, residential homes, and offices focused on energy efficiency.</p>
-    <button class="buy-btn" onclick="trackClick('Eco Smart Fan Controller')">Buy Now</button>
-  </div>
-  <div class="product">
-    <h3 onclick="toggleProductDetails(this)">More Innovative Tech Solutions</h3>
-    <p>We are continually developing future-forward technologies across industries — from healthcare automation tools to educational kits and agricultural systems. Our R&D team is working tirelessly to deliver value, simplify lives, and solve local problems with global standards. Join our mailing list or follow us on LinkedIn to be the first to know when we launch something groundbreaking.</p>
-    <button class="buy-btn" onclick="trackClick('More Innovative Tech Solutions')">Buy Now</button>
-  </div>
-</div>  <div class="section" id="founder" style="background: url('https://images.unsplash.com/photo-1604709177225-c30337a8e3f1?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover; display: block;" style="background: url('https://images.unsplash.com/photo-1604709177225-c30337a8e3f1?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;">
-    <h2>Meet the Founder</h2>
-    <p>Saviour Lawrence Inyang is a tech visionary, innovator, and the founder of SLI RESOURCES. He holds a degree in Chemistry Science from Akwa Ibom State University and is known for his exceptional problem-solving abilities and entrepreneurial spirit.</p>
-    <p>His background in science combined with his passion for community empowerment drives the mission of SLI RESOURCES. Under his leadership, the company is making waves in tech development and creating solutions that benefit society at large.</p>
-  </div>  <div class="section" id="contact" style="background: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover; display: block;" style="background: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;">
-    <h2>Contact Us</h2>
-    <p>We are excited to connect with potential partners, customers, and collaborators. Feel free to reach out via any of the following platforms:</p>
+  </section>  <section class="section" id="hydrolynk">
+    <h1 class="title">Hydrolynk</h1>
+    <p>
+      Hydrolynk is our flagship smart water pump control system that intelligently manages water flow, tank levels,
+      and pump automation. With a compact design, user-friendly interface, and durable components, Hydrolynk ensures water
+      efficiency and prevents overflow or dry-run damage.
+    </p>
+    <p>
+      Price: ₦30,000<br>
+      <strong>Payment Account:</strong> OPay 9063650986
+    </p>
+    <a class="buy-button" href="https://wa.me/2349023226544?text=I%20want%20to%20buy%20Hydrolynk">Buy Hydrolynk</a>
+  </section>  <section class="section" id="services">
+    <h1 class="title">Our Services</h1>
     <ul>
-      <li><strong>WhatsApp:</strong> <a href="https://wa.me/2349023226544" target="_blank">+2349023226544</a></li>
-      <li><strong>Email:</strong> <a href="mailto:sliresourcess@gmail.com">sliresourcess@gmail.com</a></li>
-      <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/sliresources" target="_blank">linkedin.com/in/sliresources</a></li>
+      <li>Custom electronic device design and prototyping</li>
+      <li>Smart home installation and configuration</li>
+      <li>IoT product consultation and deployment</li>
+      <li>Software development for embedded systems</li>
+      <li>Technical training for young innovators and engineers</li>
     </ul>
-    <p>SLI RESOURCES — Innovation starts with a conversation.</p>
-  </div>  <div class="scroll-to-top" id="scrollBtn" onclick="scrollToTop()">↑</div>  <footer>
-    &copy; 2025 SLI RESOURCES — We Light Up the Future
-  </footer>
-</body>
-  </html>
+  </section>  <section class="section" id="founder">
+    <h1 class="title">Meet the Founder</h1>
+    <p>
+      Saviour Lawrence Inyang is a passionate engineer, inventor, and visionary leader dedicated to solving local problems with global
+      tech solutions. As the CEO of SLI Resources, he has led the development of multiple cutting-edge products that improve lives,
+      save costs, and enhance convenience.
+    </p>
+    <p>
+      With years of experience in electronics, automation, and innovation, Saviour Lawrence is committed to shaping a smarter, better-connected future.
+    </p>
+  </section>  <section class="section" id="contact">
+    <h1 class="title">Contact Us</h1>
+    <p>
+      <strong>Phone/WhatsApp:</strong> +2349023226544<br>
+      <strong>Email:</strong> sliresourcess@gmail.com<br>
+      <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/sliresources" style="color: #00ffff;">SLI Resources</a><br>
+      <strong>Location:</strong> Nigeria
+    </p>
+  </section>  <script>
+    function scrollToSection(id) {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }
+  </script></body>
+            </html>

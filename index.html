@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -8,38 +9,34 @@
   <title>SLI RESOURCES</title>
   <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
   <style>
+    /* General resets and fonts */
     html {
       scroll-behavior: smooth;
-      background-size: cover;
-      background-attachment: fixed;
+      height: 100%;
+      overflow-x: hidden;
     }
     body {
       margin: 0;
       font-family: 'Anton', sans-serif;
-      background: url('https://www.transparenttextures.com/patterns/floral-white.png');
+      color: #2C3E50;
+      min-height: 100vh;
       background-color: #f0f3f5;
       background-size: cover;
       background-attachment: fixed;
-      color: #2C3E50;
+      overflow-x: hidden;
+      position: relative;
+      animation: bgSlide 30s linear infinite;
     }
-    .section {
-      display: none;
-      padding: 60px 20px;
-      background: url('https://www.transparenttextures.com/patterns/floral-white.png');
-      background-color: #ffffff;
-      background-size: cover;
-      background-attachment: fixed;
-      color: #2C3E50;
-      font-weight: normal;
-      opacity: 0;
-      transform: translateY(50px);
-      transition: all 0.6s ease-in-out;
+
+    /* Background slideshow keyframes */
+    @keyframes bgSlide {
+      0% { background-image: url('https://www.transparenttextures.com/patterns/keys.png'); }
+      33% { background-image: url('https://www.transparenttextures.com/patterns/gears.png'); }
+      66% { background-image: url('https://www.transparenttextures.com/patterns/floral-white.png'); }
+      100% { background-image: url('https://www.transparenttextures.com/patterns/keys.png'); }
     }
-    .section.fade-in {
-      display: block;
-      opacity: 1;
-      transform: translateY(0);
-    }
+
+    /* Floating menu */
     .floating-menu {
       position: fixed;
       top: 0;
@@ -49,11 +46,16 @@
       justify-content: center;
       gap: 15px;
       padding: 10px;
-      background-color: rgba(0, 0, 0, 0.8);
+      background-color: rgba(0, 0, 0, 0.85);
       z-index: 1000;
+      animation: slideDown 1s ease;
+    }
+    @keyframes slideDown {
+      from { transform: translateY(-100%); }
+      to { transform: translateY(0); }
     }
     .floating-menu button {
-      padding: 10px 15px;
+      padding: 10px 20px;
       background: #00AEEF;
       color: white;
       border: none;
@@ -61,75 +63,18 @@
       cursor: pointer;
       font-size: 14px;
       transition: all 0.3s ease;
+      font-weight: normal;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
     }
     .floating-menu button:hover,
     .buy-button:hover,
     .contact-form button:hover {
-      transform: scale(1.05);
+      transform: scale(1.1);
       background-color: #008ecf;
     }
-    .title {
-      text-align: center;
-      font-size: 36px;
-      color: #00AEEF;
-      margin-bottom: 20px;
-    }
-    .buy-button {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 10px 20px;
-      background-color: #FFC107;
-      color: #2C3E50;
-      border-radius: 5px;
-      text-decoration: none;
-      font-size: 16px;
-    }
-    #home {
-      padding: 120px 20px;
-      background: url('https://www.transparenttextures.com/patterns/floral-white.png');
-      background-color: #ffffff;
-      background-size: cover;
-      background-attachment: fixed;
-      display: block;
-      animation: fadeSlide 1s ease forwards;
-    }
-    @keyframes fadeSlide {
-      from {
-        opacity: 0;
-        transform: translateY(50px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    .contact-form input, .contact-form textarea {
-      width: 90%;
-      margin: 10px auto;
-      display: block;
-      padding: 10px;
-      border-radius: 5px;
-      border: none;
-      background: #ffffff;
-    }
-    .contact-form button {
-      background-color: #00AEEF;
-      padding: 10px 20px;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    .whatsapp-float {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 1001;
-    }
-    .whatsapp-float img {
-      width: 60px;
-      height: 60px;
-    }
+
+    /* Floating contact icons */
     .floating-icons {
       position: fixed;
       bottom: 90px;
@@ -141,62 +86,283 @@
     }
     .floating-icons img {
       width: 40px;
-    }
-    iframe {
-      display: block;
-      margin: 20px auto;
-      width: 90%;
-      max-width: 600px;
-      height: 315px;
-      border: none;
-    }
-    img.hydro-img {
-      width: 90%;
-      max-width: 400px;
-      display: block;
-      margin: 20px auto;
-      border-radius: 20px;
-    }
-    .back-home {
-      text-align: center;
-      margin-top: 30px;
-    }
-    .back-home button {
-      background: #00AEEF;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
+      transition: transform 0.3s ease;
       cursor: pointer;
     }
-    .back-home button:hover {
+    .floating-icons img:hover {
+      transform: rotate(20deg);
+    }
+
+    /* WhatsApp floating button */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1001;
+      animation: pulse 2.5s infinite;
+      cursor: pointer;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+    }
+    .whatsapp-float img {
+      width: 60px;
+      height: 60px;
+    }
+
+    /* Section styling */
+    .section {
+      display: none;
+      padding: 80px 40px;
+      min-height: 100vh;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(6px);
+      box-sizing: border-box;
+      color: #2C3E50;
+      font-weight: normal;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.6s ease-in-out;
+      overflow-y: auto;
+      scroll-behavior: smooth;
+    }
+    .section.fade-in {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Landing page / home */
+    #home {
+      padding: 120px 40px;
+      min-height: 100vh;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(5px);
+      color: #2C3E50;
+      animation: fadeSlide 1.2s ease forwards;
+      overflow-y: auto;
+    }
+    @keyframes fadeSlide {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Titles */
+    .title {
+      text-align: center;
+      font-size: 38px;
+      color: #00AEEF;
+      margin-bottom: 25px;
+      user-select: none;
+      letter-spacing: 2px;
+    }
+
+    /* Paragraph styling with smooth fade reveal on scroll */
+    .fade-reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s ease, transform 1s ease;
+      max-width: 900px;
+      margin: 0 auto 20px auto;
+      line-height: 1.6;
+      font-size: 18px;
+      font-weight: 400;
+    }
+    .fade-reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Buy button styling */
+    .buy-button {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 12px 25px;
+      background-color: #FFC107;
+      color: #2C3E50;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+      user-select: none;
+    }
+    .buy-button:hover {
+      background-color: #e6ac00;
+    }
+
+    /* Images */
+    img.hydro-img {
+      width: 100%;
+      max-width: 450px;
+      display: block;
+      margin: 30px auto;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0, 170, 239, 0.3);
+    }
+
+    /* Contact form */
+    .contact-form input, .contact-form textarea {
+      width: 90%;
+      max-width: 600px;
+      margin: 10px auto;
+      display: block;
+      padding: 14px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+      resize: vertical;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+    .contact-form button {
+      background-color: #00AEEF;
+      padding: 14px 30px;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 18px;
+      font-weight: 600;
+      margin: 20px auto 0 auto;
+      display: block;
+      transition: background-color 0.3s ease;
+    }
+    .contact-form button:hover {
       background-color: #008ecf;
+    }
+
+    /* Responsive tweaks */
+    @media(max-width: 768px){
+      .floating-menu {
+        flex-wrap: wrap;
+        padding: 8px;
+      }
+      .floating-menu button {
+        font-size: 12px;
+        padding: 8px 12px;
+      }
+      #home, .section {
+        padding: 60px 20px;
+      }
     }
   </style>
 </head>
 <body>
+  <!-- Floating navigation buttons -->
   <div class="floating-menu">
     <button onclick="showSection('products')">Products</button>
     <button onclick="showSection('hydrolynk')">Hydrolynk</button>
     <button onclick="showSection('services')">Services</button>
     <button onclick="showSection('founder')">Founder</button>
     <button onclick="showSection('contact')">Contact</button>
-  </div>  <div class="floating-icons">
-    <a href="https://linkedin.com/in/sliresources" target="_blank">
+  </div>
+
+  <!-- Floating social/contact icons -->
+  <div class="floating-icons">
+    <a href="https://linkedin.com/in/sliresources" target="_blank" title="LinkedIn">
       <img src="https://img.icons8.com/color/48/linkedin.png" alt="LinkedIn" />
     </a>
-    <a href="mailto:sliresourcess@gmail.com">
+    <a href="mailto:sliresourcess@gmail.com" title="Email SLI Resources">
       <img src="https://img.icons8.com/color/48/gmail.png" alt="Email" />
     </a>
-  </div>  <a href="https://wa.me/2349023226544" class="whatsapp-float" target="_blank">
+  </div>
+
+  <!-- WhatsApp floating button -->
+  <a href="https://wa.me/2349023226544" class="whatsapp-float" target="_blank" title="Chat on WhatsApp">
     <img src="https://img.icons8.com/color/96/000000/whatsapp--v1.png" alt="Chat on WhatsApp"/>
-  </a>  <div id="home">
+  </a>
+
+  <!-- Landing Page / Home -->
+  <div id="home">
     <h1 class="title">SLI RESOURCES - Innovating the Future</h1>
-    <p>Welcome to SLI RESOURCES, your premier destination for cutting-edge technology solutions designed to revolutionize how we live, work, and connect. At SLI RESOURCES, we believe that innovation is not just a goal — it's a responsibility. We are a team of engineers, thinkers, and visionaries working together to build a smarter and more sustainable future.</p>
-    <p>From the heart of Nigeria to the world, we create affordable, accessible, and intelligent devices that tackle real-world problems. Our flagship product, Hydrolynk, is a smart water pump controller that reflects our passion for solving daily challenges using technology. We’re expanding into automation, IoT, and custom electronics for education, agriculture, and smart cities.</p>
-    <p>Explore our product range, learn about our services, meet our passionate founder, or get in touch. We are more than just a tech company — we are a movement to empower Africa through innovation.</p>
-    <p>Welcome on board.</p>
-  </div>  <!-- Script with animated transitions -->  <script>
+    <p class="fade-reveal">Welcome to SLI RESOURCES, your premier destination for cutting-edge technology solutions designed to revolutionize how we live, work, and connect. At SLI RESOURCES, we believe that innovation is not just a goal — it's a responsibility. We are a team of engineers, thinkers, and visionaries working together to build a smarter and more sustainable future for Africa and beyond.</p>
+    <p class="fade-reveal">From the heart of Nigeria to the world, we create affordable, accessible, and intelligent devices that tackle real-world problems. Our flagship product, Hydrolynk, is a smart water pump controller that reflects our passion for solving daily challenges using technology. Our mission goes beyond products — we are expanding into automation, Internet of Things (IoT), and custom electronics aimed at improving education, agriculture, smart cities, and industries across the continent.</p>
+    <p class="fade-reveal">Explore our diverse product range, learn about our professional services, meet our visionary founder, or reach out to partner with us. We are more than just a tech company — we are a movement empowering Africa through innovation, sustainability, and community-driven development.</p>
+    <p class="fade-reveal">Welcome aboard. Together, let’s light up the future.</p>
+  </div>
+
+  <!-- Products Section -->
+  <div id="products" class="section" tabindex="0">
+    <h1 class="title">Our Products</h1>
+    <p class="fade-reveal">At SLI RESOURCES, we offer a variety of innovative tech products carefully designed to improve everyday life and empower industries. Our products combine the latest technology with reliability and affordability to serve the unique needs of African consumers and businesses.</p>
+    <p class="fade-reveal">Our upcoming products lineup includes:</p>
+    <ul class="fade-reveal" style="max-width: 900px; margin: 0 auto 20px auto; font-size: 18px; line-height: 1.6;">
+      <li><strong>Rechargeable Whiteboard with Automatic Eraser:</strong> A smart classroom tool that simplifies teaching and collaboration, with rechargeable batteries and automated cleaning for efficiency.</li>
+      <li><strong>Water Level Indicator:</strong> A reliable device that provides real-time alerts for water tank levels to prevent overflows and shortages.</li>
+      <li><strong>Infrared (IR) Blaster:</strong> Universal remote technology for home automation and electronic device control.</li>
+      <li><strong>And more:</strong> We are continuously innovating new tech solutions to meet evolving needs.</li>
+    </ul>
+    <a href="https://opay.com/pay/9063650986" target="_blank" class="buy-button" title="Buy Upcoming Products">Buy Now - 30,000 NGN</a>
+  </div>
+
+  <!-- Hydrolynk Section -->
+  <div id="hydrolynk" class="section" tabindex="0">
+    <h1 class="title">Hydrolynk - Smart Water Pump Controller</h1>
+    <img src="your-hydrolynk-image.jpg" alt="Hydrolynk Device" class="hydro-img" />
+    <p class="fade-reveal">Hydrolynk is a revolutionary smart water pump controller designed to automate water management efficiently and economically. It helps households, farmers, and industries monitor and control water usage automatically, reducing waste and energy consumption.</p>
+    <p class="fade-reveal">Features of Hydrolynk:</p>
+    <ul class="fade-reveal" style="max-width: 900px; margin: 0 auto 20px auto; font-size: 18px; line-height: 1.6;">
+      <li>Automatic pump on/off based on water level sensors</li>
+      <li>Remote monitoring and control through mobile app (coming soon)</li>
+      <li>Overload and dry run protection for pump safety</li>
+      <li>Energy efficient and easy to install</li>
+      <li>Durable design suitable for harsh environments</li>
+    </ul>
+    <p class="fade-reveal">Price: ₦30,000 only</p>
+    <a href="https://opay.com/pay/9063650986" target="_blank" class="buy-button" title="Buy Hydrolynk">Buy Now - ₦30,000</a>
+  </div>
+
+  <!-- Services Section -->
+  <div id="services" class="section" tabindex="0">
+    <h1 class="title">Our Services</h1>
+    <p class="fade-reveal">SLI RESOURCES offers a comprehensive suite of professional services aimed at delivering tailored tech solutions for individuals, businesses, and government organizations.</p>
+    <p class="fade-reveal">Our services include:</p>
+    <ul class="fade-reveal" style="max-width: 900px; margin: 0 auto 20px auto; font-size: 18px; line-height: 1.6;">
+      <li><strong>Custom Electronics Design:</strong> We design and develop bespoke electronic devices and systems according to client requirements.</li>
+      <li><strong>Automation Solutions:</strong> Integration of smart controls and IoT for homes, farms, factories, and smart cities.</li>
+      <li><strong>Consulting & Training:</strong> Expert advice, workshops, and hands-on training on emerging technologies and smart systems.</li>
+      <li><strong>After-sales Support & Maintenance:</strong> Dedicated technical support to ensure your products and systems run smoothly.</li>
+    </ul>
+    <p class="fade-reveal">Our goal is to empower clients through technology that drives productivity, sustainability, and economic growth.</p>
+  </div>
+
+  <!-- Founder Section -->
+  <div id="founder" class="section" tabindex="0">
+    <h1 class="title">About The Founder</h1>
+    <p class="fade-reveal">Saviour Lawrence Inyang is the visionary founder and CEO of SLI RESOURCES. With years of experience in engineering and technology development, he leads the company with passion and commitment to innovation that transforms lives.</p>
+    <p class="fade-reveal">Driven by a desire to solve real-world problems with smart solutions, Saviour has spearheaded multiple projects focusing on automation, IoT, and sustainable technology tailored for African contexts.</p>
+    <p class="fade-reveal">Under his leadership, SLI RESOURCES has grown into a beacon of tech innovation with products like Hydrolynk and an expanding portfolio aimed at empowering communities, businesses, and the environment.</p>
+    <p class="fade-reveal">His vision is to foster a future where technology is accessible to all and plays a pivotal role in lighting up Africa’s future.</p>
+  </div>
+
+  <!-- Contact Section -->
+  <div id="contact" class="section" tabindex="0">
+    <h1 class="title">Contact Us</h1>
+    <p class="fade-reveal">We’d love to hear from you! Whether you have questions about our products, want to explore partnerships, or need support, reach out to us using the form below or via our contact details.</p>
+    <form class="contact-form" onsubmit="event.preventDefault(); alert('Thank you for contacting SLI RESOURCES! We will get back to you shortly.'); this.reset();">
+      <input type="text" name="name" placeholder="Your Name" required class="fade-reveal"/>
+      <input type="email" name="email" placeholder="Your Email" required class="fade-reveal"/>
+      <textarea name="message" placeholder="Your Message" rows="6" required class="fade-reveal"></textarea>
+      <button type="submit" class="fade-reveal">Send Message</button>
+    </form>
+    <div class="fade-reveal" style="max-width: 900px; margin: 30px auto 0 auto; font-size: 18px; line-height: 1.6;">
+      <p><strong>Email:</strong> <a href="mailto:sliresourcess@gmail.com">sliresourcess@gmail.com</a></p>
+      <p><strong>WhatsApp:</strong> <a href="https://wa.me/2349023226544" target="_blank">+234 902 322 6544</a></p>
+      <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/sliresources" target="_blank">https://linkedin.com/in/sliresources</a></p>
+      <p><strong>Payment (Opay):</strong> 9063650986</p>
+    </div>
+  </div>
+
+  <script>
+    // Show selected section with fade/slide animation
     function showSection(id) {
       document.querySelectorAll('.section').forEach(sec => {
         sec.classList.remove('fade-in');
@@ -205,9 +371,4 @@
       const target = document.getElementById(id);
       if (target) {
         target.style.display = 'block';
-        setTimeout(() => target.classList.add('fade-in'), 10);
-      }
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  </script></body>
-  </html>
+        setTimeout(() => target.classList.add('fade-in'),

@@ -30,21 +30,26 @@
       background-size: cover;
       background-attachment: fixed;
       color: #2C3E50;
+      font-weight: normal;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.6s ease-in-out;
     }
-    .active {
+    .section.fade-in {
       display: block;
+      opacity: 1;
+      transform: translateY(0);
     }
     .floating-menu {
       position: fixed;
-      top: 10%;
+      top: 0;
       left: 0;
+      width: 100%;
       display: flex;
-      flex-direction: column;
+      justify-content: center;
       gap: 15px;
       padding: 10px;
-      background-color: rgba(0, 0, 0, 0.7);
-      border-top-right-radius: 10px;
-      border-bottom-right-radius: 10px;
+      background-color: rgba(0, 0, 0, 0.8);
       z-index: 1000;
     }
     .floating-menu button {
@@ -80,11 +85,23 @@
       font-size: 16px;
     }
     #home {
-      padding: 80px 20px;
+      padding: 120px 20px;
       background: url('https://www.transparenttextures.com/patterns/floral-white.png');
       background-color: #ffffff;
       background-size: cover;
       background-attachment: fixed;
+      display: block;
+      animation: fadeSlide 1s ease forwards;
+    }
+    @keyframes fadeSlide {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
     .contact-form input, .contact-form textarea {
       width: 90%;
@@ -158,74 +175,39 @@
   </style>
 </head>
 <body>
-  <!-- Floating Navigation Buttons -->
   <div class="floating-menu">
-    <button onclick="showSection('home')">Home</button>
     <button onclick="showSection('products')">Products</button>
     <button onclick="showSection('hydrolynk')">Hydrolynk</button>
     <button onclick="showSection('services')">Services</button>
     <button onclick="showSection('founder')">Founder</button>
     <button onclick="showSection('contact')">Contact</button>
-  </div>  <!-- Floating Contact Icons -->  <div class="floating-icons">
+  </div>  <div class="floating-icons">
     <a href="https://linkedin.com/in/sliresources" target="_blank">
       <img src="https://img.icons8.com/color/48/linkedin.png" alt="LinkedIn" />
     </a>
     <a href="mailto:sliresourcess@gmail.com">
       <img src="https://img.icons8.com/color/48/gmail.png" alt="Email" />
     </a>
-  </div>  <!-- WhatsApp Chat -->  <a href="https://wa.me/2349023226544" class="whatsapp-float" target="_blank">
+  </div>  <a href="https://wa.me/2349023226544" class="whatsapp-float" target="_blank">
     <img src="https://img.icons8.com/color/96/000000/whatsapp--v1.png" alt="Chat on WhatsApp"/>
-  </a>  <!-- Section: Home -->  <div id="home" class="section active">
-    <h1 class="title">Welcome to SLI RESOURCES</h1>
-    <p>SLI RESOURCES is a forward-thinking technology company dedicated to providing smart, innovative, and affordable solutions to everyday problems across Africa. With a passion for innovation and a commitment to excellence, we specialize in the development and deployment of embedded systems, smart automation technologies, and Internet of Things (IoT) devices that help improve lives and transform businesses.</p>
-    <p>Our mission is to empower individuals and organizations by delivering reliable and cutting-edge technology products that meet the highest standards. Whether it's simplifying water management with Hydrolynk or building a future with intelligent home and industrial devices, SLI RESOURCES is here to lead Africa into the smart age.</p>
-  </div>  <!-- Section: Products -->  <div id="products" class="section">
-    <h1 class="title">Our Products</h1>
-    <ul>
-      <li><strong>Hydrolynk</strong> – A smart automatic water pump controller designed to automate and optimize water usage in residential and commercial spaces. It eliminates waste and ensures seamless control of your pumping system.<br><a class="buy-button" href="https://wa.me/2349023226544?text=I%20want%20to%20buy%20Hydrolynk%20for%20₦30000">Buy Now ₦30,000</a></li>
-      <li><strong>Rechargeable Whiteboard with Auto Eraser</strong> – An innovative rechargeable whiteboard system designed for teachers, presenters, and corporate professionals. It automatically erases writings, saving time and keeping the board clean. (Upcoming)</li>
-      <li><strong>Water Level Indicator</strong> – A sensor-based solution that notifies users when a water tank is full or empty. Ideal for water management in homes and institutions. (Upcoming)</li>
-      <li><strong>IR Blaster</strong> – A smart remote controller that can operate multiple appliances (TV, AC, fans) using infrared communication. Programmable and app-enabled. (Upcoming)</li>
-    </ul>
-  </div>  <!-- Section: Hydrolynk -->  <div id="hydrolynk" class="section">
-    <h1 class="title">Hydrolynk</h1>
-    <img src="hydrolynk.jpg" alt="Hydrolynk Smart Pump" class="hydro-img" />
-    <p>Hydrolynk is our flagship product: an intelligent water pump controller that takes the guesswork out of water management. Designed with microcontroller-based logic, Hydrolynk automatically turns pumps on and off based on water levels in the tank, saving energy and preventing overflow or dry running.</p>
-    <p><strong>Key Features:</strong><br>• Automatic ON/OFF switching<br>• Dry-run protection<br>• Tank-level sensors<br>• LED status display<br>• Compatible with overhead and underground tanks<br>• Easy to install and maintain</p>
-    <p>With Hydrolynk, managing your water supply is now smarter, safer, and more efficient.</p>
-    <a class="buy-button" href="https://wa.me/2349023226544?text=I%20want%20to%20buy%20Hydrolynk%20for%20₦30000">Buy Now ₦30,000</a>
-  </div>  <!-- Section: Services -->  <div id="services" class="section">
-    <h1 class="title">Our Services</h1>
-    <p>At SLI RESOURCES, we provide a wide range of technology services tailored to meet the needs of our diverse clients:</p>
-    <ul>
-      <li><strong>Embedded Systems Design:</strong> From microcontroller programming to PCB design, we create smart hardware solutions.</li>
-      <li><strong>IoT Solutions:</strong> We build devices that collect, analyze, and transmit data to streamline operations.</li>
-      <li><strong>Custom Hardware Development:</strong> We design and manufacture electronics tailored to your unique business needs.</li>
-      <li><strong>Home and Industrial Automation:</strong> Transform homes, schools, and factories into smart spaces that respond automatically to inputs.</li>
-      <li><strong>Consultation & Training:</strong> We offer training programs and technical guidance for developers, students, and entrepreneurs.</li>
-    </ul>
-  </div>  <!-- Section: Founder -->  <div id="founder" class="section">
-    <h1 class="title">Meet the Founder</h1>
-    <p><strong>Saviour Lawrence Inyang</strong> is the CEO and founder of SLI RESOURCES. With a strong background in electrical/electronic engineering, he is passionate about solving local problems using technology. His dream is to place African-made products at the forefront of the global tech industry.</p>
-    <p>Through his leadership, SLI RESOURCES has grown from a simple idea into a thriving tech innovation hub. He believes that with the right tools, the youth of Africa can build the future themselves. Saviour mentors aspiring engineers and continues to innovate in the embedded tech space.</p>
-  </div>  <!-- Section: Contact -->  <div id="contact" class="section">
-    <h1 class="title">Contact Us</h1>
-    <p>We would love to hear from you! Whether you're interested in buying a product, collaborating with us, or simply learning more about what we do—reach out!</p>
-    <div class="contact-form">
-      <form action="https://formsubmit.co/sliresourcess@gmail.com" method="POST">
-        <input type="text" name="name" placeholder="Full Name" required>
-        <input type="email" name="email" placeholder="Email Address" required>
-        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-        <button type="submit">Send Message</button>
-      </form>
-    </div>
-    <p><strong>Email:</strong> sliresourcess@gmail.com<br>
-       <strong>Phone/WhatsApp:</strong> +234 902 322 6544<br>
-       <strong>LinkedIn:</strong> <a href="https://linkedin.com/in/sliresources">linkedin.com/in/sliresources</a></p>
-  </div>  <script>
+  </a>  <div id="home">
+    <h1 class="title">SLI RESOURCES - Innovating the Future</h1>
+    <p>Welcome to SLI RESOURCES, your premier destination for cutting-edge technology solutions designed to revolutionize how we live, work, and connect. At SLI RESOURCES, we believe that innovation is not just a goal — it's a responsibility. We are a team of engineers, thinkers, and visionaries working together to build a smarter and more sustainable future.</p>
+    <p>From the heart of Nigeria to the world, we create affordable, accessible, and intelligent devices that tackle real-world problems. Our flagship product, Hydrolynk, is a smart water pump controller that reflects our passion for solving daily challenges using technology. We’re expanding into automation, IoT, and custom electronics for education, agriculture, and smart cities.</p>
+    <p>Explore our product range, learn about our services, meet our passionate founder, or get in touch. We are more than just a tech company — we are a movement to empower Africa through innovation.</p>
+    <p>Welcome on board.</p>
+  </div>  <!-- Script with animated transitions -->  <script>
     function showSection(id) {
-      document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
+      document.querySelectorAll('.section').forEach(sec => {
+        sec.classList.remove('fade-in');
+        sec.style.display = 'none';
+      });
+      const target = document.getElementById(id);
+      if (target) {
+        target.style.display = 'block';
+        setTimeout(() => target.classList.add('fade-in'), 10);
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   </script></body>
-                                                          </html>
+  </html>

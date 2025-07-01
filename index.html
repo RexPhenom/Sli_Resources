@@ -14,13 +14,15 @@
     body {
       margin: 0;
       font-family: 'Anton', sans-serif;
-      background: linear-gradient(to right, #f0f3f5, #dfe6e9);
+      background: url('https://www.transparenttextures.com/patterns/floral-white.png');
+      background-color: #f0f3f5;
       color: #2C3E50;
     }
     .section {
       display: none;
       padding: 60px 20px;
-      background: linear-gradient(to bottom right, #ffffff, #f0f3f5);
+      background: url('https://www.transparenttextures.com/patterns/floral-white.png');
+      background-color: #ffffff;
       color: #2C3E50;
     }
     .active {
@@ -49,7 +51,9 @@
       font-size: 14px;
       transition: all 0.3s ease;
     }
-    .floating-menu button:hover {
+    .floating-menu button:hover,
+    .buy-button:hover,
+    .contact-form button:hover {
       transform: scale(1.05);
       background-color: #008ecf;
     }
@@ -69,13 +73,10 @@
       text-decoration: none;
       font-size: 16px;
     }
-    .buy-button:hover {
-      transform: scale(1.05);
-      background-color: #ffb100;
-    }
     #home {
       padding: 80px 20px;
-      background: linear-gradient(to top left, #ffffff, #f0f3f5);
+      background: url('https://www.transparenttextures.com/patterns/floral-white.png');
+      background-color: #ffffff;
     }
     .contact-form input, .contact-form textarea {
       width: 90%;
@@ -94,9 +95,6 @@
       border-radius: 5px;
       cursor: pointer;
     }
-    .contact-form button:hover {
-      background-color: #008ecf;
-    }
     .whatsapp-float {
       position: fixed;
       bottom: 20px;
@@ -106,6 +104,18 @@
     .whatsapp-float img {
       width: 60px;
       height: 60px;
+    }
+    .floating-icons {
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 1001;
+    }
+    .floating-icons img {
+      width: 40px;
     }
     iframe {
       display: block;
@@ -122,78 +132,20 @@
       margin: 20px auto;
       border-radius: 20px;
     }
+    .back-home {
+      text-align: center;
+      margin-top: 30px;
+    }
+    .back-home button {
+      background: #00AEEF;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .back-home button:hover {
+      background-color: #008ecf;
+    }
   </style>
-</head>
-<body><div class="floating-menu">
-  <button onclick="showSection('company')">🏢 Company</button>
-  <button onclick="showSection('products')">🛍 Products</button>
-  <button onclick="showSection('hydrolynk')">💧 Hydrolynk</button>
-  <button onclick="showSection('services')">🛠 Services</button>
-  <button onclick="showSection('founder')">👤 Founder</button>
-  <button onclick="showSection('contact')">📞 Contact</button>
-  <button onclick="showSection('testimonials')">⭐ Testimonials</button>
-</div><div style="position:fixed; top:10px; right:20px; color:#00AEEF; font-size:18px; z-index:999;" id="sectionTitle">Home</div><a href="https://wa.me/2349023226544" class="whatsapp-float" target="_blank">
-  <img src="https://img.icons8.com/color/96/000000/whatsapp--v1.png" alt="Chat on WhatsApp"/>
-</a><div style="position:fixed; bottom:90px; right:20px; display:flex; flex-direction:column; gap:10px; z-index:1001;">
-  <a href="https://linkedin.com/in/sliresources" target="_blank">
-    <img src="https://img.icons8.com/color/48/linkedin.png" width="40" />
-  </a>
-  <a href="mailto:sliresourcess@gmail.com">
-    <img src="https://img.icons8.com/color/48/gmail.png" width="40" />
-  </a>
-</div><section id="home" class="active">
-  <h1 class="title">SLI RESOURCES</h1>
-  <p><strong>We Light Up the Future</strong></p>
-  <p>SLI RESOURCES is Nigeria’s fast-rising tech innovation company focused on solving everyday challenges using smart automation and embedded systems. Our team builds inventions that empower homes, industries, and communities through simplicity and sustainability.</p>
-</section><section class="section" id="company">
-  <h1 class="title">Company Profile</h1>
-  <p><strong>Mission:</strong> Build affordable, practical, and intelligent solutions for Africa and beyond.</p>
-  <p><strong>Vision:</strong> Become Africa’s most reliable smart-tech innovation hub.</p>
-  <p><strong>Tagline:</strong> We Light Up the Future.</p>
-</section><section class="section" id="products">
-  <h1 class="title">Our Products</h1>
-  <ul>
-    <li>Rechargeable Whiteboard with Auto Eraser</li>
-    <li>Smart Water Level Indicator</li>
-    <li>IR Blaster (Universal Remote)</li>
-    <li>Hydrolynk (see below)</li>
-  </ul>
-</section><section class="section" id="hydrolynk">
-  <h1 class="title">Hydrolynk</h1>
-  <img src="hydrolynk.jpg" alt="Hydrolynk Product" class="hydro-img" />
-  <p>Hydrolynk is a smart water pump controller that automates tank filling with level detection. Price: ₦30,000</p>
-  <p>To Pay: OPay 9063650986</p>
-  <a class="buy-button" href="https://wa.me/2349023226544?text=I%20want%20to%20buy%20Hydrolynk">Buy Now</a>
-</section><section class="section" id="services">
-  <h1 class="title">Our Services</h1>
-  <ul>
-    <li>Custom Electronics</li>
-    <li>IoT & Automation</li>
-    <li>Tech Mentorship</li>
-  </ul>
-</section><section class="section" id="founder">
-  <h1 class="title">Our Founder</h1>
-  <p>Saviour Lawrence Inyang is a passionate innovator and CEO of SLI RESOURCES, committed to solving real-world problems through technology.</p>
-</section><section class="section" id="contact">
-  <h1 class="title">Contact Us</h1>
-  <p>WhatsApp: +2349023226544</p>
-  <p>Email: sliresourcess@gmail.com</p>
-  <p>LinkedIn: <a href="https://linkedin.com/in/sliresources" style="color:#00AEEF;">sliresources</a></p>
-  <form action="https://formsubmit.co/sliresourcess@gmail.com" method="POST" class="contact-form">
-    <input type="text" name="name" placeholder="Your Name" required />
-    <input type="email" name="email" placeholder="Your Email" required />
-    <textarea name="message" rows="5" placeholder="Your Message"></textarea>
-    <button type="submit">Send Message</button>
-  </form>
-</section><section class="section" id="testimonials">
-  <h1 class="title">What People Are Saying</h1>
-  <p>"Hydrolynk saved our borehole from burning out. Excellent product!" – Mrs. Ada, Lagos</p>
-  <p>"SLI RESOURCES is the future of African tech. Love their innovation!" – Daniel, Uyo</p>
-</section><script>
-  function showSection(id) {
-    document.querySelectorAll('.section').forEach(el => el.classList.remove('active'));
-    document.getElementById(id).classList.add('active');
-    document.getElementById('sectionTitle').textContent = id.charAt(0).toUpperCase() + id.slice(1);
-  }
-</script></body>
-  </html>
+  </head>

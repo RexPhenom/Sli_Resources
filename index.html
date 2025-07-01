@@ -42,7 +42,6 @@
       border-radius: 6px;
       cursor: pointer;
       font-size: 14px;
-      text-align: left;
     }
     .title {
       text-align: center;
@@ -61,23 +60,50 @@
       font-size: 16px;
     }
     #home {
-      height: auto;
-      text-align: center;
+      padding: 80px 20px;
       background: url('floral-background.jpg') no-repeat center center;
       background-size: cover;
-      padding: 80px 20px;
     }
-    #home p {
-      max-width: 90%;
-      font-size: 18px;
-      line-height: 1.8;
-      margin: auto;
+    .contact-form input, .contact-form textarea {
+      width: 90%;
+      margin: 10px auto;
+      display: block;
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+    }
+    .contact-form button {
+      background-color: #ff1493;
+      padding: 10px 20px;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1001;
+    }
+    .whatsapp-float img {
+      width: 60px;
+      height: 60px;
+    }
+    iframe {
+      display: block;
+      margin: 20px auto;
+      width: 90%;
+      max-width: 600px;
+      height: 315px;
+      border: none;
     }
   </style>
 </head>
 <body>
 
 <div class="floating-menu">
+  <button onclick="showSection('company')">🏢 Company</button>
   <button onclick="showSection('products')">🛍 Products</button>
   <button onclick="showSection('hydrolynk')">💧 Hydrolynk</button>
   <button onclick="showSection('services')">🛠 Services</button>
@@ -85,75 +111,87 @@
   <button onclick="showSection('contact')">📞 Contact</button>
 </div>
 
+<!-- WhatsApp chat bubble -->
+<a href="https://wa.me/2349023226544" class="whatsapp-float" target="_blank">
+  <img src="https://img.icons8.com/color/96/000000/whatsapp--v1.png" alt="Chat on WhatsApp"/>
+</a>
+
 <section id="home" class="active">
   <h1 class="title">SLI RESOURCES</h1>
   <p><strong>We Light Up the Future</strong></p>
-  <p>SLI RESOURCES is a leading Nigerian innovation-based tech company founded to solve real-world challenges through intelligent engineering. We specialize in smart automation, embedded systems, and custom product design. With a deep commitment to excellence, we are reimagining the future—one invention at a time.</p>
-  <p><strong>Mission:</strong> To develop practical, affordable, and futuristic solutions for people, businesses, and industries.</p>
-  <p><strong>Vision:</strong> To be Africa’s number one innovation hub producing smart, world-class technology products.</p>
-  <p><strong>Core Values:</strong> Innovation, Simplicity, Reliability, Empowerment, Integrity</p>
-  <p>SLI RESOURCES was born out of the need to provide local solutions to global problems. Every product and service we offer is driven by passion, technical excellence, and a desire to make life easier and smarter for all. Whether you’re a student, a business, or a homeowner — we’re here to help you unlock the future.</p>
+  <p>SLI RESOURCES is Nigeria’s fast-rising tech innovation company focused on solving everyday challenges using smart automation and embedded systems. Our team builds inventions that empower homes, industries, and communities through simplicity and sustainability.</p>
+</section>
+
+<section class="section" id="company">
+  <h1 class="title">Company Profile</h1>
+  <p><strong>Our Mission:</strong> Build affordable, practical, and intelligent solutions for Africa and beyond.</p>
+  <p><strong>Vision:</strong> Become Africa’s most reliable smart-tech innovation hub.</p>
+  <p><strong>Tagline:</strong> We Light Up the Future.</p>
+  <p>SLI RESOURCES was founded to close the gap between problems and innovation. We develop electronic systems for automation, IoT, smart homes, and more. Our products are proudly made in Nigeria, tailored to local challenges with global-quality performance.</p>
 </section>
 
 <section class="section" id="products">
-  <h1 class="title">Our Products</h1>
+  <h1 class="title">Products Catalog</h1>
   <ul>
-    <li><strong>Rechargeable Whiteboard with Auto Eraser:</strong> Ideal for classrooms, offices, and boardrooms. Environmentally friendly, quick to use, and elegant in appearance. No more messy markers or dirty sleeves!</li>
-    <li><strong>Smart Water Level Indicator:</strong> Monitor your tank’s water level remotely with sensor-driven updates. Avoid wastage and dry taps forever.</li>
-    <li><strong>IR Blaster:</strong> Control your TVs, fans, decoders, and other electronics remotely from your phone. Sleek, smart, and universal.</li>
-    <li><strong>Hydrolynk (Flagship Product):</strong> Intelligent pump controller with auto switch ON/OFF based on tank levels. Prevents overflow, dry pumping, and manual stress.</li>
+    <li><strong>Rechargeable Whiteboard with Auto Eraser:</strong> Eco-friendly solution for schools and offices.</li>
+    <li><strong>Smart Water Level Indicator:</strong> Avoid overflow and dry tanks — smart monitoring in real time.</li>
+    <li><strong>IR Blaster (Universal Remote):</strong> Control TVs, fans, and decoders using your smartphone.</li>
+    <li><strong>Hydrolynk:</strong> Smart water pump controller (see full section below)</li>
   </ul>
 </section>
 
 <section class="section" id="hydrolynk">
-  <h1 class="title">Hydrolynk - Smart Pump Controller</h1>
-  <p>Hydrolynk is a revolutionary automatic pump control system that takes the stress out of managing your water. It works seamlessly by using sensors to determine when your water tank needs filling and automatically powers the pump ON or OFF without human intervention.</p>
+  <h1 class="title">Hydrolynk - Smart Water Pump Controller</h1>
+  <p>Hydrolynk is our flagship product that automates your water pump. It detects water level in your tank and turns the pump ON or OFF — no stress, no overflow, no dry runs.</p>
   <ul>
-    <li>Auto shutoff at full tank level</li>
-    <li>Auto startup at low tank level</li>
-    <li>Low power consumption</li>
-    <li>Works with boreholes and water reservoirs</li>
-    <li>Built-in surge protection</li>
-    <li>Easy to install and durable</li>
+    <li>💧 Works with tanks, boreholes, wells</li>
+    <li>⚡ Energy efficient and durable</li>
+    <li>🛠 Easy to install</li>
+    <li>💰 Price: ₦30,000</li>
   </ul>
-  <p><strong>Price:</strong> ₦30,000<br><strong>Pay to:</strong> OPay 9063650986</p>
-  <a class="buy-button" href="https://wa.me/2349023226544?text=I%20want%20to%20buy%20Hydrolynk%20for%20₦30000">Buy on WhatsApp</a>
+  <p><strong>To Pay:</strong> OPay 9063650986</p>
+  <a class="buy-button" href="https://wa.me/2349023226544?text=I%20want%20to%20buy%20Hydrolynk">Buy Now on WhatsApp</a>
+
+  <!-- Video Embed Placeholder -->
+  <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Hydrolynk Demo Video"></iframe>
 </section>
 
 <section class="section" id="services">
   <h1 class="title">Our Services</h1>
   <ul>
-    <li><strong>Electronics Prototyping:</strong> Bring your tech ideas to life. We design, build, and test prototypes to get your invention to market.</li>
-    <li><strong>IoT Solutions:</strong> Integration of smart technologies to automate and control everyday tasks using wireless communication and sensors.</li>
-    <li><strong>Embedded System Design:</strong> Programming and building microcontroller-based systems for real-world automation.</li>
-    <li><strong>Home Automation:</strong> Convert your house into a smart home—control lights, fans, pumps, and appliances with one click.</li>
-    <li><strong>Tech Mentorship:</strong> We guide young tech enthusiasts in learning to invent, code, and build useful technology.</li>
+    <li>💡 Custom Electronic Design</li>
+    <li>🔧 IoT System Integration</li>
+    <li>🏠 Smart Home Setup</li>
+    <li>🎓 Tech Training & Mentorship</li>
+    <li>📐 Product Prototyping & Testing</li>
   </ul>
 </section>
 
 <section class="section" id="founder">
-  <h1 class="title">Meet the Founder</h1>
-  <p><strong>Saviour Lawrence Inyang</strong> is the visionary founder of SLI RESOURCES. As an inventor, engineer, and entrepreneur, Saviour’s mission is to use technology to make lives easier across Africa. With a background in electronics and embedded systems, he started SLI RESOURCES with the goal of designing affordable solutions that solve real problems.</p>
-  <p>From building early prototypes in his room to leading a company recognized for quality and ingenuity, Saviour continues to inspire the next generation through mentorship, creativity, and a deep belief that “anything is possible.”</p>
+  <h1 class="title">Founder - Saviour Lawrence Inyang</h1>
+  <p>Saviour is a passionate engineer, innovator, and entrepreneur with a mission to use technology to transform Africa. He leads SLI RESOURCES with creativity, grit, and purpose. His dream is to empower youth through invention and education.</p>
 </section>
 
 <section class="section" id="contact">
-  <h1 class="title">Get in Touch</h1>
-  <p>We're here to answer all your questions and support you. Connect with us today:</p>
-  <ul>
-    <li><strong>Phone / WhatsApp:</strong> +2349023226544</li>
-    <li><strong>Email:</strong> sliresourcess@gmail.com</li>
-    <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/sliresources" style="color: #00ffff;">SLI Resources</a></li>
-  </ul>
+  <h1 class="title">Contact Us</h1>
+  <p><strong>WhatsApp:</strong> +2349023226544</p>
+  <p><strong>Email:</strong> sliresourcess@gmail.com</p>
+  <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/sliresources" style="color:#00ffff;">sliresources</a></p>
+
+  <form action="https://formsubmit.co/sliresourcess@gmail.com" method="POST" class="contact-form">
+    <input type="text" name="name" placeholder="Your Name" required />
+    <input type="email" name="email" placeholder="Your Email" required />
+    <textarea name="message" rows="5" placeholder="Your Message"></textarea>
+    <button type="submit">Send Message</button>
+  </form>
 </section>
 
 <script>
   function showSection(id) {
     document.querySelectorAll('.section').forEach(el => el.classList.remove('active'));
-    const section = document.getElementById(id);
-    if (section) section.classList.add('active');
+    document.getElementById(id).classList.add('active');
   }
 </script>
 
 </body>
-      </html>
+  </html>

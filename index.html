@@ -5,25 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>SLI RESOURCES</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Open+Sans:wght@300;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     html, body {
       margin: 0;
       font-family: 'Open Sans', sans-serif;
       scroll-behavior: smooth;
-      background-color: #fff;
+      background-color: #f7f7f7;
       color: #1e2d3a;
     }
+
     body::before {
       content: "";
       position: fixed;
       top: 0; left: 0;
       width: 100%; height: 100%;
-      background: url('https://www.transparenttextures.com/patterns/floral.png');
+      background-image: url('https://www.transparenttextures.com/patterns/floral.png');
       background-size: cover;
       background-repeat: repeat;
       opacity: 0.12;
       z-index: -1;
     }
+
     .floating-menu {
       position: fixed;
       top: 0;
@@ -32,22 +35,25 @@
       justify-content: center;
       background: rgba(0, 0, 0, 0.85);
       z-index: 999;
-      padding: 10px 0;
+      padding: 12px 0;
       gap: 15px;
     }
+
     .floating-menu button {
       background: #006d77;
       color: #fff;
       border: none;
       padding: 10px 18px;
-      font-size: 15px;
+      font-size: 14px;
       border-radius: 6px;
       cursor: pointer;
       font-family: 'Open Sans', sans-serif;
     }
+
     .floating-menu button:hover {
       background: #005259;
     }
+
     .section {
       padding: 100px 20px;
       min-height: 100vh;
@@ -55,9 +61,11 @@
       display: none;
       animation-duration: 1s;
     }
+
     .show {
       display: block;
     }
+
     .fade { animation-name: fade; }
     .slide-left { animation-name: slideLeft; }
     .slide-right { animation-name: slideRight; }
@@ -115,6 +123,59 @@
     .buy-button:hover {
       background-color: #ffa200;
     }
+
+    .footer {
+      background-color: #003f5c;
+      color: #fff;
+      padding: 30px 20px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .testimonial {
+      background: #e8f1f2;
+      padding: 20px;
+      margin: 40px auto;
+      max-width: 700px;
+      border-left: 5px solid #0096c7;
+      font-style: italic;
+    }
+
+    .social-icons {
+      position: fixed;
+      top: 45%;
+      left: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 999;
+    }
+
+    .social-icons a {
+      background-color: #006d77;
+      color: white;
+      padding: 10px;
+      border-radius: 50%;
+      text-align: center;
+      display: block;
+    }
+
+    @media (max-width: 600px) {
+      .floating-menu {
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      h1 {
+        font-size: 28px;
+      }
+      .social-icons {
+        top: unset;
+        bottom: 20px;
+        flex-direction: row;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
   </style>
 </head>
 <body>
@@ -128,64 +189,67 @@
   <button onclick="showSection('contact', 'fade')">Contact</button>
 </div>
 
+<!-- Floating Social Icons -->
+<div class="social-icons">
+  <a href="https://wa.me/2349023226544" target="_blank"><i class="fab fa-whatsapp"></i></a>
+  <a href="mailto:sliresourcess@gmail.com"><i class="fas fa-envelope"></i></a>
+  <a href="https://www.linkedin.com/in/sliresources" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+</div>
+
 <!-- Landing Page -->
 <div id="home" class="section show fade">
   <h1>Welcome to SLI RESOURCES</h1>
-  <p>SLI RESOURCES is a visionary technology company founded to solve everyday African problems with smart, cost-effective innovations. We build intelligent systems that help individuals, schools, and businesses automate key parts of their lives — starting from water control to smart education tools.</p>
-  <p>Our products are affordable, tested, and locally supported. We don’t just sell devices — we provide intelligent solutions to enhance your life. SLI RESOURCES believes in lighting up the future with innovation, one smart tool at a time.</p>
+  <p>SLI RESOURCES is a leading-edge Nigerian tech firm dedicated to building smart, affordable devices that automate everyday systems. We develop embedded systems and IoT-driven tools to solve problems in water management, home automation, and smart education.</p>
+  <div class="testimonial">
+    “Hydrolynk saved our hostel from flooding! We now have peace of mind. Highly recommend to any building with a borehole.” — Hostel Manager, Uyo
+  </div>
 </div>
 
-<!-- Products Section -->
+<!-- Sections -->
 <div id="products" class="section slide-left">
-  <h1>Our Product Line</h1>
-  <p>We are proud to present a lineup of functional, practical, and reliable devices designed specifically for the African market.</p>
+  <h1>Our Products</h1>
   <ul>
-    <li><strong>Hydrolynk</strong>: A smart water pump controller that automatically detects water level and controls your pump to prevent overflow and dry-run.</li>
-    <li><strong>Rechargeable Whiteboard with Auto-Eraser</strong>: A smart board that wipes itself clean after lectures — great for schools, training rooms, and business pitches.</li>
-    <li><strong>Water Level Indicator</strong>: A clear level monitor for overhead tanks that eliminates guesswork and ensures timely water management.</li>
-    <li><strong>Universal IR Blaster</strong>: Control multiple home devices like TVs, ACs, fans with a single compact gadget.</li>
+    <li><strong>Hydrolynk:</strong> Smart water pump controller with automatic detection and cutoff</li>
+    <li><strong>Rechargeable Smart Whiteboard:</strong> Auto-erasing whiteboard ideal for schools</li>
+    <li><strong>Water Level Indicator:</strong> Real-time monitoring of overhead or underground tanks</li>
+    <li><strong>IR Blaster:</strong> All-in-one remote control for your home gadgets</li>
   </ul>
 </div>
 
-<!-- Hydrolynk Section -->
 <div id="hydrolynk" class="section zoom">
-  <h1>Hydrolynk - Intelligent Pump Control</h1>
-  <p>Hydrolynk is the heartbeat of automated water systems. It ensures your pump works only when it’s needed — turning ON when your tank is low and OFF when it’s full. This smart device helps you save water, save electricity, and extend the lifespan of your pump.</p>
-  <p>It works perfectly for homes, schools, farms, and hotels — anywhere you need reliable, automated water management. Built with embedded technology and precision engineering, Hydrolynk is proudly made and supported in Nigeria.</p>
+  <h1>Hydrolynk - Smart Pump Control</h1>
+  <p>Hydrolynk is the perfect solution to control your borehole, submersible, or overhead tank pumping system. It uses level sensors and relays to automatically turn your pump ON or OFF. Built for Nigeria’s electrical systems, it is energy-efficient and long-lasting.</p>
   <a href="https://wa.me/2349023226544?text=I%20want%20to%20buy%20Hydrolynk" class="buy-button">Buy Now - ₦30,000</a>
 </div>
 
-<!-- Services Section -->
 <div id="services" class="section slide-right">
   <h1>Our Services</h1>
-  <p>At SLI RESOURCES, we don’t just build — we innovate, support, and train. Our services include:</p>
   <ul>
-    <li>Custom Electronics & Microcontroller Development</li>
-    <li>IoT Smart Systems Design (home, farm, industry)</li>
-    <li>Prototype Design & Testing</li>
-    <li>One-on-One Training & Workshops in Tech/Hardware</li>
-    <li>Tech Consulting for Schools, Startups, and Individuals</li>
+    <li>Custom electronics prototyping</li>
+    <li>IoT system design (automation + monitoring)</li>
+    <li>Technical training & workshops</li>
+    <li>Electronics repair & consulting</li>
   </ul>
-  <p>Our team is dedicated to helping you achieve your smart system goals using practical, cost-effective methods.</p>
 </div>
 
-<!-- Founder Section -->
 <div id="founder" class="section flip">
   <h1>Meet the Founder</h1>
-  <p><strong>Saviour Lawrence Inyang</strong> is a passionate Nigerian innovator and engineer with a strong vision to transform Africa using embedded technology. As the founder of SLI RESOURCES, his goal is to bring real solutions to communities using affordable devices that solve real challenges.</p>
-  <p>With years of experience in electronics, IoT, and system design, he continues to mentor, develop, and deliver value across various sectors.</p>
+  <p><strong>Saviour Lawrence Inyang</strong>, the brain behind SLI RESOURCES, is a passionate Nigerian engineer with years of experience in embedded systems and hardware development. He believes Africa can rise through smart, low-cost, and scalable technologies. His mission is to make automation available to all homes and communities.</p>
 </div>
 
-<!-- Contact Section -->
 <div id="contact" class="section fade">
   <h1>Contact Us</h1>
-  <p>We’d love to hear from you! Whether you're interested in a product, need a service, or just have a question — reach out to us through any of the options below.</p>
   <ul>
     <li>Email: sliresourcess@gmail.com</li>
     <li>WhatsApp: <a href="https://wa.me/2349023226544">+2349023226544</a></li>
     <li>LinkedIn: <a href="https://www.linkedin.com/in/sliresources" target="_blank">linkedin.com/in/sliresources</a></li>
-    <li>Bank Account for Payment: <strong>Opay 9063650986</strong></li>
+    <li>Payment: Opay 9063650986</li>
   </ul>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  &copy; 2025 SLI RESOURCES. All Rights Reserved. | We Light Up The Future
 </div>
 
 <script>
@@ -199,4 +263,4 @@
 </script>
 
 </body>
-      </html>
+  </html>

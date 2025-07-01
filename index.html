@@ -14,100 +14,126 @@
     }
     .section {
       padding: 60px 30px;
-      background-color: rgba(0, 0, 0, 0.7);
+      background-color: rgba(0, 0, 0, 0.75);
     }
     .floating-menu {
       position: fixed;
-      top: 50%;
-      right: 20px;
-      transform: translateY(-50%);
+      top: 10%;
+      left: 0;
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      z-index: 999;
+      gap: 20px;
+      padding: 10px;
+      background-color: rgba(0,0,0,0.7);
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
+      z-index: 1000;
     }
     .floating-menu button {
       padding: 12px 20px;
-      background: #008080;
+      background: #ff1493;
       color: white;
       border: none;
       border-radius: 8px;
       cursor: pointer;
-      font-weight: bold;
+      font-size: 16px;
+      text-align: left;
     }
     .title {
       text-align: center;
-      font-size: 48px;
-      margin-top: 0;
+      font-size: 60px;
       color: #00ffff;
+      margin-bottom: 20px;
     }
     .buy-button {
       display: inline-block;
-      margin-top: 10px;
-      padding: 10px 20px;
+      margin-top: 15px;
+      padding: 12px 25px;
       background-color: #28a745;
       color: #fff;
       border-radius: 5px;
       text-decoration: none;
+      font-size: 18px;
+    }
+    #home {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    #home p {
+      max-width: 900px;
+      font-size: 20px;
+      line-height: 1.8;
+      padding: 0 20px;
     }
   </style>
 </head>
 <body>
   <div class="floating-menu">
-    <button onclick="scrollToSection('products')">Products</button>
-    <button onclick="scrollToSection('hydrolynk')">Hydrolynk</button>
-    <button onclick="scrollToSection('services')">Services</button>
-    <button onclick="scrollToSection('founder')">Founder</button>
-    <button onclick="scrollToSection('contact')">Contact</button>
+    <button onclick="scrollToSection('products')">🛍 Products<br><small>View all upcoming innovations</small></button>
+    <button onclick="scrollToSection('hydrolynk')">💧 Hydrolynk<br><small>Smart pump automation</small></button>
+    <button onclick="scrollToSection('services')">🛠 Services<br><small>What we offer</small></button>
+    <button onclick="scrollToSection('founder')">👤 Founder<br><small>Meet Saviour Lawrence</small></button>
+    <button onclick="scrollToSection('contact')">📞 Contact<br><small>Get in touch</small></button>
   </div>  <section class="section" id="home">
     <h1 class="title">Welcome to SLI RESOURCES</h1>
     <p>
-      SLI RESOURCES is a forward-thinking tech company dedicated to providing innovative solutions to modern-day challenges.
-      We specialize in smart technologies that improve daily life — from water automation systems to intelligent home devices.
-      Our mission is to bring accessible, sustainable, and intelligent products to every household and industry.
+      At SLI RESOURCES, we are revolutionizing the way people interact with technology. Our mission is to provide innovative, affordable, and sustainable tech solutions designed to make life easier. From intelligent water management systems to groundbreaking home automation devices, we engineer products that serve real-world needs. We believe that technology should work for everyone, everywhere, and that’s why we strive to create smart devices that are both powerful and user-friendly.
     </p>
     <p>
-      Our core values include innovation, reliability, affordability, and customer satisfaction.
-      We believe in lighting up the future with groundbreaking products that are easy to use and built to last.
+      With a deep passion for excellence, we are committed to reshaping the future through accessible technology. Join us on our journey as we light up the future — one innovation at a time.
     </p>
   </section>  <section class="section" id="products">
     <h1 class="title">Our Products</h1>
-    <h2>Upcoming Products</h2>
+    <p>
+      Discover our upcoming innovative tech products that are currently under development. Each device is designed with functionality, affordability, and reliability in mind.
+    </p>
     <ul>
-      <li>Rechargeable whiteboard with automatic eraser <a class="buy-button" href="#">Buy Now</a></li>
-      <li>Smart Water Level Indicator <a class="buy-button" href="#">Buy Now</a></li>
-      <li>IR Blaster for Home Automation <a class="buy-button" href="#">Buy Now</a></li>
+      <li>
+        <strong>Rechargeable Whiteboard with Automatic Eraser:</strong> A teacher’s best friend — saves time, reduces clutter, and boosts classroom tech integration.
+        <br><a class="buy-button" href="#">Buy Now</a>
+      </li>
+      <li>
+        <strong>Smart Water Level Indicator:</strong> Know your water status from anywhere — be it borehole, tank, or reservoir.
+        <br><a class="buy-button" href="#">Buy Now</a>
+      </li>
+      <li>
+        <strong>IR Blaster Home Automation Kit:</strong> Control your appliances with one remote or phone. Easy. Efficient. Essential.
+        <br><a class="buy-button" href="#">Buy Now</a>
+      </li>
     </ul>
   </section>  <section class="section" id="hydrolynk">
-    <h1 class="title">Hydrolynk</h1>
+    <h1 class="title">Hydrolynk – Smart Water Pump Control</h1>
     <p>
-      Hydrolynk is our flagship smart water pump control system that intelligently manages water flow, tank levels,
-      and pump automation. With a compact design, user-friendly interface, and durable components, Hydrolynk ensures water
-      efficiency and prevents overflow or dry-run damage.
+      Hydrolynk is our intelligent water automation system built to simplify water pumping, conserve energy, and prevent overflow or dry run damage. Designed with embedded electronics, this device automatically controls your water pump based on water level sensors. It's built to last, easy to install, and highly reliable — ideal for homes, farms, and industrial systems.
     </p>
     <p>
-      Price: ₦30,000<br>
-      <strong>Payment Account:</strong> OPay 9063650986
+      <strong>Price:</strong> ₦30,000<br>
+      <strong>Payment Account:</strong> OPay 9063650986<br>
+      <a class="buy-button" href="https://wa.me/2349023226544?text=I%20want%20to%20buy%20Hydrolynk">Buy Hydrolynk</a>
     </p>
-    <a class="buy-button" href="https://wa.me/2349023226544?text=I%20want%20to%20buy%20Hydrolynk">Buy Hydrolynk</a>
   </section>  <section class="section" id="services">
-    <h1 class="title">Our Services</h1>
+    <h1 class="title">What We Offer</h1>
+    <p>
+      SLI RESOURCES delivers a wide range of services tailored to both individuals and organizations seeking smart technology solutions. Here’s what we do:
+    </p>
     <ul>
-      <li>Custom electronic device design and prototyping</li>
-      <li>Smart home installation and configuration</li>
-      <li>IoT product consultation and deployment</li>
-      <li>Software development for embedded systems</li>
-      <li>Technical training for young innovators and engineers</li>
+      <li>Custom electronics prototyping and circuit design</li>
+      <li>Smart home system installation and automation</li>
+      <li>IoT (Internet of Things) solutions development</li>
+      <li>Embedded systems and firmware programming</li>
+      <li>Mentorship and technical training workshops</li>
     </ul>
   </section>  <section class="section" id="founder">
-    <h1 class="title">Meet the Founder</h1>
+    <h1 class="title">Meet Our Founder</h1>
     <p>
-      Saviour Lawrence Inyang is a passionate engineer, inventor, and visionary leader dedicated to solving local problems with global
-      tech solutions. As the CEO of SLI Resources, he has led the development of multiple cutting-edge products that improve lives,
-      save costs, and enhance convenience.
+      Saviour Lawrence Inyang is the brilliant mind behind SLI RESOURCES. With a deep-rooted passion for solving local problems using global technologies, Saviour has led the development of several high-impact tech products.
     </p>
     <p>
-      With years of experience in electronics, automation, and innovation, Saviour Lawrence is committed to shaping a smarter, better-connected future.
+      From humble beginnings to becoming a tech innovator and business leader, his journey is fueled by determination, creativity, and a mission to empower others through innovation. His work continues to inspire a new generation of tech enthusiasts.
     </p>
   </section>  <section class="section" id="contact">
     <h1 class="title">Contact Us</h1>
@@ -122,4 +148,4 @@
       document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
     }
   </script></body>
-            </html>
+  </html>

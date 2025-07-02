@@ -34,34 +34,19 @@
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-5px); }
     }
-
-    /* NEW: container for horizontal layout of sections */
-    #sectionsContainer {
-      display: flex;
-      flex-direction: row;
-      overflow-x: auto;
-      scroll-behavior: smooth;
-      gap: 30px;
-      max-width: 100vw;
-      padding: 40px 20px;
-      box-sizing: border-box;
-    }
-
     .section, .founder-card {
       background: #f0f0f0;
-      min-width: 900px; /* same width as before */
+      max-width: 900px;
+      margin: 40px auto;
       padding: 30px;
       border-radius: 20px;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
       font-family: Arial, sans-serif;
-      display: block !important; /* always visible horizontally */
-      flex-shrink: 0;
+      display: none;
     }
-
     #landing {
-      min-width: 900px;
+      display: block;
     }
-
     .section:hover, .founder-card:hover { animation: glow 1s infinite alternate; }
     .founder-card {
       flex-direction: column;
@@ -69,6 +54,13 @@
       text-align: center;
       transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
       border: 2px solid transparent;
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      display: none;
+      font-family: Arial, sans-serif;
     }
     .founder-card:hover {
       transform: translateY(-10px);
@@ -77,27 +69,40 @@
     }
     nav {
       position: fixed;
-      top: 50%;
-      left: 10px;
-      transform: translateY(-50%);
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
       background: #fff;
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0,0,0,0.2);
-      padding: 10px;
+      padding: 10px 20px;
       z-index: 1000;
+      display: flex;
+      gap: 15px;
       transition: opacity 0.5s ease;
+      user-select: none;
     }
     nav button {
-      display: block;
-      margin: 10px 0;
       background: none;
       border: none;
       font-size: 16px;
       cursor: pointer;
       color: #333;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
-    nav button:hover { color: #00d1ff; }
-    nav i { margin-right: 8px; }
+    nav button:hover {
+      background-color: #00d1ff;
+      color: white;
+    }
+    nav button:focus {
+      outline: 2px solid #00d1ff;
+      outline-offset: 2px;
+    }
     .toggle-theme {
       position: fixed;
       top: 20px;
@@ -161,55 +166,53 @@
     <i id="theme-icon" class="fas fa-moon"></i>
   </button>
 
-  <nav id="navBox">
-    <button onclick="scrollToSection('founder')"><i class="fas fa-user"></i> Founder</button>
-    <button onclick="scrollToSection('products')"><i class="fas fa-box"></i> Products</button>
-    <button onclick="scrollToSection('services')"><i class="fas fa-tools"></i> Services</button>
-    <button onclick="scrollToSection('testimonials')"><i class="fas fa-comment"></i> Testimonials</button>
-    <button onclick="scrollToSection('contact')"><i class="fas fa-envelope"></i> Contact</button>
+  <nav id="navBox" role="navigation" aria-label="Main site navigation">
+    <button onclick="showSection('founder')"><i class="fas fa-user"></i> Founder</button>
+    <button onclick="showSection('products')"><i class="fas fa-box"></i> Products</button>
+    <button onclick="showSection('services')"><i class="fas fa-tools"></i> Services</button>
+    <button onclick="showSection('testimonials')"><i class="fas fa-comment"></i> Testimonials</button>
+    <button onclick="showSection('contact')"><i class="fas fa-envelope"></i> Contact</button>
   </nav>
 
-  <div id="sectionsContainer" aria-label="Main content sections">
-    <section id="landing" class="section fade-in" tabindex="0">
-      <h2><i class="fas fa-bolt icon-animate"></i> Welcome to SLI RESOURCES</h2>
-      <p>SLI RESOURCES is a leading innovation-driven company committed to delivering smart technology solutions that enhance everyday life. Based in Nigeria and founded by a graduate of Chemistry, Saviour Lawrence Inyang, our mission is to develop affordable, locally-made devices that solve real-life problems in water management, energy control, smart automation, and education.</p>
-      <p>From the flagship Hydrolynk water automation system to custom Internet of Things (IoT) installations, our products and services are built for reliability, scalability, and impact. We empower individuals, businesses, and institutions with the tools they need to thrive in a smart, efficient, and sustainable environment. At SLI RESOURCES, we don’t just light up your home – we light up the future.</p>
-    </section>
+  <section id="landing" class="section fade-in" tabindex="0">
+    <h2><i class="fas fa-bolt icon-animate"></i> Welcome to SLI RESOURCES</h2>
+    <p>SLI RESOURCES is a leading innovation-driven company committed to delivering smart technology solutions that enhance everyday life. Based in Nigeria and founded by a graduate of Chemistry, Saviour Lawrence Inyang, our mission is to develop affordable, locally-made devices that solve real-life problems in water management, energy control, smart automation, and education.</p>
+    <p>From the flagship Hydrolynk water automation system to custom Internet of Things (IoT) installations, our products and services are built for reliability, scalability, and impact. We empower individuals, businesses, and institutions with the tools they need to thrive in a smart, efficient, and sustainable environment. At SLI RESOURCES, we don’t just light up your home – we light up the future.</p>
+  </section>
 
-    <section id="founder" class="founder-card fade-in" tabindex="0">
-      <img src="founder.jpg" alt="Founder" class="founder-avatar" />
-      <h3>Saviour Lawrence Inyang</h3>
-      <p>A passionate innovator and graduate of Chemistry from Akwa Ibom State University. Dedicated to reshaping Africa through technology. With a vision to empower communities using sustainable innovations, he founded SLI RESOURCES to build a better future through smart solutions.</p>
-    </section>
+  <section id="founder" class="founder-card fade-in" tabindex="0">
+    <img src="founder.jpg" alt="Founder" class="founder-avatar" />
+    <h3>Saviour Lawrence Inyang</h3>
+    <p>A passionate innovator and graduate of Chemistry from Akwa Ibom State University. Dedicated to reshaping Africa through technology. With a vision to empower communities using sustainable innovations, he founded SLI RESOURCES to build a better future through smart solutions.</p>
+  </section>
 
-    <section id="products" class="section fade-in" tabindex="0">
-      <h2>Our Products</h2>
-      <p>Discover smart products designed to simplify your life: from Hydrolynk water pump automation to smart rechargeable whiteboards. We are currently working on a water level indicator, IR blasters, and more energy-saving solutions tailored to African needs.</p>
-      <a class="buy-button" href="#">Explore Products</a>
-    </section>
+  <section id="products" class="section fade-in" tabindex="0">
+    <h2>Our Products</h2>
+    <p>Discover smart products designed to simplify your life: from Hydrolynk water pump automation to smart rechargeable whiteboards. We are currently working on a water level indicator, IR blasters, and more energy-saving solutions tailored to African needs.</p>
+    <a class="buy-button" href="#">Explore Products</a>
+  </section>
 
-    <section id="services" class="section fade-in" tabindex="0">
-      <h2>Our Services</h2>
-      <p>We offer comprehensive services in smart automation, Internet of Things (IoT) setup, solar integrations, and technology consulting. Our team works closely with clients to deliver custom solutions that improve productivity, safety, and efficiency in both residential and commercial spaces.</p>
-    </section>
+  <section id="services" class="section fade-in" tabindex="0">
+    <h2>Our Services</h2>
+    <p>We offer comprehensive services in smart automation, Internet of Things (IoT) setup, solar integrations, and technology consulting. Our team works closely with clients to deliver custom solutions that improve productivity, safety, and efficiency in both residential and commercial spaces.</p>
+  </section>
 
-    <section id="testimonials" class="section fade-in" tabindex="0">
-      <h2>What Clients Say</h2>
-      <div class="testimonial">“SLI RESOURCES transformed our water system with Hydrolynk – truly life changing!” – Jane D.</div>
-      <div class="testimonial">“Excellent service and support. Highly recommend their tech!” – Michael O.</div>
-      <div class="testimonial">“Their automation system helped us save 40% on water usage monthly!” – Aisha U.</div>
-    </section>
+  <section id="testimonials" class="section fade-in" tabindex="0">
+    <h2>What Clients Say</h2>
+    <div class="testimonial">“SLI RESOURCES transformed our water system with Hydrolynk – truly life changing!” – Jane D.</div>
+    <div class="testimonial">“Excellent service and support. Highly recommend their tech!” – Michael O.</div>
+    <div class="testimonial">“Their automation system helped us save 40% on water usage monthly!” – Aisha U.</div>
+  </section>
 
-    <section id="contact" class="section fade-in" tabindex="0">
-      <h2>Contact Us</h2>
-      <form>
-        <input type="text" placeholder="Name" required /><br />
-        <input type="email" placeholder="Email" required /><br />
-        <textarea placeholder="Your message" required></textarea><br />
-        <input type="submit" value="Send Message" />
-      </form>
-    </section>
-  </div>
+  <section id="contact" class="section fade-in" tabindex="0">
+    <h2>Contact Us</h2>
+    <form>
+      <input type="text" placeholder="Name" required /><br />
+      <input type="email" placeholder="Email" required /><br />
+      <textarea placeholder="Your message" required></textarea><br />
+      <input type="submit" value="Send Message" />
+    </form>
+  </section>
 
   <!-- FANNYREX ChatGPT Chatbot -->
   <div id="chatbox" style="position: fixed; bottom: 80px; right: 20px; width: 300px; max-height: 400px; background: white; border: 2px solid #00d1ff; border-radius: 10px; display: none; flex-direction: column; box-shadow: 0 0 10px rgba(0,0,0,0.3); z-index: 9999;">
@@ -223,12 +226,13 @@
   </div>
 
   <script>
-    function scrollToSection(id) {
-      const container = document.getElementById('sectionsContainer');
-      const section = document.getElementById(id);
-      if (section) {
-        const leftPos = section.offsetLeft;
-        container.scrollTo({left: leftPos, behavior: 'smooth'});
+    function showSection(id) {
+      // Hide all sections and founder card except landing (if id is 'landing', show it)
+      document.querySelectorAll('.section, .founder-card').forEach(sec => sec.style.display = 'none');
+      if(id === 'landing'){
+        document.getElementById('landing').style.display = 'block';
+      } else {
+        document.getElementById(id).style.display = 'block';
       }
     }
 

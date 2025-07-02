@@ -37,12 +37,13 @@
       border-radius: 20px;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
       font-family: Arial, sans-serif;
+      display: none;
     }
     .founder-card:hover, .section:hover {
       animation: glow 1s infinite alternate;
     }
     .founder-card {
-      display: flex;
+      display: none;
       flex-direction: column;
       align-items: center;
       text-align: center;
@@ -69,11 +70,31 @@
     .buy-button:hover, .product-toggle:hover, input[type="submit"]:hover {
       animation: glow 1s infinite alternate;
     }
-    nav a {
-      transition: text-shadow 0.3s ease;
+    nav {
+      position: fixed;
+      top: 50%;
+      left: 10px;
+      transform: translateY(-50%);
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      padding: 10px;
+      z-index: 1000;
     }
-    nav a:hover {
-      text-shadow: 0 0 8px #00d1ff;
+    nav button {
+      display: block;
+      margin: 10px 0;
+      background: none;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      color: #333;
+    }
+    nav button:hover {
+      color: #00d1ff;
+    }
+    nav i {
+      margin-right: 8px;
     }
     .testimonial {
       padding: 20px;
@@ -112,18 +133,30 @@
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       document.body.classList.remove("loading");
+      const sections = document.querySelectorAll('.section, .founder-card');
+      document.querySelectorAll('nav button').forEach(button => {
+        button.addEventListener('click', () => {
+          sections.forEach(sec => sec.style.display = 'none');
+          document.querySelector(button.dataset.target).style.display = 'block';
+        });
+      });
     });
   </script>
 </head>
-<body class="loading">  <section id="founder" class="active fade-in">
-    <div class="founder-card">
-      <img src="https://i.imgur.com/8Km9tLL.jpg" alt="Founder Photo" class="founder-avatar">
-      <h2><i class="fas fa-user-tie icon-animate"></i> Meet the Founder</h2>
-      <p>Saviour Lawrence Inyang is the visionary behind SLI RESOURCES. With a solid academic foundation in Chemistry from Akwa Ibom State University, he has dedicated his life to transforming ideas into impactful technology for local communities. His career reflects passion, purpose, and progressive thinking.</p>
-      <p>With years of experience in hardware design, IoT, and automation systems, Saviour founded SLI RESOURCES to bridge gaps in energy, water, and automation using affordable smart tools. His vision of African-made global innovations drives the company’s core operations.</p>
-      <p>He is also a public speaker, mentor, and researcher, collaborating with institutions and start-ups to accelerate sustainable development across Africa. When he’s not building prototypes, he’s inspiring young talents to believe in the power of invention.</p>
-    </div>
-  </section>  <section class="section fade-in">
+<body class="loading">
+  <nav>
+    <button data-target="#founder"><i class="fas fa-user"></i> Founder</button>
+    <button data-target="#products"><i class="fas fa-box"></i> Products</button>
+    <button data-target="#services"><i class="fas fa-tools"></i> Services</button>
+    <button data-target="#testimonials"><i class="fas fa-comment"></i> Testimonials</button>
+    <button data-target="#contact"><i class="fas fa-envelope"></i> Contact</button>
+  </nav>  <section id="founder" class="founder-card fade-in">
+    <img src="https://i.imgur.com/8Km9tLL.jpg" alt="Founder Photo" class="founder-avatar">
+    <h2><i class="fas fa-user-tie icon-animate"></i> Meet the Founder</h2>
+    <p>Saviour Lawrence Inyang is the visionary behind SLI RESOURCES. With a solid academic foundation in Chemistry from Akwa Ibom State University, he has dedicated his life to transforming ideas into impactful technology for local communities. His career reflects passion, purpose, and progressive thinking.</p>
+    <p>With years of experience in hardware design, IoT, and automation systems, Saviour founded SLI RESOURCES to bridge gaps in energy, water, and automation using affordable smart tools. His vision of African-made global innovations drives the company’s core operations.</p>
+    <p>He is also a public speaker, mentor, and researcher, collaborating with institutions and start-ups to accelerate sustainable development across Africa. When he’s not building prototypes, he’s inspiring young talents to believe in the power of invention.</p>
+  </section>  <section id="products" class="section fade-in">
     <h2><i class="fas fa-cogs icon-animate"></i> Our Products</h2>
     <p>SLI RESOURCES offers a wide range of smart, locally engineered products tailored for homes, farms, schools, and industries. Our products solve real problems and are built for durability, simplicity, and cost-effectiveness. Some of our flagship and upcoming products include:</p>
     <ul>
@@ -134,7 +167,7 @@
       <li><strong>Energy Optimizer Kit:</strong> Reduce power waste and increase lifespan of electronics.</li>
     </ul>
     <a href="#" class="buy-button">Buy Hydrolynk - ₦30,000</a>
-  </section>  <section class="section fade-in">
+  </section>  <section id="services" class="section fade-in">
     <h2><i class="fas fa-hands-helping icon-animate"></i> Our Services</h2>
     <p>At SLI RESOURCES, we don't just sell products – we offer solutions. Our services are designed to help individuals, institutions, and organizations automate, simplify, and elevate their operations. Here's what we offer:</p>
     <ul>
@@ -144,7 +177,7 @@
       <li><strong>Maintenance & Repairs:</strong> Keep your systems running smoothly with our after-sales support and diagnostics.</li>
       <li><strong>Research Collaboration:</strong> We partner with schools, NGOs, and enterprises to explore tech-based problem solving in society.</li>
     </ul>
-  </section>  <section class="section fade-in">
+  </section>  <section id="testimonials" class="section fade-in">
     <h2><i class="fas fa-comments icon-animate"></i> Testimonials</h2>
     <div class="testimonial">
       <p>“Hydrolynk transformed the way I manage water in my house. No more overflow or dry tanks. Just peace of mind!”<br><strong>– Grace, Lagos</strong></p>
@@ -158,7 +191,7 @@
     <div class="testimonial">
       <p>“They really know how to listen to your problems and offer custom tech advice. Great support team!”<br><strong>– Michael, Abuja</strong></p>
     </div>
-  </section>  <section class="section fade-in">
+  </section>  <section id="contact" class="section fade-in">
     <h2><i class="fas fa-envelope icon-animate"></i> Contact Us</h2>
     <form action="mailto:sliresourcess@gmail.com" method="post" enctype="text/plain">
       <input type="text" name="name" placeholder="Your Name" required><br><br>
@@ -167,4 +200,4 @@
       <input type="submit" value="Send Message">
     </form>
   </section></body>
-  </html>
+                                      </html>

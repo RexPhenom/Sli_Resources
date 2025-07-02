@@ -1,486 +1,234 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>SLI RESOURCES</title>
-<link
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-  rel="stylesheet"
-/>
-<style>
-  /* Reset and base */
-  * {
-    box-sizing: border-box;
-  }
-  body {
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #121212;
-    color: #eee;
-    overflow-x: hidden;
-    transition: background-color 0.5s, color 0.5s;
-  }
-  body.light-mode {
-    background: #fafafa;
-    color: #222;
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SLI RESOURCES</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { font-family: 'Roboto', sans-serif; scroll-behavior: smooth; }
+    body { background-color: #111; color: #fff; overflow-x: hidden; }
 
-  /* Floating Horizontal Menu */
-  nav {
-    position: fixed;
-    top: 15px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(0,0,0,0.7);
-    backdrop-filter: blur(10px);
-    border-radius: 40px;
-    padding: 8px 25px;
-    display: flex;
-    gap: 20px;
-    z-index: 9999;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    transition: background 0.5s;
-  }
-  body.light-mode nav {
-    background: rgba(255,255,255,0.9);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-  }
-  nav a {
-    color: #eee;
-    font-weight: 600;
-    font-size: 1rem;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 18px;
-    border-radius: 30px;
-    transition: background 0.3s, color 0.3s;
-    cursor: pointer;
-  }
-  nav a i {
-    font-size: 1.2rem;
-  }
-  nav a:hover,
-  nav a:focus {
-    background: #00a859;
-    color: white;
-  }
-  body.light-mode nav a {
-    color: #222;
-  }
-  body.light-mode nav a:hover,
-  body.light-mode nav a:focus {
-    background: #007d45;
-    color: white;
-  }
-
-  /* Dark/Light mode toggle */
-  .toggle-theme {
-    position: fixed;
-    top: 15px;
-    right: 20px;
-    background: #00a859;
-    border: none;
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    cursor: pointer;
-    color: white;
-    font-size: 1.4rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10000;
-    transition: background 0.3s;
-  }
-  .toggle-theme:hover {
-    background: #007d45;
-  }
-  body.light-mode .toggle-theme {
-    background: #555;
-    color: #eee;
-  }
-  body.light-mode .toggle-theme:hover {
-    background: #333;
-  }
-
-  /* Sections container to hold all sections horizontally */
-  #sections-container {
-    display: flex;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    padding-top: 100px; /* leave space for nav */
-    gap: 2rem;
-    max-width: 100vw;
-    height: 90vh;
-  }
-
-  /* Hide scrollbar */
-  #sections-container::-webkit-scrollbar {
-    display: none;
-  }
-  #sections-container {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-
-  /* Each section: full width in horizontal scroll */
-  section {
-    flex: 0 0 100vw;
-    max-width: 100vw;
-    position: relative;
-    padding: 3rem 5vw 4rem 5vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    color: white;
-    border-radius: 15px;
-    font-size: 1.1rem;
-    line-height: 1.6;
-    transition: background-color 0.5s, color 0.5s;
-    opacity: 0;
-    transform: translateY(40px);
-    animation-fill-mode: forwards;
-  }
-  body.light-mode section {
-    color: #222;
-  }
-  section.visible {
-    animation: fadeInUp 1s ease forwards;
-  }
-
-  /* Background blur with max size SLI logo */
-  section::before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 150vw;
-    height: 150vh;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    filter: blur(16px) brightness(0.4);
-    z-index: 0;
-    border-radius: 15px;
-    transform: translate(-50%, -50%);
-    transition: filter 0.5s;
-  }
-  body.light-mode section::before {
-    filter: blur(16px) brightness(0.75);
-  }
-
-  /* Section content wrapper */
-  .content-wrapper {
-    position: relative;
-    z-index: 1;
-    max-width: 1200px;
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-  }
-
-  /* Text containers */
-  .text-left, .text-right {
-    flex: 1 1 400px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  .text-left h2, .text-right h2 {
-    font-family: 'Georgia', serif;
-    font-size: 2.6rem;
-    margin-bottom: 0.6rem;
-    text-shadow: 0 0 6px rgba(0,0,0,0.7);
-  }
-  body.light-mode .text-left h2,
-  body.light-mode .text-right h2 {
-    text-shadow: none;
-  }
-  .text-left p, .text-right p {
-    font-family: 'Trebuchet MS', sans-serif;
-    font-size: 1.15rem;
-    margin-bottom: 1rem;
-    text-shadow: 0 0 5px rgba(0,0,0,0.5);
-  }
-  body.light-mode .text-left p,
-  body.light-mode .text-right p {
-    text-shadow: none;
-  }
-
-  /* Images style */
-  .side-image {
-    flex: 1 1 380px;
-    max-width: 380px;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.7);
-    transition: transform 0.3s ease;
-    align-self: center;
-  }
-  .side-image:hover {
-    transform: scale(1.05);
-  }
-
-  /* Specific background images: all use SLI logo png */
-  #home::before,
-  #hydrolynk::before,
-  #founder::before,
-  #contact::before {
-    background-image: url('sli-logo.png');
-  }
-
-  /* Footer */
-  footer {
-    background: #111;
-    color: #bbb;
-    text-align: center;
-    padding: 1rem 0;
-    font-size: 0.9rem;
-    margin-top: 50px;
-  }
-  body.light-mode footer {
-    background: #eee;
-    color: #444;
-  }
-
-  /* Chatbot */
-  #chatbox {
-    position: fixed;
-    bottom: 80px;
-    right: 20px;
-    width: 320px;
-    max-height: 420px;
-    background: #fff;
-    border: 2px solid #00a859;
-    border-radius: 14px;
-    display: none;
-    flex-direction: column;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-    z-index: 10001;
-  }
-  #chatbox-header {
-    background: #00a859;
-    color: #fff;
-    padding: 12px 16px;
-    border-radius: 12px 12px 0 0;
-    font-weight: 700;
-    font-size: 1.2rem;
-  }
-  #chatlog {
-    flex: 1;
-    overflow-y: auto;
-    padding: 12px 16px;
-    font-size: 14px;
-    color: #222;
-    background: #f7f7f7;
-  }
-  #userinput {
-    border: none;
-    border-top: 1px solid #ccc;
-    padding: 12px 15px;
-    font-size: 14px;
-    outline: none;
-  }
-
-  /* Chat toggle button */
-  .chat-toggle {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: #00a859;
-    color: white;
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    font-size: 28px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 6px 14px rgba(0,0,0,0.3);
-    z-index: 10000;
-    transition: background 0.3s;
-  }
-  .chat-toggle:hover {
-    background: #007d45;
-  }
-
-  /* Animations */
-  @keyframes fadeInUp {
-    0% {
-      opacity: 0;
-      transform: translateY(40px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  /* Responsive */
-  @media (max-width: 900px) {
-    #sections-container {
-      height: auto;
-      flex-direction: column;
-      padding-top: 80px;
-    }
-    section {
-      flex: none;
-      max-width: 100%;
-      margin-bottom: 3rem;
-      opacity: 1 !important;
-      transform: none !important;
-    }
     nav {
-      top: auto;
-      bottom: 80px;
-      left: 50%;
-      transform: translateX(-50%);
-      padding: 8px 15px;
-      gap: 12px;
-      border-radius: 25px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 1rem;
+      z-index: 999;
     }
-    .content-wrapper {
-      flex-direction: column;
-      gap: 1.5rem;
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
     }
-    .text-left, .text-right, .side-image {
-      max-width: 100%;
-      flex: none;
+    nav a:hover {
+      color: #00ffcc;
+    }
+
+    .toggle-mode {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: #00ffcc;
+      color: #000;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      z-index: 1000;
+    }
+
+    section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      padding: 4rem 2rem;
       text-align: center;
     }
-    .side-image {
-      margin: 0 auto;
+    section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('sli-logo.png');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.1;
+      filter: blur(20px);
+      z-index: 0;
     }
-  }
+    .content {
+      position: relative;
+      z-index: 1;
+      max-width: 1000px;
+      margin: auto;
+    }
+    h1, h2 {
+      color: #00ffcc;
+      margin-bottom: 1rem;
+    }
+    p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      color: #ccc;
+    }
+    img.side-image {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px #000;
+    }
 
-  /* Contact links */
-  #contact a {
-    color: #00a859;
-    font-weight: 600;
-    text-decoration: none;
-  }
-  body.light-mode #contact a {
-    color: #007d45;
-  }
-  #contact a:hover {
-    text-decoration: underline;
-  }
+    .chatbot {
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      width: 320px;
+      height: 400px;
+      background: #fff;
+      border-radius: 10px;
+      display: none;
+      flex-direction: column;
+      z-index: 9999;
+    }
+    .chat-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      background: #00ffcc;
+      color: #000;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      cursor: pointer;
+      z-index: 1000;
+    }
 
-</style>
+    .services {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .service {
+      background: #222;
+      padding: 2rem;
+      border-radius: 10px;
+      max-width: 300px;
+      box-shadow: 0 0 15px rgba(0, 255, 204, 0.3);
+    }
+    .service i {
+      font-size: 2rem;
+      color: #00ffcc;
+      margin-bottom: 1rem;
+    }
+  </style>
 </head>
 <body>
+  <button class="toggle-mode" onclick="document.body.classList.toggle('light')"><i class="fas fa-adjust"></i></button>
 
-  <!-- Dark/Light mode toggle -->
-  <button aria-label="Toggle Dark/Light Mode" class="toggle-theme" onclick="toggleTheme()">
-    <i class="fas fa-moon"></i>
-  </button>
-
-  <!-- Floating horizontal menu -->
-  <nav aria-label="Primary Navigation">
-    <a href="#" data-section="home"><i class="fas fa-home"></i> Home</a>
-    <a href="#" data-section="hydrolynk"><i class="fas fa-tint"></i> Hydrolynk</a>
-    <a href="#" data-section="founder"><i class="fas fa-user-tie"></i> Founder</a>
-    <a href="#" data-section="contact"><i class="fas fa-envelope"></i> Contact</a>
+  <nav>
+    <a href="#home"><i class="fas fa-house"></i> Home</a>
+    <a href="#services"><i class="fas fa-cogs"></i> Services</a>
+    <a href="#hydrolynk"><i class="fas fa-tint"></i> Hydrolynk</a>
+    <a href="#founder"><i class="fas fa-user"></i> Founder</a>
+    <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
   </nav>
 
-  <!-- Sections container - horizontally scrollable and click to view -->
-  <div id="sections-container" role="main" aria-live="polite">
-    
-    <!-- Home Section -->
-    <section id="home" aria-label="About SLI RESOURCES">
-      <div class="content-wrapper">
-        <div class="side-image" style="flex-basis:100%; max-width:400px; margin: 0 auto;">
-          <img src="sli-logo.png" alt="SLI RESOURCES Logo" style="width:100%; filter: drop-shadow(0 0 12px #00a859);" />
+  <section id="home">
+    <div class="content">
+      <h1>SLI RESOURCES</h1>
+      <p>We light up the future through innovative, smart, and automated solutions for homes, agriculture, and industries. At SLI RESOURCES, we are proud to push boundaries with every project, offering products that not only solve real-world problems but also shape the future of sustainable technology in Africa and beyond.</p>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="content">
+      <h2>Our Services</h2>
+      <div class="services">
+        <div class="service">
+          <i class="fas fa-bolt"></i>
+          <h3>Smart Energy</h3>
+          <p>Energy-efficient systems designed to power homes and industries with intelligence and cost-saving features, while minimizing environmental impact.</p>
         </div>
-        <div class="text-left" style="text-align:center; margin-top:1rem;">
-          <h2 style="font-family: 'Georgia', serif; font-size: 3.5rem; letter-spacing: 4px; color: #00a859; text-shadow: 0 0 12px #00a859;">
-            SLI RESOURCES
-          </h2>
-          <p style="font-family: 'Trebuchet MS', sans-serif; font-size: 1.3rem; max-width: 700px; margin: 0 auto; line-height: 1.6;">
-            SLI RESOURCES is a pioneering technology innovation company focused on developing smart automation solutions tailored for homes, agriculture, and industries. 
-            We pride ourselves on creating products that combine convenience, efficiency, and sustainability.<br><br>
-            Our mission is to improve everyday life through practical, cutting-edge technology designed for Africa’s unique needs. Our flagship product, Hydrolynk, demonstrates our commitment to quality and innovation.<br><br>
-            Join us as we light up the future with solutions that matter.
-          </p>
+        <div class="service">
+          <i class="fas fa-industry"></i>
+          <h3>Automation</h3>
+          <p>We design and deploy automation for farming, water systems, and smart home setups using microcontrollers and sensors for optimal control.</p>
+        </div>
+        <div class="service">
+          <i class="fas fa-microchip"></i>
+          <h3>Tech Innovation</h3>
+          <p>From concept to prototype, we develop devices like IR blasters, auto erasers, and smart indicators to meet modern-day demands.</p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Hydrolynk Product Section -->
-    <section id="hydrolynk" aria-label="Hydrolynk Product">
-      <div class="content-wrapper" style="justify-content: space-between;">
-        <div class="text-left" style="flex-basis: 50%;">
-          <h2>Hydrolynk Smart Pump Controller</h2>
-          <p>
-            Hydrolynk is an intelligent automatic water pump control system designed to provide efficient water management for homes, farms, and industries. 
-            It monitors water levels in tanks and reservoirs and automatically controls the pump to prevent dry running and overflow, extending pump life and conserving energy.
-          </p>
-          <p>
-            Featuring an intuitive design, Hydrolynk ensures reliable water supply with minimal manual intervention, reducing labor and providing peace of mind.
-          </p>
-          <p><strong>Price: ₦30,000</strong></p>
-          <a href="https://wa.me/2349023226544?text=I%20want%20to%20buy%20Hydrolynk" target="_blank" rel="noopener" aria-label="Buy Hydrolynk on WhatsApp">
-            <button class="buy-button" style="background:#25D366; color:#fff; font-weight:700; padding: 10px 20px; border:none; border-radius:6px; cursor:pointer;">
-              <i class="fab fa-whatsapp"></i> Buy Now
-            </button>
-          </a>
-        </div>
-        <div class="side-image" style="flex-basis: 45%; max-width: 400px;">
-          <img src="hydrolynk.png" alt="Hydrolynk Smart Pump Controller" />
-        </div>
-      </div>
-    </section>
+  <section id="hydrolynk">
+    <div class="content">
+      <h2><i class="fas fa-tint"></i> Hydrolynk Product</h2>
+      <p>Hydrolynk is our flagship smart pump controller, preventing water overflow and dry runs, built for reliability and simplicity in homes, farms, and industries.</p>
+      <img class="side-image" src="hydrolynk.png" alt="Hydrolynk Product" />
+    </div>
+  </section>
 
-    <!-- Founder Section -->
-    <section id="founder" aria-label="Founder Saviour Lawrence Inyang">
-      <div class="content-wrapper" style="justify-content: space-between;">
-        <div class="text-left" style="flex-basis: 50%;">
-          <h2>Meet the Founder</h2>
-          <p>
-            <strong>Saviour Lawrence Inyang</strong> – CEO & Lead Innovator at SLI RESOURCES<br><br>
-            A graduate of Chemistry from Akwa Ibom State University, Saviour is passionate about leveraging technology to solve real-life challenges and improve the quality of life.
-          </p>
-          <p>
-            Under his visionary leadership, SLI RESOURCES continues to develop impactful innovations such as Hydrolynk and other smart devices tailored for the African market.
-          </p>
-        </div>
-        <div class="side-image" style="flex-basis: 45%; max-width: 400px;">
-          <img src="founder.png" alt="Saviour Lawrence Inyang, Founder" />
-        </div>
-      </div>
-    </section>
+  <section id="founder">
+    <div class="content">
+      <h2><i class="fas fa-user"></i> Founder - Saviour Lawrence Inyang</h2>
+      <p>Saviour Lawrence Inyang is a graduate of Chemistry from Akwa Ibom State University, with a vision to empower lives through practical technology. As the founder of SLI RESOURCES, he leads a team of creative thinkers and engineers on a mission to redefine innovation in Africa.</p>
+      <img class="side-image" src="founder.png" alt="Founder Image" />
+    </div>
+  </section>
 
-    <!-- Contact Section -->
-    <section id="contact" aria-label="Contact Information">
-      <div class="content-wrapper" style="flex-direction: column; gap: 15px; max-width: 600px; margin: 0 auto;">
-        <h2>Contact Us</h2>
-        <p><i class="fas fa-phone" style="color:#00a859;"></i> <a href="tel:+2349023226544" aria-label="Call SLI Resources">+234 902 322 6544</a></p>
-        <p><i class="fas fa-envelope" style="color:#00a859;"></i> <a href="mailto:sliresourcess@gmail.com" aria-label="Email SLI Resources">sliresourcess@gmail.com</a></p>
-        <p><i class="fab fa-linkedin" style="color:#00a859;"></i> <a href="https://www.linkedin.com/in/sliresources" target="_blank" rel="noopener" aria-label="LinkedIn SLI Resources">linkedin.com/in/sliresources</a></p>
-      </div>
-    </section>
+  <section id="contact">
+    <div class="content">
+      <h2><i class="fas fa-envelope"></i> Contact Us</h2>
+      <p><i class="fas fa-phone"></i> +2349023226544</p>
+      <p><i class="fas fa-envelope"></i> sliresourcess@gmail.com</p>
+      <p><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/sliresources" target="_blank" style="color: #00ffcc;">LinkedIn</a></p>
+    </div>
+  </section>
 
+  <!-- Chatbot Toggle -->
+  <div class="chat-toggle" onclick="toggleChatbot()">
+    <i class="fas fa-comment"></i>
   </div>
 
-  <footer>
-    <p>© 2025 SLI RESOURCES. All rights reserved.</p>
-  </footer>
+  <!-- Chatbot Box -->
+  <div class="chatbot" id="chatbot">
+    <iframe
+      src="https://chat.openai.com/"
+      width="100%"
+      height="100%"
+      style="border:none; border-radius: 10px;">
+    </iframe>
+  </div>
 
-  <!-- ChatGPT Chatbot (FANNYREX) -->
-  <div id="chatbox" role="region" aria-live="polite" aria-label="FANNYREX chat assistant">
-    <div id="chatbox-header" aria-live="assertive" style="background:#00a859; color:#fff; padding:10px 15px; font-weight:bold; border-radius: 12px 12px 0 0;">
-      FANNYREX 💬
-    </div>
-    <div id="chatlog" style="flex:1; overflow-y:auto; padding:12px 15px; background:#f7f7f7; color:#222; font-size:14px; max-height:300px;"></div>
-    <input
-      id="userinput"
-      type="text"
-      placeholder="Ask FANNYREX..."
-      aria-label="Type your message to FANNYREX"
-      autocomplete="off"
-      style
+  <script>
+    function toggleChatbot() {
+      const chatbot = document.getElementById('chatbot');
+      chatbot.style.display = chatbot.style.display === 'flex' ? 'none' : 'flex';
+    }
+  </script>
+</body>
+  </html>

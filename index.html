@@ -1,250 +1,170 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SLI RESOURCES – We Light Up the Future</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    :root {
-      --bg: #0e0e0e;
-      --text: #f4f4f4;
-      --primary: #00d1ff;
+    html { scroll-behavior: smooth; }
+    body.loading::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: #fff url('https://i.imgur.com/LLF5iyg.gif') no-repeat center center;
+      z-index: 9999;
     }
-    body.light-mode {
-      --bg: #ffffff;
-      --text: #000000;
-      --primary: #0077cc;
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s forwards;
     }
-    body {
-      background-color: var(--bg);
-      color: var(--text);
-      line-height: 1.8;
-      animation: fadeInBody 2s ease-in-out;
-      transition: background 0.3s, color 0.3s;
-      font-family: 'Segoe UI', sans-serif;
-      scroll-behavior: smooth;
+    @keyframes fadeInUp {
+      to { opacity: 1; transform: translateY(0); }
     }
-    @keyframes fadeInBody {
-      0% { opacity: 0; }
-      100% { opacity: 1; }
+    .icon-animate {
+      display: inline-block;
+      animation: iconBounce 2s infinite;
     }
-    header {
-      background-color: #111;
-      padding: 20px 30px;
+    @keyframes iconBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+    .founder-card, .section {
+      background: #f0f0f0;
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      font-family: Arial, sans-serif;
+    }
+    .founder-card:hover, .section:hover {
+      animation: glow 1s infinite alternate;
+    }
+    .founder-card {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
+      flex-direction: column;
       align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 999;
-      animation: slideDown 1s ease-in-out;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+      border: 2px solid transparent;
     }
-    @keyframes slideDown {
-      0% { transform: translateY(-100%); }
-      100% { transform: translateY(0); }
+    .founder-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      border: 2px solid #00d1ff;
     }
-    header h1 {
-      font-size: 24px;
-      color: var(--primary);
+    .buy-button, .product-toggle, input[type="submit"] {
+      display: inline-block;
+      padding: 12px 24px;
+      background-color: #00d1ff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: box-shadow 0.3s ease;
+      margin-top: 15px;
     }
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-      margin-top: 10px;
+    .buy-button:hover, .product-toggle:hover, input[type="submit"]:hover {
+      animation: glow 1s infinite alternate;
     }
     nav a {
-      color: var(--text);
-      text-decoration: none;
-      font-weight: 600;
-      transition: color 0.3s;
+      transition: text-shadow 0.3s ease;
     }
     nav a:hover {
-      color: var(--primary);
-    }
-    .toggle-mode {
-      position: fixed;
-      top: 20px;
-      left: 20px;
-      background: var(--primary);
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 30px;
-      cursor: pointer;
-      z-index: 10000;
-      font-weight: bold;
-      box-shadow: 0 0 10px rgba(0, 209, 255, 0.3);
-    }
-    section {
-      padding: 60px 20px;
-      max-width: 1100px;
-      margin: auto;
-    }
-    h2 {
-      font-size: 26px;
-      color: var(--primary);
-      margin-bottom: 20px;
-    }
-    p {
-      font-size: 16px;
-      margin-bottom: 15px;
-    }
-    .section-description {
-      font-size: 16px;
-      color: var(--text);
-      margin-bottom: 30px;
-      line-height: 1.8;
+      text-shadow: 0 0 8px #00d1ff;
     }
     .testimonial {
-      background: rgba(255, 255, 255, 0.05);
-      border-left: 5px solid var(--primary);
       padding: 20px;
+      margin: 20px auto;
+      max-width: 700px;
+      border-radius: 10px;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: box-shadow 0.3s ease;
+    }
+    .testimonial:hover {
+      box-shadow: 0 0 20px #00d1ff;
+    }
+    @keyframes glow {
+      from { box-shadow: 0 0 10px #00d1ff; }
+      to { box-shadow: 0 0 20px #00d1ff; }
+    }
+    .founder-card h2 {
+      font-size: 2em;
+      color: #222;
+      margin-bottom: 10px;
+    }
+    .founder-card p {
+      font-size: 1em;
+      color: #444;
+      line-height: 1.6;
+    }
+    .founder-avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
       margin-bottom: 20px;
-      border-radius: 8px;
-    }
-    .testimonial strong {
-      color: var(--primary);
-    }
-    textarea, input[type="text"], input[type="email"] {
-      width: 100%;
-      padding: 15px;
-      border-radius: 6px;
-      border: 1px solid var(--primary);
-      background: var(--bg);
-      color: var(--text);
-      font-size: 15px;
-      margin-bottom: 15px;
-      resize: vertical;
-    }
-    input[type="submit"] {
-      background: var(--primary);
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      font-weight: bold;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-    @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .toggle-mode {
-        padding: 8px 16px;
-        font-size: 14px;
-      }
-      nav {
-        gap: 10px;
-        margin-top: 10px;
-      }
-      header h1 {
-        font-size: 20px;
-      }
-      section {
-        padding: 40px 15px;
-      }
-      h2 {
-        font-size: 22px;
-      }
-      p {
-        font-size: 15px;
-      }
+      border: 4px solid #00d1ff;
     }
   </style>
-</head>
-<body>
-  <button class="toggle-mode" onclick="document.body.classList.toggle('light-mode')">Toggle Mode</button>
-  <header>
-    <h1>SLI RESOURCES</h1>
-    <nav>
-      <a href="#products">Products</a>
-      <a href="#hydrolynk">Hydrolynk</a>
-      <a href="#founder">Founder</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
-
-  <section id="home">
-    <h2>Welcome to SLI RESOURCES</h2>
-    <div class="section-description">
-      SLI RESOURCES is a pioneering technology company committed to delivering smart, sustainable, and accessible tech solutions that redefine modern living. Our goal is to develop innovative products that simplify everyday challenges—from water management and smart automation to energy efficiency and educational tools. We are deeply rooted in problem-solving, creativity, and social impact. Join us as we light up the future with cutting-edge devices engineered for today's fast-paced world. On this landing page, you'll discover everything about who we are, what we do, and why SLI RESOURCES is the perfect tech partner for the modern era.
-    </div>
-    <p>We Light Up the Future with Smart Innovation...</p>
-  </section>
-
-  <section id="products">
-    <h2>Our Products</h2>
-    <div class="section-description">
-      At SLI RESOURCES, our product line is a reflection of visionary thinking and technical expertise. Each innovation is carefully designed to meet specific needs in residential, commercial, and institutional settings. From Hydrolynk’s water automation capabilities to our upcoming smart IR blasters and rechargeable whiteboards, our products aim to deliver efficiency, safety, and convenience.
-    </div>
-  </section>
-
-  <section id="hydrolynk">
-    <h2>Hydrolynk</h2>
-    <div class="section-description">
-      Hydrolynk is our flagship product—a fully automated smart water pump controller designed to revolutionize water management. It features sensors, dry-run protection, and smart alerts. Whether in homes or industries, Hydrolynk provides reliability and peace of mind.
-    </div>
-  </section>
-
-  <section id="founder">
-    <h2>Founder</h2>
-    <div class="section-description">
-      Saviour Lawrence Inyang, the visionary behind SLI RESOURCES, is a passionate innovator and tech entrepreneur. A graduate of Chemistry from Akwa Ibom State University, he combines scientific knowledge with tech skills to engineer meaningful solutions.
-    </div>
-  </section>
-
-  <section id="testimonials">
-    <h2>Testimonials</h2>
-    <div class="testimonial">
-      “Hydrolynk has completely changed how I manage water at home. I never worry about tank overflow again!”<br>
-      <strong>– Grace U., Uyo</strong>
-    </div>
-    <div class="testimonial">
-      “The products from SLI RESOURCES are smart, simple, and reliable. I recommend them to every homeowner.”<br>
-      <strong>– Samuel E., Lagos</strong>
-    </div>
-    <div class="testimonial">
-      “As an engineer, I admire the innovation in their work. It's exciting to see Nigerian tech grow like this.”<br>
-      <strong>– Chinedu I., Port Harcourt</strong>
-    </div>
-  </section>
-
-  <section id="suggestions">
-    <h2>Leave a Suggestion</h2>
-    <div class="section-description">
-      Your opinion matters to us. Let us know how we can serve you better.
-    </div>
-    <textarea rows="5" placeholder="Write your suggestion here..."></textarea>
-  </section>
-
-  <section id="contact">
-    <h2>Contact Us</h2>
-    <div class="section-description">
-      We’re always listening. Send us a message through this form or use our WhatsApp and email details below.
-    </div>
-    <form action="mailto:sliresourcess@gmail.com" method="post" enctype="text/plain">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <textarea name="message" rows="6" placeholder="Your Message"></textarea>
-      <input type="submit" value="Send Message">
-    </form>
-    <p>Email: sliresourcess@gmail.com<br>
-    WhatsApp: +2349023226544<br>
-    LinkedIn: <a href="https://www.linkedin.com/in/sliresources" target="_blank">sliresources</a></p>
-  </section>
-
   <script>
-    if (localStorage.getItem('theme') === 'light') {
-      document.body.classList.add('light-mode');
-    }
-    document.querySelector('.toggle-mode').addEventListener('click', () => {
-      const isLight = document.body.classList.toggle('light-mode');
-      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    document.addEventListener("DOMContentLoaded", function () {
+      document.body.classList.remove("loading");
     });
   </script>
-</body>
-        </html>
+</head>
+<body class="loading">  <section id="founder" class="active fade-in">
+    <div class="founder-card">
+      <img src="https://i.imgur.com/8Km9tLL.jpg" alt="Founder Photo" class="founder-avatar">
+      <h2><i class="fas fa-user-tie icon-animate"></i> Meet the Founder</h2>
+      <p>Saviour Lawrence Inyang is the visionary behind SLI RESOURCES. With a solid academic foundation in Chemistry from Akwa Ibom State University, he has dedicated his life to transforming ideas into impactful technology for local communities. His career reflects passion, purpose, and progressive thinking.</p>
+      <p>With years of experience in hardware design, IoT, and automation systems, Saviour founded SLI RESOURCES to bridge gaps in energy, water, and automation using affordable smart tools. His vision of African-made global innovations drives the company’s core operations.</p>
+      <p>He is also a public speaker, mentor, and researcher, collaborating with institutions and start-ups to accelerate sustainable development across Africa. When he’s not building prototypes, he’s inspiring young talents to believe in the power of invention.</p>
+    </div>
+  </section>  <section class="section fade-in">
+    <h2><i class="fas fa-cogs icon-animate"></i> Our Products</h2>
+    <p>SLI RESOURCES offers a wide range of smart, locally engineered products tailored for homes, farms, schools, and industries. Our products solve real problems and are built for durability, simplicity, and cost-effectiveness. Some of our flagship and upcoming products include:</p>
+    <ul>
+      <li><strong>Hydrolynk:</strong> A fully automatic water pump control system – removes guesswork in water usage.</li>
+      <li><strong>Rechargeable Whiteboard with Auto Eraser:</strong> Ideal for modern classrooms and conference rooms.</li>
+      <li><strong>Smart Water Level Indicator:</strong> Avoid tank overflow or dry running pumps.</li>
+      <li><strong>Infrared Blaster System:</strong> A universal remote solution for smart control of appliances.</li>
+      <li><strong>Energy Optimizer Kit:</strong> Reduce power waste and increase lifespan of electronics.</li>
+    </ul>
+    <a href="#" class="buy-button">Buy Hydrolynk - ₦30,000</a>
+  </section>  <section class="section fade-in">
+    <h2><i class="fas fa-hands-helping icon-animate"></i> Our Services</h2>
+    <p>At SLI RESOURCES, we don't just sell products – we offer solutions. Our services are designed to help individuals, institutions, and organizations automate, simplify, and elevate their operations. Here's what we offer:</p>
+    <ul>
+      <li><strong>Custom IoT Solutions:</strong> We build bespoke smart systems tailored to specific needs – from smart irrigation to smart classrooms.</li>
+      <li><strong>Consultation & Installation:</strong> Get expert guidance and professional setup for all our products anywhere in Nigeria.</li>
+      <li><strong>Technical Training:</strong> We host bootcamps, seminars, and training programs to groom the next generation of inventors.</li>
+      <li><strong>Maintenance & Repairs:</strong> Keep your systems running smoothly with our after-sales support and diagnostics.</li>
+      <li><strong>Research Collaboration:</strong> We partner with schools, NGOs, and enterprises to explore tech-based problem solving in society.</li>
+    </ul>
+  </section>  <section class="section fade-in">
+    <h2><i class="fas fa-comments icon-animate"></i> Testimonials</h2>
+    <div class="testimonial">
+      <p>“Hydrolynk transformed the way I manage water in my house. No more overflow or dry tanks. Just peace of mind!”<br><strong>– Grace, Lagos</strong></p>
+    </div>
+    <div class="testimonial">
+      <p>“SLI RESOURCES has helped us automate our farm irrigation at a fraction of the cost others offered.”<br><strong>– Daniel, Uyo</strong></p>
+    </div>
+    <div class="testimonial">
+      <p>“I'm a school principal and the automatic whiteboard is a lifesaver. Teachers love it, students are more engaged.”<br><strong>– Mrs. Josephine, Akwa Ibom</strong></p>
+    </div>
+    <div class="testimonial">
+      <p>“They really know how to listen to your problems and offer custom tech advice. Great support team!”<br><strong>– Michael, Abuja</strong></p>
+    </div>
+  </section>  <section class="section fade-in">
+    <h2><i class="fas fa-envelope icon-animate"></i> Contact Us</h2>
+    <form action="mailto:sliresourcess@gmail.com" method="post" enctype="text/plain">
+      <input type="text" name="name" placeholder="Your Name" required><br><br>
+      <input type="email" name="email" placeholder="Your Email" required><br><br>
+      <textarea name="message" placeholder="Your Message" rows="5" required></textarea><br><br>
+      <input type="submit" value="Send Message">
+    </form>
+  </section></body>
+  </html>

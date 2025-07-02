@@ -33,6 +33,10 @@
       border-radius: 20px;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
       font-family: Arial, sans-serif;
+      display: none;
+    }
+    #landing {
+      display: block;
     }
     .section:hover, .founder-card:hover { animation: glow 1s infinite alternate; }
     .founder-card {
@@ -107,12 +111,12 @@
 </head>
 <body class="loading">
   <nav>
-    <button onclick="document.getElementById('founder').scrollIntoView({behavior:'smooth'})"><i class="fas fa-user"></i> Founder</button>
-    <button onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})"><i class="fas fa-box"></i> Products</button>
-    <button onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})"><i class="fas fa-tools"></i> Services</button>
-    <button onclick="document.getElementById('testimonials').scrollIntoView({behavior:'smooth'})"><i class="fas fa-comment"></i> Testimonials</button>
-    <button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})"><i class="fas fa-envelope"></i> Contact</button>
-  </nav>  <section class="section fade-in">
+    <button onclick="showSection('founder')"><i class="fas fa-user"></i> Founder</button>
+    <button onclick="showSection('products')"><i class="fas fa-box"></i> Products</button>
+    <button onclick="showSection('services')"><i class="fas fa-tools"></i> Services</button>
+    <button onclick="showSection('testimonials')"><i class="fas fa-comment"></i> Testimonials</button>
+    <button onclick="showSection('contact')"><i class="fas fa-envelope"></i> Contact</button>
+  </nav>  <section id="landing" class="section fade-in">
     <h2><i class="fas fa-bolt icon-animate"></i> Welcome to SLI RESOURCES</h2>
     <p>SLI RESOURCES is a leading innovation-driven company committed to delivering smart technology solutions that enhance everyday life. Based in Nigeria and founded by a graduate of Chemistry, Saviour Lawrence Inyang, our mission is to develop affordable, locally-made devices that solve real-life problems in water management, energy control, smart automation, and education.</p>
     <p>From the flagship Hydrolynk water automation system to custom Internet of Things (IoT) installations, our products and services are built for reliability, scalability, and impact. We empower individuals, businesses, and institutions with the tools they need to thrive in a smart, efficient, and sustainable environment. At SLI RESOURCES, we don’t just light up your home – we light up the future.</p>
@@ -147,6 +151,11 @@
   </div>  <div onclick="toggleChatbox()" title="Chat with FANNYREX" style="position: fixed; bottom: 20px; right: 20px; background: #00d1ff; color: white; padding: 15px; border-radius: 50%; box-shadow: 0 4px 12px rgba(0,0,0,0.2); cursor: pointer; font-size: 24px; z-index: 999;">
     💬
   </div>  <script>
+    function showSection(id) {
+      document.querySelectorAll('.section, .founder-card').forEach(sec => sec.style.display = 'none');
+      document.getElementById(id).style.display = 'block';
+    }
+
     document.addEventListener("DOMContentLoaded", function () {
       document.body.classList.remove("loading");
     });
@@ -188,4 +197,4 @@
       }
     });
   </script></body>
-  </html>
+      </html>

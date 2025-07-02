@@ -81,6 +81,12 @@
       gap: 15px;
       transition: opacity 0.5s ease;
       user-select: none;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none; /* Firefox */
+    }
+    nav::-webkit-scrollbar {
+      display: none; /* Chrome, Safari */
     }
     nav button {
       background: none;
@@ -94,6 +100,8 @@
       padding: 8px 12px;
       border-radius: 8px;
       transition: background-color 0.3s ease, color 0.3s ease;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
     nav button:hover {
       background-color: #00d1ff;
@@ -227,7 +235,6 @@
 
   <script>
     function showSection(id) {
-      // Hide all sections and founder card except landing (if id is 'landing', show it)
       document.querySelectorAll('.section, .founder-card').forEach(sec => sec.style.display = 'none');
       if(id === 'landing'){
         document.getElementById('landing').style.display = 'block';

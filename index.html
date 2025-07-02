@@ -1,214 +1,424 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SLI RESOURCES</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body {
-      font-family: 'Roboto', sans-serif;
-      background-color: #111;
-      color: #fff;
-      scroll-behavior: smooth;
-      overflow-x: hidden;
-    }body.light {
-  background-color: #f5f5f5;
-  color: #000;
-}
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SLI RESOURCES</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet" />
+<style>
+  /* Reset & basics */
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
+  }
+  body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #111;
+    color: #eee;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+  }
+  body.light {
+    background-color: #f9f9f9;
+    color: #222;
+  }
 
-nav {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background: rgba(0, 0, 0, 0.8);
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  padding: 1rem;
-  z-index: 1000;
-}
-nav a {
-  color: #fff;
-  font-weight: bold;
-  text-decoration: none;
-}
-nav a:hover {
-  color: #00ffcc;
-}
+  /* Blurred background with SLI logo for all sections */
+  section::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: url('sli-logo.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    filter: blur(6px);
+    opacity: 0.1;
+    z-index: 0;
+  }
 
-.toggle-mode {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  background: #00ffcc;
-  color: #000;
-  border: none;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  font-size: 1.2rem;
-  cursor: pointer;
-  z-index: 1001;
-}
+  /* Sections base styles */
+  section {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    overflow: hidden;
+  }
+  section .content {
+    position: relative;
+    z-index: 1;
+    max-width: 1000px;
+    display: none;
+    flex-direction: column;
+    gap: 1rem;
+    text-align: left;
+  }
+  section .content.active {
+    display: flex;
+  }
 
-section {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  padding: 4rem 2rem;
-  text-align: center;
-}
-section::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url('sli-logo.png');
-  background-size: cover;
-  background-position: center;
-  opacity: 0.1;
-  filter: blur(20px);
-  z-index: 0;
-}
+  /* Nav styles - horizontal, floating */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: rgba(0,0,0,0.85);
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    padding: 1rem 2rem;
+    z-index: 10000;
+    font-weight: 700;
+  }
+  nav a {
+    color: #eee;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+    cursor: pointer;
+  }
+  nav a:hover {
+    color: #00ffc1;
+  }
+  body.light nav {
+    background: rgba(255,255,255,0.85);
+  }
+  body.light nav a {
+    color: #222;
+  }
+  body.light nav a:hover {
+    color: #009973;
+  }
 
-.content {
-  position: relative;
-  z-index: 1;
-  max-width: 1000px;
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
+  /* Dark/Light mode toggle */
+  .toggle-mode {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    background: #00ffc1;
+    color: #000;
+    border: none;
+    border-radius: 50%;
+    width: 42px;
+    height: 42px;
+    font-size: 1.4rem;
+    cursor: pointer;
+    z-index: 10001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 8px #00ffc1;
+    transition: background 0.3s ease;
+  }
+  .toggle-mode:hover {
+    background: #00d8a8;
+  }
 
-.active { display: flex !important; }
+  /* Section headings */
+  h1, h2 {
+    color: #00ffc1;
+    margin-bottom: 1rem;
+    user-select: none;
+  }
+  body.light h1, body.light h2 {
+    color: #009973;
+  }
 
-h1, h2 {
-  color: #00ffcc;
-  margin-bottom: 1rem;
-}
-p {
-  font-size: 1.2rem;
-  line-height: 1.6;
-  color: #ccc;
-}
+  /* Paragraph styles */
+  p {
+    font-size: 1.18rem;
+    line-height: 1.7;
+    color: #ccc;
+  }
+  body.light p {
+    color: #444;
+  }
 
-.row {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
-}
+  /* Layout for Hydrolynk and Founder - image left, text right */
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 2rem;
+  }
+  .row img {
+    max-width: 400px;
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0,255,193,0.3);
+    z-index: 1;
+    user-select: none;
+  }
+  .row .text {
+    flex: 1;
+  }
 
-.side-image {
-  max-width: 400px;
-  height: auto;
-  border-radius: 12px;
-  box-shadow: 0 0 10px #000;
-}
+  /* Landing section (SLI Resources picture + title below) */
+  #landing {
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    gap: 2rem;
+  }
+  #landing img {
+    max-width: 350px;
+    border-radius: 20px;
+    box-shadow: 0 0 30px #00ffc1aa;
+  }
+  #landing h1 {
+    font-size: 3rem;
+    margin-top: -3rem;
+    user-select: none;
+  }
 
-.chatbot {
-  position: fixed;
-  bottom: 80px;
-  right: 20px;
-  width: 320px;
-  height: 400px;
-  background: #fff;
-  border-radius: 10px;
-  display: none;
-  flex-direction: column;
-  z-index: 9999;
-}
-.chat-toggle {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 50px;
-  height: 50px;
-  background: #00ffcc;
-  color: #000;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  cursor: pointer;
-  z-index: 1000;
-}
+  /* Contact section with floating icons */
+  #contact p {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.2rem;
+  }
+  #contact p i {
+    color: #00ffc1;
+    min-width: 22px;
+    text-align: center;
+  }
+  body.light #contact p i {
+    color: #009973;
+  }
 
-  </style>
+  /* Floating chat icon bottom right */
+  .chat-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 56px;
+    height: 56px;
+    background: #00ffc1;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    font-size: 1.8rem;
+    cursor: pointer;
+    box-shadow: 0 0 15px #00ffc1;
+    z-index: 10002;
+  }
+  .chatbot {
+    position: fixed;
+    bottom: 86px;
+    right: 20px;
+    width: 360px;
+    height: 480px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 0 30px #00ffc1cc;
+    display: none;
+    flex-direction: column;
+    z-index: 10003;
+  }
+  body.light .chatbot {
+    background: #f9f9f9;
+  }
+  .chatbot iframe {
+    border: none;
+    border-radius: 12px;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Animations for section reveal */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .content.active {
+    animation: fadeInUp 0.7s ease forwards;
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    nav {
+      gap: 1.2rem;
+      padding: 0.7rem 1rem;
+    }
+    nav a {
+      font-size: 0.95rem;
+    }
+    .row {
+      flex-direction: column;
+    }
+    .row img {
+      max-width: 100%;
+    }
+    .row .text {
+      width: 100%;
+    }
+    #landing h1 {
+      font-size: 2.2rem;
+    }
+  }
+</style>
 </head>
 <body>
-  <button class="toggle-mode" onclick="document.body.classList.toggle('light')">
-    <i class="fas fa-adjust"></i>
-  </button>  <nav>
-    <a href="#" onclick="showSection('home')"><i class="fas fa-house"></i> Home</a>
-    <a href="#" onclick="showSection('services')"><i class="fas fa-cogs"></i> Services</a>
-    <a href="#" onclick="showSection('hydrolynk')"><i class="fas fa-tint"></i> Hydrolynk</a>
-    <a href="#" onclick="showSection('founder')"><i class="fas fa-user"></i> Founder</a>
-    <a href="#" onclick="showSection('contact')"><i class="fas fa-envelope"></i> Contact</a>
-  </nav>  <section id="home">
-    <div class="content active">
-      <h1>SLI RESOURCES</h1>
-      <p>We light up the future through innovation in smart automation and technology development. From smart homes to agriculture and water management, SLI RESOURCES is committed to building Africa's next tech frontier.</p>
-    </div>
-  </section>  <section id="services">
-    <div class="content">
-      <h2>Our Services</h2>
-      <p>SLI RESOURCES provides services in smart energy systems, IoT automation, and hardware development. We specialize in solutions like Hydrolynk, IR blasters, and smart erasers to transform how users interact with technology.</p>
-    </div>
-  </section>  <section id="hydrolynk">
-    <div class="content">
-      <div class="row">
-        <div>
-          <h2>Hydrolynk</h2>
-          <p>Hydrolynk is an automatic water pump controller that ensures optimal water usage without manual intervention. It prevents dry runs and overflow with real-time monitoring, suitable for homes, farms, and industries.</p>
-        </div>
-        <img src="hydrolynk.png" alt="Hydrolynk" class="side-image">
-      </div>
-    </div>
-  </section>  <section id="founder">
-    <div class="content">
-      <div class="row">
-        <div>
-          <h2>Saviour Lawrence Inyang</h2>
-          <p>Founder & CEO, SLI RESOURCES. A graduate of Chemistry from Akwa Ibom State University with a deep passion for innovation and transforming challenges into scalable tech solutions.</p>
-        </div>
-        <img src="founder.png" alt="Founder" class="side-image">
-      </div>
-    </div>
-  </section>  <section id="contact">
-    <div class="content">
-      <h2>Contact Us</h2>
-      <p><i class="fas fa-phone"></i> +2349023226544</p>
-      <p><i class="fas fa-envelope"></i> sliresourcess@gmail.com</p>
-      <p><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/sliresources" target="_blank" style="color:#00ffcc;">LinkedIn</a></p>
-    </div>
-  </section>  <div class="chat-toggle" onclick="toggleChatbot()">
-    <i class="fas fa-comment"></i>
-  </div>  <div class="chatbot" id="chatbot">
-    <iframe
-      src="https://chat.openai.com/"
-      width="100%"
-      height="100%"
-      style="border:none; border-radius: 10px;">
-    </iframe>
-  </div>  <script>
-    function toggleChatbot() {
-      const bot = document.getElementById('chatbot');
-      bot.style.display = bot.style.display === 'flex' ? 'none' : 'flex';
-    }
 
-    function showSection(id) {
-      document.querySelectorAll('.content').forEach(sec => sec.classList.remove('active'));
-      document.querySelector(`#${id} .content`).classList.add('active');
+<!-- Dark/Light toggle -->
+<button class="toggle-mode" aria-label="Toggle dark/light mode" title="Toggle dark/light mode" onclick="toggleDarkLight()">
+  <i class="fas fa-adjust"></i>
+</button>
+
+<!-- Navigation -->
+<nav>
+  <a onclick="showSection('landing')" role="button" tabindex="0"><i class="fas fa-house"></i> Landing</a>
+  <a onclick="showSection('services')" role="button" tabindex="0"><i class="fas fa-cogs"></i> Services</a>
+  <a onclick="showSection('hydrolynk')" role="button" tabindex="0"><i class="fas fa-tint"></i> Hydrolynk</a>
+  <a onclick="showSection('founder')" role="button" tabindex="0"><i class="fas fa-user"></i> Founder</a>
+  <a onclick="showSection('contact')" role="button" tabindex="0"><i class="fas fa-envelope"></i> Contact</a>
+</nav>
+
+<!-- Landing Section -->
+<section id="landing">
+  <div class="content active">
+    <img src="sli-logo.png" alt="SLI Resources Logo" draggable="false" />
+    <h1>SLI RESOURCES</h1>
+    <p>
+      At SLI RESOURCES, we light up the future through innovation and smart technology solutions. 
+      We specialize in developing cutting-edge automation products that improve everyday life in homes, farms, and industries. Our commitment is to create scalable and sustainable technology that empowers Africa and beyond.
+    </p>
+  </div>
+</section>
+
+<!-- Services Section -->
+<section id="services">
+  <div class="content">
+    <h2>Our Services</h2>
+    <p>
+      SLI RESOURCES offers comprehensive tech services including IoT solutions, smart energy systems, hardware design, and software integration.
+      We deliver customized smart products such as automatic water pump controllers, rechargeable whiteboards with erasers, IR blasters, and more.
+      Our expert team works closely with clients to transform ideas into reliable, market-ready products.
+    </p>
+    <p>
+      We also provide consultancy in product innovation, prototyping, and manufacturing, focusing on quality and user-friendly designs.
+      Whether for personal or industrial use, our services aim to automate, simplify, and improve technological interactions.
+    </p>
+  </div>
+</section>
+
+<!-- Hydrolynk Section -->
+<section id="hydrolynk">
+  <div class="content">
+    <div class="row" style="justify-content:center;">
+      <img src="hydrolynk.png" alt="Hydrolynk Smart Pump Controller" draggable="false" />
+      <div class="text">
+        <h2>Hydrolynk Smart Pump Controller</h2>
+        <p>
+          Hydrolynk is an innovative automatic water pump controller designed to intelligently manage water flow.
+          It prevents dry running of pumps and flooding by monitoring water levels continuously.
+          Suitable for home use, farms, and industrial applications, Hydrolynk saves energy and protects your equipment.
+        </p>
+        <p>
+          Equipped with durable components and easy installation, Hydrolynk helps you conserve water and reduce manual labor.
+          Enjoy smart control, alerts, and efficient water management with our flagship product.
+        </p>
+        <p><strong>Price: ₦30,000</strong></p>
+        <a href="https://wa.me/2349023226544?text=I%20want%20to%20buy%20Hydrolynk" target="_blank" style="text-decoration:none;">
+          <button style="padding: 12px 25px; font-size:1rem; background:#00ffc1; border:none; border-radius:8px; cursor:pointer; color:#000; box-shadow: 0 0 10px #00ffc1;">
+            <i class="fas fa-shopping-cart"></i> Buy Now on WhatsApp
+          </button>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Founder Section -->
+<section id="founder">
+  <div class="content">
+    <div class="row" style="justify-content:center; flex-wrap: nowrap;">
+      <img src="founder.png" alt="Saviour Lawrence Inyang, Founder of SLI RESOURCES" draggable="false" />
+      <div class="text">
+        <h2>Saviour Lawrence Inyang</h2>
+        <p>
+          Founder & CEO of SLI RESOURCES, Saviour Lawrence is a visionary innovator and entrepreneur with a Chemistry degree from Akwa Ibom State University.
+          With a passion for transforming ideas into impactful technology, he leads the company towards creating smart, sustainable solutions for everyday challenges.
+        </p>
+        <p>
+          Under his guidance, SLI RESOURCES has grown into a hub of innovation, focused on smart automation, energy efficiency, and practical tech products that empower communities.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact">
+  <div class="content">
+    <h2>Contact Us</h2>
+    <p><i class="fas fa-phone"></i> +234 902 322 6544</p>
+    <p><i class="fas fa-envelope"></i> sliresourcess@gmail.com</p>
+    <p><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/sliresources" target="_blank" style="color:#00ffc1; text-decoration:none;">LinkedIn Profile</a></p>
+  </div>
+</section>
+
+<!-- Floating Chatbot Icon -->
+<div class="chat-toggle" title="Chat with FANNYREX AI" aria-label="Chat with FANNYREX AI" tabindex="0" role="button" onclick="toggleChatbot()">
+  <i class="fas fa-comment"></i>
+</div>
+
+<!-- Chatbot container -->
+<div class="chatbot" id="chatbot" aria-live="polite" aria-label="Chatbot window">
+  <iframe src="https://chat.openai.com" allow="clipboard-read; clipboard-write" loading="lazy" title="FANNYREX AI Chatbot"></iframe>
+</div>
+
+<script>
+  // Dark/Light mode toggle
+  function toggleDarkLight() {
+    document.body.classList.toggle('light');
+  }
+
+  // Show/hide sections content
+  function showSection(id) {
+    document.querySelectorAll('section .content').forEach(c => c.classList.remove('active'));
+    document.getElementById(id).querySelector('.content').classList.add('active');
+    // Scroll to top of section smoothly
+    window.scrollTo({ top: document.getElementById(id).offsetTop - 60, behavior: 'smooth' });
+  }
+
+  // Chatbot toggle
+  function toggleChatbot() {
+    const bot = document.getElementById('chatbot');
+    if (bot.style.display === 'flex') {
+      bot.style.display = 'none';
+    } else {
+      bot.style.display = 'flex';
     }
-  </script></body>
-      </html>
+  }
+
+  // Accessibility: allow nav links to open on keyboard Enter key
+  document.querySelectorAll('nav a').forEach(link => {
+    link.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        link.click();
+      }
+    });
+  });
+
+  // Initially show landing content only
+  showSection('landing');
+</script>
+
+</body>
+  </html>

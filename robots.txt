@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://rexphenom.github.io/Sli_Resources/sitemap.xml

@@ -220,6 +220,21 @@ p { margin: 0 0 var(--s4); }
 .prose h2 { font-size: var(--fs-xl); margin-top: var(--s7); }
 .pull { font: italic 400 var(--fs-xl)/1.25 var(--font-display); color: var(--link); border-left: 4px solid var(--blue-500); padding-left: var(--s5); margin: var(--s6) 0; max-width: 30ch; }
 
+/* ---------- Product catalogue ---------- */
+.product { display: flex; flex-direction: column; }
+.product .pimg { position: relative; margin: calc(var(--s6) * -1) calc(var(--s6) * -1) var(--s5); aspect-ratio: 4 / 3; background: radial-gradient(circle at 50% 40%, var(--navy-700), var(--navy-900)); display: grid; place-items: center; overflow: hidden; border-bottom: 1px solid var(--line); }
+.product .pimg img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 42%; }
+.product .pimg > svg { width: 56px; height: 56px; stroke: #7fd3f8; fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; opacity: .85; }
+.product p { flex: 1; margin-bottom: var(--s3); color: var(--ink-soft); font-size: var(--fs-sm); }
+.pfoot { display: flex; align-items: center; justify-content: space-between; gap: var(--s3); flex-wrap: wrap; margin-top: var(--s3); }
+.pprice { font: 600 1.35rem var(--font-display); color: var(--heading); letter-spacing: -.01em; }
+.product .more { margin: 0 0 var(--s2); display: inline-block; align-self: flex-start; }
+.badge { position: absolute; top: 12px; left: 12px; background: var(--blue-500); color: var(--navy-950); font: 800 .7rem var(--font-body); letter-spacing: .12em; text-transform: uppercase; padding: .35rem .6rem; border-radius: 4px; }
+.badge--off { background: #e5e9ed; color: #3a4954; }
+.btn--sm { padding: .7rem 1rem; min-height: 42px; font-size: .85rem; }
+.btn--off { background: var(--surface-2); color: var(--ink-soft); border-color: var(--line-strong); cursor: not-allowed; }
+.btn--off:hover { transform: none; }
+
 /* ---------- Process steps ---------- */
 .steps { counter-reset: step; display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--s5); list-style: none; padding: 0; margin: var(--s6) 0 0; }
 .steps li { counter-increment: step; position: relative; padding-top: var(--s6); }

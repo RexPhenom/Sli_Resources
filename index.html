@@ -1,352 +1,81 @@
-<!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<!doctype html>
+<html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>SLI RESOURCES — Smart automation, built for Africa</title>
-<meta name="description" content="SLI RESOURCES builds smart automation products for homes, farms and industries. Home of Hydrolynk, the automatic water pump controller. Based in Nigeria." />
-<meta name="theme-color" content="#060a0f" />
-<link rel="canonical" href="https://rexphenom.github.io/Sli_Resources/" />
-
-<!-- Social preview -->
-<meta property="og:type" content="website" />
-<meta property="og:site_name" content="SLI RESOURCES" />
-<meta property="og:title" content="SLI RESOURCES — Smart automation, built for Africa" />
-<meta property="og:description" content="Smart automation products for homes, farms and industries. Meet Hydrolynk, the automatic water pump controller." />
-<meta property="og:url" content="https://rexphenom.github.io/Sli_Resources/" />
-<meta property="og:image" content="https://rexphenom.github.io/Sli_Resources/assets/img/og.jpg" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
-<meta name="twitter:card" content="summary_large_image" />
-
-<link rel="icon" type="image/png" href="assets/img/favicon.png" />
-<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
-
-<!-- Set theme before first paint (no flash) -->
-<script>
-  (function () {
-    try {
-      var saved = localStorage.getItem("sli-theme");
-      var theme = saved || (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
-      document.documentElement.setAttribute("data-theme", theme);
-      document.documentElement.classList.add("js");
-      var m = document.querySelector('meta[name="theme-color"]');
-      if (m) m.setAttribute("content", theme === "light" ? "#f5f9fc" : "#060a0f");
-    } catch (e) { document.documentElement.classList.add("js"); }
-  })();
-</script>
-
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-<link rel="stylesheet" href="assets/css/styles.css" />
-<link rel="preload" as="image" href="assets/img/hydrolynk.webp" type="image/webp" />
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "SLI RESOURCES",
-  "url": "https://rexphenom.github.io/Sli_Resources/",
-  "logo": "https://rexphenom.github.io/Sli_Resources/assets/img/apple-touch-icon.png",
-  "email": "sliresourcess@gmail.com",
-  "telephone": "+2349023226544",
-  "founder": { "@type": "Person", "name": "Saviour Lawrence Inyang" },
-  "description": "Smart automation products for homes, farms and industries."
-}
-</script>
+<meta name="description" content="SLI RESOURCES builds smart automation products for homes, farms and industries. Home of Hydrolynk, the automatic water pump controller. Based in Nigeria.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; form-action 'self'; base-uri 'self'; object-src 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="theme-color" content="#f2f7fa">
+<link rel="canonical" href="https://rexphenom.github.io/Sli_Resources/">
+<meta property="og:type" content="website"><meta property="og:site_name" content="SLI RESOURCES">
+<meta property="og:title" content="SLI RESOURCES — Smart automation, built for Africa"><meta property="og:description" content="SLI RESOURCES builds smart automation products for homes, farms and industries. Home of Hydrolynk, the automatic water pump controller. Based in Nigeria.">
+<meta property="og:url" content="https://rexphenom.github.io/Sli_Resources/"><meta property="og:image" content="https://rexphenom.github.io/Sli_Resources/assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<script src="js/theme.js"></script>
+<link rel="icon" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="preload" as="image" href="assets/hydrolynk.webp" type="image/webp">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"SLI RESOURCES","url":"https://rexphenom.github.io/Sli_Resources/","logo":"https://rexphenom.github.io/Sli_Resources/assets/apple-touch-icon.png","email":"sliresourcess@gmail.com","telephone":"+2349023226544","founder":{"@type":"Person","name":"Saviour Lawrence Inyang"},"description":"Smart automation products for homes, farms and industries."}</script>
 </head>
-<body>
-<a class="skip" href="#main">Skip to content</a>
-
-<!-- ============ HEADER ============ -->
-<header class="site-header" id="top">
-  <div class="wrap nav">
-    <a class="brand" href="#top" aria-label="SLI RESOURCES — home">
-      <span class="brand-mark"><img src="assets/img/mark.png" alt="" width="26" height="26" /></span>
-      <span class="brand-text">SLI RESOURCES<small>INNOVATION</small></span>
-    </a>
-
-    <nav class="nav-links" aria-label="Primary">
-      <a href="#home" data-spy="home">Home</a>
-      <a href="#services" data-spy="services">Services</a>
-      <a href="#hydrolynk" data-spy="hydrolynk">Hydrolynk</a>
-      <a href="#founder" data-spy="founder">Founder</a>
-      <a href="#contact" data-spy="contact">Contact</a>
-    </nav>
-
-    <div class="nav-actions">
-      <button class="icon-btn theme-toggle" id="themeToggle" type="button" aria-label="Switch colour theme">
-        <svg class="i-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
-        <svg class="i-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
-      </button>
-      <a class="btn btn-primary nav-cta" href="#hydrolynk">Get Hydrolynk</a>
-      <button class="icon-btn burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="sheet">
-        <div><span></span><span></span><span></span></div>
-      </button>
-    </div>
-  </div>
-</header>
-
-<!-- Mobile menu -->
-<div class="sheet" id="sheet" aria-hidden="true">
-  <nav aria-label="Mobile">
-    <a href="#home" data-spy="home"><span>01</span>Home</a>
-    <a href="#services" data-spy="services"><span>02</span>Services</a>
-    <a href="#hydrolynk" data-spy="hydrolynk"><span>03</span>Hydrolynk</a>
-    <a href="#founder" data-spy="founder"><span>04</span>Founder</a>
-    <a href="#contact" data-spy="contact"><span>05</span>Contact</a>
-  </nav>
-  <a class="btn btn-wa btn-block" href="https://wa.me/2349023226544?text=Hello%20SLI%20RESOURCES%2C%20I%27d%20like%20to%20make%20an%20enquiry." target="_blank" rel="noopener">
-    <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Chat on WhatsApp
-  </a>
-</div>
-
+<body data-page="home">
+<script src="js/config.js"></script>
+<script src="js/layout.js"></script>
 <main id="main">
 
-  <!-- ============ HERO ============ -->
-  <section class="hero" id="home" aria-labelledby="hero-title">
-    <div class="wrap hero-grid">
-      <div class="hero-copy">
-        <span class="eyebrow reveal">Innovation · Automation · Nigeria</span>
-        <h1 id="hero-title" class="reveal" style="--d:.06s">Smart automation, built for <em>Africa.</em></h1>
-        <p class="lead reveal" style="--d:.12s">
-          At SLI RESOURCES we light up the future through innovation and smart technology. We develop
-          automation products that improve everyday life in homes, farms and industries — scalable,
-          sustainable technology that empowers Africa and beyond.
-        </p>
-        <div class="hero-actions reveal" style="--d:.18s">
-          <a class="btn btn-primary" href="#hydrolynk">Meet Hydrolynk <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-          <a class="btn btn-ghost" href="#contact">Talk to us</a>
-        </div>
-        <div class="hero-facts reveal" style="--d:.24s">
-          <div><b>IoT</b><span>Smart devices</span></div>
-          <div><b>Energy</b><span>Efficient systems</span></div>
-          <div><b>Africa</b><span>&amp; beyond</span></div>
-        </div>
-      </div>
+<section class="hero hero--photo"><div class="hero-grid-bg" aria-hidden="true"></div><div class="container hero-grid"><div>
+<span class="eyebrow">Innovation · Automation · Nigeria</span>
+<h1>Smart automation, built for <em>Africa.</em></h1>
+<p class="lead">At SLI RESOURCES we light up the future through innovation and smart technology. We develop automation products that improve everyday life in homes, farms and industries — scalable, sustainable technology that empowers Africa and beyond.</p>
+<div class="btn-row"><a class="btn btn--primary" href="hydrolynk.html">Meet Hydrolynk <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn btn--ghost" href="services.html">See our services</a></div>
+<div class="hero-stats"><div><strong>Home · Farm · Industry</strong><span>Where our products work</span></div><div><strong>₦30,000</strong><span>Hydrolynk pump controller</span></div><div><strong>Idea → product</strong><span>Prototype to manufacture</span></div></div>
+</div>
+<div class="hero-art" aria-hidden="true"><div class="ring"></div><div class="ring2"></div><div class="disc"><img src="assets/hydrolynk.webp" alt="" width="896" height="1029" fetchpriority="high"></div><span class="chip c1">Hydrolynk™</span><span class="chip c2"><span class="dot"></span>Auto mode: on</span><span class="chip c3">Smart automation</span></div></div></section>
 
-      <div class="hero-visual reveal" style="--d:.15s">
-        <div class="frame">
-          <img src="assets/img/hydrolynk.webp" width="896" height="1029" alt="Hydrolynk smart water pump controller with its display showing Auto Mode ON" fetchpriority="high" />
-        </div>
-        <span class="chip chip-a"><span class="dot"></span>Auto mode: on</span>
-        <span class="chip chip-b">Hydrolynk™</span>
-      </div>
-    </div>
-  </section>
+<div class="marquee" aria-hidden="true"><div><span>IoT solutions</span><i>◆</i><span>Smart energy</span><i>◆</i><span>Hardware design</span><i>◆</i><span>Software integration</span><i>◆</i><span>Prototyping</span><i>◆</i><span>Manufacturing</span><i>◆</i><span>Pump controllers</span><i>◆</i><span>Rechargeable whiteboards</span><i>◆</i><span>IR blasters</span><i>◆</i><span>IoT solutions</span><i>◆</i><span>Smart energy</span><i>◆</i><span>Hardware design</span><i>◆</i><span>Software integration</span><i>◆</i><span>Prototyping</span><i>◆</i><span>Manufacturing</span><i>◆</i><span>Pump controllers</span><i>◆</i><span>Rechargeable whiteboards</span><i>◆</i><span>IR blasters</span><i>◆</i></div></div>
 
-  <div class="strip" aria-hidden="true">
-    <div class="strip-track">
-      <span>IoT Solutions</span><span>Smart Energy</span><span>Hardware Design</span><span>Software Integration</span><span>Prototyping</span><span>Manufacturing</span>
-      <span>IoT Solutions</span><span>Smart Energy</span><span>Hardware Design</span><span>Software Integration</span><span>Prototyping</span><span>Manufacturing</span>
-    </div>
-  </div>
+<section class="section"><div class="container"><div class="reveal"><span class="eyebrow">What we do</span><h2>One team. Two ways to build with you.</h2></div>
+<div class="grid grid-2" style="margin-top:2rem">
+<article class="card card--navy reveal"><span class="num">FOCUS 1</span><h3 style="margin-top:.5rem;font-size:1.6rem">Ready-made smart products</h3><p>Practical devices like the Hydrolynk pump controller, ready to install and use at home, on the farm or in industry.</p><a class="more" href="hydrolynk.html">Meet Hydrolynk</a></article>
+<article class="card reveal" style="--d:.08s"><span class="num">FOCUS 2</span><h3 style="margin-top:.5rem;font-size:1.6rem">Custom engineering &amp; consultancy</h3><p>Have an idea? We help with IoT, smart energy, hardware and software design, prototyping and manufacturing.</p><a class="more" href="services.html">Explore our services</a></article>
+</div></div></section>
 
-  <!-- ============ SERVICES ============ -->
-  <section class="section" id="services" aria-labelledby="services-title">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="eyebrow reveal">What we do</span>
-        <h2 id="services-title" class="reveal" style="--d:.05s">From idea to a reliable, market-ready product.</h2>
-        <p class="lead reveal" style="--d:.1s">
-          Our team works closely with clients to turn ideas into dependable products — for personal or
-          industrial use — focused on quality and user-friendly design.
-        </p>
-      </div>
+<section class="section section--alt" id="services"><div class="container"><div class="reveal"><span class="eyebrow">Services</span><h2>Six services, built around real needs.</h2><p class="lead">Choose one, or combine them. Every project starts with listening.</p></div>
+<div class="grid grid-3" style="margin-top:2.5rem">
+<article class="card reveal" id="s1"><span class="num">01</span><div class="icon" style="margin-top:.6rem"><svg viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="1.5"/><rect x="10" y="10" width="4" height="4"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/></svg></div><h3>IoT Solutions</h3><p>Connected devices that monitor, decide and act, so everyday systems run on their own — at home, on the farm and in industry.</p><ul><li>Smart monitoring and control</li><li>Automation of routine tasks</li><li>Alerts and status feedback</li></ul><a class="more" href="contact.html?topic=IoT%20or%20smart%20energy%20system#book">Enquire about this</a></article><article class="card reveal" id="s2" style="--d:0.06s"><span class="num">02</span><div class="icon" style="margin-top:.6rem"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></div><h3>Smart Energy Systems</h3><p>Energy-efficient designs that cut waste, protect equipment and make power and water go further.</p><ul><li>Energy-saving controllers</li><li>Equipment protection</li><li>Efficient power use</li></ul><a class="more" href="contact.html?topic=IoT%20or%20smart%20energy%20system#book">Enquire about this</a></article><article class="card reveal" id="s3" style="--d:0.12s"><span class="num">03</span><div class="icon" style="margin-top:.6rem"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.4 2.4-2.6-.6-.6-2.6z"/></svg></div><h3>Hardware Design</h3><p>Durable, practical hardware engineered to be simple to install and easy to use, with quality built in.</p><ul><li>Product and enclosure design</li><li>Durable components</li><li>Easy installation</li></ul><a class="more" href="contact.html?topic=Hardware%20or%20software%20design#book">Enquire about this</a></article><article class="card reveal" id="s4"><span class="num">04</span><div class="icon" style="margin-top:.6rem"><svg viewBox="0 0 24 24"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></svg></div><h3>Software Integration</h3><p>Firmware and software that tie your hardware into one smooth, smart experience.</p><ul><li>Device firmware</li><li>App and control integration</li><li>User-friendly interfaces</li></ul><a class="more" href="contact.html?topic=Hardware%20or%20software%20design#book">Enquire about this</a></article><article class="card reveal" id="s5" style="--d:0.06s"><span class="num">05</span><div class="icon" style="margin-top:.6rem"><svg viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.8.6 1.2 1.4 1.2 2.1h4.6c0-.7.4-1.5 1.2-2.1A6 6 0 0 0 12 3z"/></svg></div><h3>Product Innovation Consultancy</h3><p>We work closely with you to shape a raw idea into a product people actually want and can use.</p><ul><li>Idea and concept review</li><li>Feasibility guidance</li><li>User-friendly design direction</li></ul><a class="more" href="contact.html?topic=Product%20consultancy#book">Enquire about this</a></article><article class="card reveal" id="s6" style="--d:0.12s"><span class="num">06</span><div class="icon" style="margin-top:.6rem"><svg viewBox="0 0 24 24"><path d="M3 21V10l6 4v-4l6 4V6h3v15zM3 21h18M8 17h2M13 17h2"/></svg></div><h3>Prototyping & Manufacturing</h3><p>From first prototype to production, focused on quality and reliable, market-ready products.</p><ul><li>Working prototypes</li><li>Testing and refinement</li><li>Manufacturing support</li></ul><a class="more" href="contact.html?topic=Prototyping%20%26%20manufacturing#book">Enquire about this</a></article>
+</div></div></section>
 
-      <div class="services-grid">
-        <article class="svc reveal">
-          <div class="svc-top"><span class="svc-num">01</span><span class="svc-icon"><i class="fa-solid fa-microchip" aria-hidden="true"></i></span></div>
-          <h3>IoT Solutions</h3>
-          <p>Connected devices that monitor, decide and act, so everyday systems run on their own.</p>
-        </article>
-        <article class="svc reveal" style="--d:.06s">
-          <div class="svc-top"><span class="svc-num">02</span><span class="svc-icon"><i class="fa-solid fa-bolt" aria-hidden="true"></i></span></div>
-          <h3>Smart Energy Systems</h3>
-          <p>Energy-efficient designs that cut waste and protect your equipment.</p>
-        </article>
-        <article class="svc reveal" style="--d:.12s">
-          <div class="svc-top"><span class="svc-num">03</span><span class="svc-icon"><i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i></span></div>
-          <h3>Hardware Design</h3>
-          <p>Durable, practical hardware engineered to be simple to install and easy to use.</p>
-        </article>
-        <article class="svc reveal">
-          <div class="svc-top"><span class="svc-num">04</span><span class="svc-icon"><i class="fa-solid fa-code" aria-hidden="true"></i></span></div>
-          <h3>Software Integration</h3>
-          <p>Firmware and software that tie your hardware into a smooth, smart experience.</p>
-        </article>
-        <article class="svc reveal" style="--d:.06s">
-          <div class="svc-top"><span class="svc-num">05</span><span class="svc-icon"><i class="fa-solid fa-lightbulb" aria-hidden="true"></i></span></div>
-          <h3>Product Innovation</h3>
-          <p>Consultancy that shapes a raw idea into a product people actually want.</p>
-        </article>
-        <article class="svc reveal" style="--d:.12s">
-          <div class="svc-top"><span class="svc-num">06</span><span class="svc-icon"><i class="fa-solid fa-industry" aria-hidden="true"></i></span></div>
-          <h3>Prototyping &amp; Manufacturing</h3>
-          <p>From first prototype to production, with quality built in at every step.</p>
-        </article>
-      </div>
+<section class="section" id="hydrolynk"><div class="container split" style="align-items:center;gap:var(--s7)">
+<div class="product-visual reveal"><div class="frame"><img src="assets/hydrolynk-poster.webp" alt="Hydrolynk poster: Smart Water Pump Control. Automation. Efficiency. Peace of Mind." width="768" height="1152" loading="lazy"></div></div>
+<div class="reveal"><span class="eyebrow">Flagship product</span><h2>Hydrolynk™ Smart Pump Controller</h2>
+<p class="lead">An automatic water pump controller that manages your water flow intelligently. It monitors water levels continuously, so the pump never runs dry and the tank never floods.</p>
+<ul class="features">
+<li><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><div><b>Dry-run protection</b><span>Protects your pump from running without water.</span></div></li>
+<li><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><div><b>Overflow prevention</b><span>Continuous level monitoring stops flooding.</span></div></li>
+<li><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><div><b>Saves energy and effort</b><span>Less manual labour, less waste.</span></div></li></ul>
+<div class="buy"><div class="price"><small>Price</small><strong>₦30,000</strong></div><div class="btn-row" style="margin:0"><a class="btn btn--wa" href="https://wa.me/2349023226544?text=Hello%20SLI%20RESOURCES%2C%20I%20want%20to%20buy%20Hydrolynk." rel="noopener" target="_blank"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 0 0-7.7 13.6L3 21l4.5-1.2A9 9 0 1 0 12 3z"/><path d="M9 8.5c.3 2.6 2.4 5 5.5 6l1.3-1.3-1.9-1-.9.8c-1-.4-1.9-1.300-2.300-2.300l.8-.9-1-1.900z"/></svg> Buy on WhatsApp</a><a class="btn btn--ghost" href="hydrolynk.html">Full details</a></div></div>
+</div></div></section>
 
-      <div class="products reveal">
-        <span class="products-label">Products we deliver</span>
-        <ul class="tags">
-          <li><i class="fa-solid fa-droplet" aria-hidden="true"></i> Automatic water pump controllers</li>
-          <li><i class="fa-solid fa-chalkboard" aria-hidden="true"></i> Rechargeable whiteboards with eraser</li>
-          <li><i class="fa-solid fa-tower-broadcast" aria-hidden="true"></i> IR blasters</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+<section class="section section--navy" id="how"><div class="container"><span class="eyebrow">How it works</span><h2 style="max-width:20ch">Simple, practical and built to last.</h2>
+<ol class="steps"><li class="reveal"><h3>Talk</h3><p>A short conversation to understand the problem, the setting and what you want to achieve.</p></li><li class="reveal" style="--d:.06s"><h3>Design</h3><p>A clear plan for the hardware and software, shaped around quality and ease of use.</p></li><li class="reveal" style="--d:.12s"><h3>Build</h3><p>A working prototype, tested and refined until it does the job reliably.</p></li><li class="reveal" style="--d:.18s"><h3>Deliver</h3><p>A market-ready product, manufactured with care and ready to put to work.</p></li></ol></div></section>
 
-  <!-- ============ HYDROLYNK ============ -->
-  <section class="section product" id="hydrolynk" aria-labelledby="hydrolynk-title">
-    <div class="wrap product-grid">
-      <div class="product-visual reveal">
-        <div class="frame">
-          <img class="poster" src="assets/img/hydrolynk-poster.webp" width="768" height="1152" loading="lazy" alt="Hydrolynk poster: Smart Water Pump Control. Automation. Efficiency. Peace of Mind." />
-        </div>
-      </div>
+<section class="section"><div class="container grid grid-2" style="align-items:center;gap:var(--s7)">
+<figure class="portrait reveal" style="margin:0;max-width:400px"><img src="assets/founder.webp" alt="Saviour Lawrence Inyang, founder and CEO of SLI RESOURCES, in a navy suit" width="720" height="960" loading="lazy"><figcaption>Saviour Lawrence Inyang<span>Founder &amp; CEO, SLI RESOURCES</span></figcaption></figure>
+<div class="reveal"><span class="eyebrow">Meet the founder</span><h2>Led by Saviour Lawrence Inyang.</h2>
+<p class="lead">A visionary innovator and entrepreneur with a Chemistry degree from Akwa Ibom State University, turning ideas into impactful technology for everyday challenges.</p>
+<ul class="chips"><li>Innovation</li><li>Smart automation</li><li>Energy efficiency</li><li>Entrepreneurship</li></ul>
+<div class="btn-row"><a class="btn btn--primary" href="about.html">Read our story</a><a class="btn btn--ghost" href="https://www.linkedin.com/in/sliresources" rel="noopener" target="_blank">LinkedIn</a></div></div></div></section>
 
-      <div class="product-copy">
-        <span class="eyebrow reveal">Flagship product</span>
-        <h2 id="hydrolynk-title" class="reveal" style="--d:.05s">Hydrolynk<sup>™</sup><br />Smart Pump Controller</h2>
-        <p class="lead reveal" style="--d:.1s">
-          An automatic water pump controller that manages your water flow intelligently. It watches water
-          levels continuously, so your pump never runs dry and your tank never floods.
-        </p>
+<section class="section section--alt"><div class="container" style="max-width:820px"><span class="eyebrow">FAQ</span><h2>Good questions.</h2>
+<details class="reveal"><summary>What is Hydrolynk?</summary><p>Hydrolynk is our automatic water pump controller. It watches water levels continuously so your pump doesn't run dry and your tank doesn't overflow.</p></details><details class="reveal"><summary>Where can I use it?</summary><p>At home, on farms and in industrial settings. Anywhere a pump fills a tank and you'd rather not do it by hand.</p></details><details class="reveal"><summary>How do I order?</summary><p>Tap any “Buy on WhatsApp” button and your message is ready to send. Hydrolynk is ₦30,000.</p></details><details class="reveal"><summary>Can you build something custom for me?</summary><p>Yes. We help with product innovation, hardware and software design, prototyping and manufacturing, whether it's for personal or industrial use.</p></details><details class="reveal"><summary>Who is behind SLI RESOURCES?</summary><p>SLI RESOURCES is led by founder and CEO Saviour Lawrence Inyang, a Chemistry graduate of Akwa Ibom State University.</p></details></div></section>
 
-        <ul class="features reveal" style="--d:.14s">
-          <li><i class="fa-solid fa-check" aria-hidden="true"></i><div><b>Dry-run protection</b><span>Stops the pump before it can burn out.</span></div></li>
-          <li><i class="fa-solid fa-check" aria-hidden="true"></i><div><b>Overflow prevention</b><span>Continuous level monitoring stops flooding.</span></div></li>
-          <li><i class="fa-solid fa-check" aria-hidden="true"></i><div><b>Saves energy and water</b><span>Less manual labour, less waste.</span></div></li>
-          <li><i class="fa-solid fa-check" aria-hidden="true"></i><div><b>Built to last</b><span>Durable components with easy installation.</span></div></li>
-          <li><i class="fa-solid fa-check" aria-hidden="true"></i><div><b>Home, farm and industry</b><span>One controller for every scale.</span></div></li>
-        </ul>
+<section class="section section--navy cta"><div class="container reveal"><h2>Let’s build something that works.</h2><p class="lead">A first conversation is free and without obligation.</p>
+<div class="btn-row"><a class="btn btn--light" href="https://wa.me/2349023226544?text=Hello%20SLI%20RESOURCES%2C%20I%27d%20like%20to%20make%20an%20enquiry." rel="noopener" target="_blank">Chat on WhatsApp</a><a class="btn btn--outline-light" href="contact.html#book">Send a message</a></div></div></section>
 
-        <div class="buy reveal" style="--d:.18s">
-          <div class="price"><small>Price</small><strong>₦30,000</strong></div>
-          <a class="btn btn-wa" href="https://wa.me/2349023226544?text=Hello%20SLI%20RESOURCES%2C%20I%20want%20to%20buy%20Hydrolynk." target="_blank" rel="noopener">
-            <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Buy on WhatsApp
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ FOUNDER ============ -->
-  <section class="section" id="founder" aria-labelledby="founder-title">
-    <div class="wrap founder-grid">
-      <div class="founder-photo reveal">
-        <div class="frame">
-          <img src="assets/img/founder.webp" width="720" height="960" loading="lazy" alt="Saviour Lawrence Inyang, Founder and CEO of SLI RESOURCES" />
-        </div>
-      </div>
-
-      <div class="founder-copy">
-        <span class="role reveal">Founder &amp; CEO</span>
-        <h2 id="founder-title" class="reveal" style="--d:.05s">Saviour Lawrence Inyang</h2>
-        <p class="lead reveal" style="--d:.1s">
-          A visionary innovator and entrepreneur with a Chemistry degree from Akwa Ibom State University,
-          with a passion for turning ideas into impactful technology.
-        </p>
-        <p class="reveal" style="--d:.14s">
-          Under his guidance, SLI RESOURCES has grown into a hub of innovation focused on smart automation,
-          energy efficiency and practical tech products that empower communities.
-        </p>
-        <dl class="cred reveal" style="--d:.18s">
-          <div><dt>Role</dt><dd>Founder &amp; CEO</dd></div>
-          <div><dt>Education</dt><dd>B.Sc. Chemistry, AKSU</dd></div>
-          <div><dt>Focus</dt><dd>Automation &amp; energy efficiency</dd></div>
-        </dl>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ CONTACT ============ -->
-  <section class="section contact" id="contact" aria-labelledby="contact-title">
-    <div class="wrap contact-grid">
-      <div class="contact-copy">
-        <span class="eyebrow reveal">Contact</span>
-        <h2 id="contact-title" class="reveal" style="--d:.05s">Let’s build something that works.</h2>
-        <p class="lead reveal" style="--d:.1s">
-          Ordering Hydrolynk, planning a custom product or just exploring an idea? Reach us the way that suits you.
-        </p>
-        <div class="links reveal" style="--d:.14s">
-          <a class="link-tile" href="https://wa.me/2349023226544?text=Hello%20SLI%20RESOURCES%2C%20I%27d%20like%20to%20make%20an%20enquiry." target="_blank" rel="noopener">
-            <span class="ic"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></span>
-            <span><small>WhatsApp</small><b>+234 902 322 6544</b></span>
-            <i class="fa-solid fa-arrow-right go" aria-hidden="true"></i>
-          </a>
-          <a class="link-tile" href="tel:+2349023226544">
-            <span class="ic"><i class="fa-solid fa-phone" aria-hidden="true"></i></span>
-            <span><small>Call</small><b>+234 902 322 6544</b></span>
-            <i class="fa-solid fa-arrow-right go" aria-hidden="true"></i>
-          </a>
-          <a class="link-tile" href="mailto:sliresourcess@gmail.com">
-            <span class="ic"><i class="fa-solid fa-envelope" aria-hidden="true"></i></span>
-            <span><small>Email</small><b>sliresourcess@gmail.com</b></span>
-            <i class="fa-solid fa-arrow-right go" aria-hidden="true"></i>
-          </a>
-          <a class="link-tile" href="https://www.linkedin.com/in/sliresources" target="_blank" rel="noopener">
-            <span class="ic"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></span>
-            <span><small>LinkedIn</small><b>SLI RESOURCES</b></span>
-            <i class="fa-solid fa-arrow-right go" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-
-      <form class="form-card reveal" id="enquiry" style="--d:.1s" novalidate>
-        <h3>Send a quick message</h3>
-        <p>Fill this in and we’ll open WhatsApp with your message ready to send.</p>
-        <div class="field">
-          <label for="f-name">Your name</label>
-          <input id="f-name" name="name" type="text" autocomplete="name" placeholder="e.g. Ada Okafor" required />
-        </div>
-        <div class="field">
-          <label for="f-topic">I’m interested in</label>
-          <select id="f-topic" name="topic">
-            <option>Buying Hydrolynk</option>
-            <option>A custom product</option>
-            <option>Prototyping or manufacturing</option>
-            <option>Consultancy</option>
-            <option>Something else</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="f-msg">Message</label>
-          <textarea id="f-msg" name="message" placeholder="Tell us a little about what you need…"></textarea>
-        </div>
-        <button class="btn btn-wa btn-block" type="submit"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Continue on WhatsApp</button>
-        <p class="form-note" id="formNote" role="status"></p>
-      </form>
-    </div>
-  </section>
 </main>
-
-<!-- ============ FOOTER ============ -->
-<footer class="site-footer">
-  <div class="wrap foot">
-    <a class="brand" href="#top" aria-label="Back to top">
-      <span class="brand-mark"><img src="assets/img/mark.png" alt="" width="26" height="26" loading="lazy" /></span>
-      <span class="brand-text">SLI RESOURCES<small>INNOVATION</small></span>
-    </a>
-    <nav class="foot-links" aria-label="Footer">
-      <a href="#services">Services</a>
-      <a href="#hydrolynk">Hydrolynk</a>
-      <a href="#founder">Founder</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <p class="copy">© <span id="year">2026</span> SLI RESOURCES. All rights reserved.</p>
-  </div>
-</footer>
-
-<!-- Floating WhatsApp -->
-<a class="fab" href="https://wa.me/2349023226544?text=Hello%20SLI%20RESOURCES%2C%20I%27d%20like%20to%20make%20an%20enquiry." target="_blank" rel="noopener" aria-label="Chat with SLI RESOURCES on WhatsApp">
-  <i class="fa-brands fa-whatsapp" aria-hidden="true"></i><span class="fab-label">Chat with us</span>
-</a>
-
-<script src="assets/js/main.js" defer></script>
 </body>
 </html>

@@ -123,3 +123,16 @@ dialog[open] { animation: waIn .25s var(--ease); }
   .dlg-foot .btn { flex: 1; }
 }
 @media (prefers-reduced-motion: reduce) { .toast, .savebar, dialog[open] { animation: none; transition: none; } }
+
+/* ---- email + PIN login ---- */
+.admin .field.pin { letter-spacing: .3em; font-variant-numeric: tabular-nums; font-weight: 700; }
+.admin .field.pin::placeholder { letter-spacing: normal; font-weight: 400; }
+.how-box { margin: var(--s5) 0 var(--s4); border: 1px solid var(--line); border-radius: var(--radius-sm); padding: .2rem var(--s4); background: var(--surface-2); }
+.how-box summary { cursor: pointer; font-weight: 700; font-size: var(--fs-sm); padding: .8rem 0; color: var(--heading); }
+.how-box .how { margin: 0 0 var(--s4); }
+.notice { margin: var(--s4) 0 var(--s4); padding: .75rem 1rem; border-radius: 10px; background: color-mix(in srgb, var(--blue-600) 10%, transparent); color: var(--ink); font-size: var(--fs-sm); }
+.linkbtn { background: none; border: 0; padding: .6rem .4rem; color: var(--accent2, var(--blue-600)); font: inherit; font-weight: 700; text-decoration: underline; cursor: pointer; min-height: 44px; }
+.a-h { margin: 0 0 var(--s3); font-size: var(--fs-lg, 1.15rem); }
+.fine.left { text-align: left; margin: 0 0 var(--s4); }
+#panel-security .a-card + .a-card { margin-top: var(--s5); }
+#sec-form .btn, #forget { margin-top: var(--s5); }

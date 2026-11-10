@@ -1,13 +1,15 @@
 /* SLI RESOURCES — admin.
    No server needed: the page reads and writes js/config.js (and product images) in the
-   GitHub repo using a private fine-grained token that lives only in this browser.
+   GitHub repo using a private fine-grained token. The token is kept in this browser only,
+   encrypted (AES-GCM, key derived from your PIN with PBKDF2) so you sign in with email + PIN.
    GitHub Pages then republishes the site in about a minute. */
 (function () {
   "use strict";
 
   const OWNER = "rexphenom", REPO = "Sli_Resources", BRANCH = "main", CFG_PATH = "js/config.js";
   const API = "https://api.github.com";
-  const KEY = "sli-admin-token";
+  const KEY = "sli-admin-token";            // legacy plaintext token (migrated away)
+  const VAULT = "sli-admin-vault", LOCK = "sli-admin-lock";
   const STATUS = { available: "In stock", "coming-soon": "Coming soon", "sold-out": "Sold out" };
   const IMG_OK = /^assets\/(?:products\/)?[a-z0-9._-]+\.(?:webp|png|jpe?g)$/i;
 
@@ -46,12 +48,54 @@
   const b64enc = (str) => { const bytes = new TextEncoder().encode(str); let s = ""; for (let i = 0; i < bytes.length; i += 8192) s += String.fromCharCode.apply(null, bytes.subarray(i, i + 8192)); return btoa(s); };
   const bufToB64 = (buf) => { const bytes = new Uint8Array(buf); let s = ""; for (let i = 0; i < bytes.length; i += 8192) s += String.fromCharCode.apply(null, bytes.subarray(i, i + 8192)); return btoa(s); };
 
-  /* ---------- token storage (this device only) ---------- */
-  const store = {
-    get() { try { return localStorage.getItem(KEY) || sessionStorage.getItem(KEY); } catch (e) { return null; } },
-    set(t, keep) { try { (keep ? localStorage : sessionStorage).setItem(KEY, t); } catch (e) {} },
-    clear() { try { localStorage.removeItem(KEY); sessionStorage.removeItem(KEY); } catch (e) {} },
+  /* ---------- device vault: email + PIN protect the GitHub key ---------- */
+  const ls = {
+    get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
+    set(k, v) { try { localStorage.setItem(k, v); return true; } catch (e) { return false; } },
+    del(k) { try { localStorage.removeItem(k); } catch (e) {} },
   };
+  const legacyToken = () => { try { return localStorage.getItem(KEY) || sessionStorage.getItem(KEY) || ""; } catch (e) { return ""; } };
+  const clearLegacy = () => { try { localStorage.removeItem(KEY); sessionStorage.removeItem(KEY); } catch (e) {} };
+  const getVault = () => { try { const v = JSON.parse(ls.get(VAULT)); return v && v.v === 1 && v.email && v.salt && v.iv && v.ct ? v : null; } catch (e) { return null; } };
+  const ITER = 600000;
+  const enc = new TextEncoder();
+  const unb64 = (b) => Uint8Array.from(atob(b), (c) => c.charCodeAt(0));
+  const normEmail = (e) => String(e || "").trim().toLowerCase();
+  const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+  const cryptoOk = () => !!(window.crypto && crypto.subtle);
+  async function deriveKey(pin, salt, iter) {
+    const base = await crypto.subtle.importKey("raw", enc.encode(pin), "PBKDF2", false, ["deriveKey"]);
+    return crypto.subtle.deriveKey({ name: "PBKDF2", salt, iterations: iter, hash: "SHA-256" }, base, { name: "AES-GCM", length: 256 }, false, ["encrypt", "decrypt"]);
+  }
+  async function sealVault(email, pin, tok) {
+    const salt = crypto.getRandomValues(new Uint8Array(16)), iv = crypto.getRandomValues(new Uint8Array(12));
+    const key = await deriveKey(pin, salt, ITER);
+    const ct = await crypto.subtle.encrypt({ name: "AES-GCM", iv, additionalData: enc.encode(email) }, key, enc.encode(tok));
+    return { v: 1, email, iter: ITER, salt: bufToB64(salt), iv: bufToB64(iv), ct: bufToB64(ct) };
+  }
+  async function openVault(vault, email, pin) {   // returns token, or null on wrong email/PIN
+    try {
+      if (normEmail(email) !== vault.email) return null;
+      const key = await deriveKey(pin, unb64(vault.salt), vault.iter || ITER);
+      const pt = await crypto.subtle.decrypt({ name: "AES-GCM", iv: unb64(vault.iv), additionalData: enc.encode(vault.email) }, key, unb64(vault.ct));
+      return new TextDecoder().decode(pt);
+    } catch (e) { return null; }
+  }
+  const pinProblem = (pin) => {
+    if (!/^\d{6,12}$/.test(pin)) return "Your PIN must be 6 to 12 digits (numbers only).";
+    if (/^(\d)\1+$/.test(pin) || "01234567890123456789".includes(pin) || "98765432109876543210".includes(pin)) return "That PIN is too easy to guess. Avoid repeats and simple sequences.";
+    return "";
+  };
+  /* wrong-PIN lockout (slows guessing in this app; cannot stop someone who copies the browser data) */
+  const MAX_FAILS = 10;
+  const lock = {
+    get() { try { return JSON.parse(ls.get(LOCK)) || { fails: 0, until: 0 }; } catch (e) { return { fails: 0, until: 0 }; } },
+    fail() { const l = lock.get(); l.fails++; if (l.fails >= 5) l.until = Date.now() + Math.min(15 * 60, 30 * Math.pow(2, l.fails - 5)) * 1000; ls.set(LOCK, JSON.stringify(l)); return l; },
+    reset() { ls.del(LOCK); },
+    wait() { return Math.max(0, Math.ceil((lock.get().until - Date.now()) / 1000)); },
+  };
+  const eraseDevice = () => { ls.del(VAULT); ls.del(LOCK); clearLegacy(); };
+  let loginEmail = "";   // email of the signed-in session (for the Security tab)
 
   /* ---------- GitHub API ---------- */
   let token = "";
@@ -136,10 +180,10 @@
   window.addEventListener("beforeunload", (e) => { if (cfg && changeCount() > 0 && !busy) { e.preventDefault(); e.returnValue = ""; } });
 
   /* ---------- views ---------- */
-  const show = (id) => { ["#view-connect", "#view-editor"].forEach((s) => { $(s).hidden = s !== id; }); $("#signout").hidden = id !== "#view-editor"; };
+  const show = (id) => { ["#view-register", "#view-login", "#view-editor"].forEach((s) => { $(s).hidden = s !== id; }); $("#signout").hidden = id !== "#view-editor"; };
 
   /* ---------- tabs ---------- */
-  const tabs = ["products", "site", "announce"];
+  const tabs = ["products", "site", "announce", "security"];
   function selectTab(name, focus) {
     tabs.forEach((t) => {
       const on = t === name, b = $("#tab-" + t);
@@ -336,43 +380,117 @@
     try { await loadConfig(); fillSite(); renderProducts(); toast("Loaded the latest version.", "ok"); } catch (e) { toast(friendly(e), "err"); }
   }
 
-  /* ---------- sign in ---------- */
+  /* ---------- sign in / register ---------- */
+  const say = (el, msg, bad) => { el.textContent = msg; el.classList.toggle("err", !!bad); };
   function enter() {
     $("#who").textContent = ""; $("#who").append("Connected to ", h("b", { text: OWNER + "/" + REPO }));
+    $("#sec-email").textContent = loginEmail;
     fillSite(); renderProducts(); selectTab("products"); show("#view-editor");
   }
-  async function connect(t, keep, statusEl) {
+  async function connect(t) {   // verifies the token against GitHub; throws on failure
     token = t;
-    try { await loadConfig(); store.set(t, keep); enter(); return true; }
-    catch (e) {
-      token = "";
-      if (statusEl) { statusEl.textContent = friendly(e); statusEl.classList.add("err"); }
-      return false;
-    }
+    try { await loadConfig(); } catch (e) { token = ""; throw e; }
   }
-  $("#connect-form").addEventListener("submit", async (e) => {
+  function showRegister() {
+    const legacy = legacyToken();
+    $("#r-legacy").hidden = !legacy; $("#r-keywrap").hidden = !!legacy;
+    show("#view-register"); setTimeout(() => { try { $("#r-email").focus(); } catch (e) {} }, 0);
+  }
+  function showLogin(vault) {
+    $("#l-email").value = vault.email; show("#view-login");
+    setTimeout(() => { try { $("#l-pin").focus(); } catch (e) {} }, 0);
+    const w = lock.wait(); if (w) say($("#login-status"), "Too many wrong tries. Wait " + w + " seconds.", true);
+  }
+
+  $("#reg-form").addEventListener("submit", async (e) => {
     e.preventDefault();
-    const st = $("#connect-status"), btn = $("#connect-btn"), t = $("#token").value.trim();
-    st.classList.remove("err"); st.textContent = "";
-    if (!/^(github_pat_|ghp_)[A-Za-z0-9_]{20,}$/.test(t)) { st.textContent = "That doesn’t look like a GitHub key. It should start with github_pat_"; st.classList.add("err"); $("#token").focus(); return; }
-    btn.disabled = true; btn.textContent = "Connecting…";
-    const ok = await connect(t, $("#keep").checked, st);
-    btn.disabled = false; btn.textContent = "Connect"; if (ok) $("#token").value = "";
+    const st = $("#reg-status"), btn = $("#reg-btn"), email = normEmail($("#r-email").value), pin = $("#r-pin").value, pin2 = $("#r-pin2").value;
+    const legacy = legacyToken(), tok = legacy || $("#r-token").value.trim();
+    say(st, "");
+    if (!cryptoOk()) return say(st, "This browser can’t protect a PIN here. Open the admin over https (your live website) in an up-to-date browser.", true);
+    if (!EMAIL_RE.test(email)) { $("#r-email").focus(); return say(st, "Enter a valid email address.", true); }
+    const pp = pinProblem(pin); if (pp) { $("#r-pin").focus(); return say(st, pp, true); }
+    if (pin !== pin2) { $("#r-pin2").focus(); return say(st, "The two PINs don’t match.", true); }
+    if (!/^(github_pat_|ghp_)[A-Za-z0-9_]{20,}$/.test(tok)) { $("#r-token").focus(); return say(st, "That doesn’t look like a GitHub key. It should start with github_pat_", true); }
+    btn.disabled = true; btn.textContent = "Checking…";
+    try {
+      await connect(tok);
+      btn.textContent = "Securing…";
+      const vault = await sealVault(email, pin, tok);
+      if (!ls.set(VAULT, JSON.stringify(vault))) { token = ""; throw Object.assign(new Error("Your browser won’t save the login (private mode?). Use a normal window."), { userMsg: true }); }
+      lock.reset(); clearLegacy(); loginEmail = email;
+      $("#r-pin").value = $("#r-pin2").value = $("#r-token").value = "";
+      enter(); toast("Login created. Next time, just use your email and PIN.", "ok");
+    } catch (err) { say(st, friendly(err), true); }
+    finally { btn.disabled = false; btn.textContent = "Create login"; }
   });
+
+  $("#login-form").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const st = $("#login-status"), btn = $("#login-btn"), vault = getVault();
+    if (!vault) { showRegister(); return; }
+    say(st, "");
+    const w = lock.wait(); if (w) return say(st, "Too many wrong tries. Wait " + w + " seconds.", true);
+    const email = $("#l-email").value, pin = $("#l-pin").value;
+    if (!cryptoOk()) return say(st, "This browser can’t unlock the login here. Use the live https website.", true);
+    if (!/^\d{6,12}$/.test(pin)) return say(st, "Enter your 6 to 12 digit PIN.", true);
+    btn.disabled = true; btn.textContent = "Unlocking…";
+    try {
+      const tok = await openVault(vault, email, pin);
+      if (!tok) {
+        const l = lock.fail();
+        if (l.fails >= MAX_FAILS) { eraseDevice(); $("#l-pin").value = ""; showRegister(); say($("#reg-status"), "Too many wrong tries, so the saved login was removed from this device. Register again.", true); return; }
+        const left = MAX_FAILS - l.fails, wait = lock.wait();
+        say(st, "Wrong email or PIN." + (wait ? " Wait " + wait + " seconds." : "") + " (" + left + " tries left before this device resets.)", true);
+        $("#l-pin").value = ""; return;
+      }
+      try { await connect(tok); }
+      catch (err) { say(st, friendly(err) + (err && err.status === 401 ? " Your GitHub key may have expired — use “Forgot your PIN?” to register again with a new key." : ""), true); return; }
+      lock.reset(); loginEmail = vault.email; $("#l-pin").value = ""; enter();
+    } finally { btn.disabled = false; btn.textContent = "Sign in"; }
+  });
+
+  async function resetDevice(msg) {
+    if (!confirm(msg)) return;
+    eraseDevice(); token = ""; cfg = null; location.reload();
+  }
+  $("#forgot").addEventListener("click", () => resetDevice("Reset admin login on this device? Your PIN can’t be recovered, so you will register again with your email, a new PIN and your GitHub key. Your website is not affected."));
+  $("#forget").addEventListener("click", () => {
+    if (cfg && changeCount() > 0 && !confirm("You have unsaved changes that will be lost. Continue?")) return;
+    resetDevice("Remove the saved login and GitHub key from this device?");
+  });
+
+  $("#sec-form").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const st = $("#sec-status"), btn = $("#sec-save"), vault = getVault();
+    const newEmail = normEmail($("#s-newemail").value) || vault.email, cur = $("#s-cur").value, np = $("#s-new").value, np2 = $("#s-new2").value;
+    say(st, "");
+    if (!EMAIL_RE.test(newEmail)) return say(st, "Enter a valid email address.", true);
+    if (newEmail === vault.email && !np) return say(st, "Nothing to change. Enter a new email or a new PIN.", true);
+    if (np) { const pp = pinProblem(np); if (pp) return say(st, pp, true); if (np !== np2) return say(st, "The two new PINs don’t match.", true); }
+    if (!/^\d{6,12}$/.test(cur)) return say(st, "Enter your current PIN to confirm.", true);
+    const w = lock.wait(); if (w) return say(st, "Too many wrong tries. Wait " + w + " seconds.", true);
+    btn.disabled = true;
+    try {
+      const tok = await openVault(vault, vault.email, cur);
+      if (!tok) { lock.fail(); return say(st, "Your current PIN is wrong.", true); }
+      const next = await sealVault(newEmail, np || cur, tok);
+      if (!ls.set(VAULT, JSON.stringify(next))) return say(st, "Couldn’t save. Your browser blocked storage.", true);
+      lock.reset(); loginEmail = newEmail; $("#sec-email").textContent = newEmail;
+      ["#s-newemail", "#s-cur", "#s-new", "#s-new2"].forEach((i) => { $(i).value = ""; });
+      say(st, "Saved. Use these details next time you sign in.", false); toast("Login details updated.", "ok");
+    } finally { btn.disabled = false; }
+  });
+
   $("#signout").addEventListener("click", () => {
-    if (cfg && changeCount() > 0 && !confirm("You have unsaved changes. Sign out anyway?")) return;
-    store.clear(); cfg = null; location.reload();
+    if (cfg && changeCount() > 0 && !confirm("You have unsaved changes. Lock anyway?")) return;
+    token = ""; cfg = null; location.reload();
   });
   $("#a-preview").addEventListener("click", (e) => e.preventDefault());
 
   /* ---------- start ---------- */
-  (async function init() {
-    const saved = store.get();
-    if (!saved) { show("#view-connect"); return; }
-    const loading = h("p", { class: "fine", text: "Loading your site…", role: "status" }); $("#app").prepend(loading);
-    let inLocal = false; try { inLocal = !!localStorage.getItem(KEY); } catch (e) {}
-    const ok = await connect(saved, inLocal, null);
-    loading.remove();
-    if (!ok) { store.clear(); show("#view-connect"); const st = $("#connect-status"); st.textContent = "Please sign in again."; }
+  (function init() {
+    const vault = getVault();
+    if (vault) showLogin(vault); else showRegister();
   })();
 })();

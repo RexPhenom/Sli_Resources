@@ -20,13 +20,17 @@ Official website for **SLI RESOURCES**: smart automation products for homes, far
 
 `admin.html` lets you change the site without touching code: add, edit, reorder or delete **products** (with photos), update **contact info**, and turn the **announcement bar** on or off. Changes are saved straight to this repo and the site updates in about a minute.
 
-Sign in once with a private GitHub key (the page explains each step):
+**First time on a device:** register your email, choose a 6–12 digit PIN, and paste a private GitHub key once (the page explains each step):
 
 1. https://github.com/settings/personal-access-tokens/new
 2. Repository access: only `Sli_Resources`. Permissions: **Contents → Read and write**.
 3. Paste the key into the admin page.
 
-The key stays in your browser and is never stored in the repo. The admin writes `js/config.js` and product photos to `assets/products/`.
+**After that:** sign in with just your email and PIN. The key is encrypted with your PIN (PBKDF2 + AES-GCM) and stays in that browser only, never in the repo. Use the **Security** tab to change your email or PIN, and **Lock** to sign out.
+
+Good to know: the login is per device (a new phone or computer needs registering once with a GitHub key), the email is not verified by a server, and 10 wrong PINs wipe the saved login from that device. "Forgot your PIN?" resets the device so you can register again.
+
+The admin writes `js/config.js` and product photos to `assets/products/`.
 
 ## Structure
 

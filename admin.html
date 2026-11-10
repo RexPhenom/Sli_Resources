@@ -26,36 +26,68 @@
     </a>
     <div class="nav-right" id="nav-right">
       <a class="btn btn--ghost btn--sm" href="index.html" target="_blank" rel="noopener">View site</a>
-      <button class="btn btn--ghost btn--sm" id="signout" type="button" hidden>Sign out</button>
+      <button class="btn btn--ghost btn--sm" id="signout" type="button" hidden>Lock</button>
     </div>
   </div>
 </header>
 
 <main id="app" class="container admin">
 
-  <!-- ============ 1. CONNECT ============ -->
-  <section id="view-connect" class="connect" hidden>
+  <!-- ============ 1a. REGISTER (first time on this device) ============ -->
+  <section id="view-register" class="connect" hidden>
     <div class="a-card">
       <span class="eyebrow">Admin</span>
-      <h1>Sign in to manage your site.</h1>
-      <p class="lead">Changes you make here are saved straight to your website and go live in about a minute. Connect once with a private GitHub key.</p>
+      <h1>Create your admin login.</h1>
+      <p class="lead">Register your email and a PIN once on this device. After that you only type your email and PIN to get in.</p>
 
-      <ol class="how">
-        <li><a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">Open GitHub’s key page</a> (sign in if asked).</li>
-        <li>Name it <b>SLI admin</b>. Set expiry to <b>1 year</b>.</li>
-        <li>Under <b>Repository access</b> choose <b>Only select repositories</b>, then pick <b>Sli_Resources</b>.</li>
-        <li>Under <b>Permissions → Repository permissions</b> set <b>Contents</b> to <b>Read and write</b>.</li>
-        <li>Tap <b>Generate token</b>, copy it, and paste it below.</li>
-      </ol>
+      <form id="reg-form" autocomplete="off" novalidate>
+        <label for="r-email">Your email</label>
+        <input class="field" id="r-email" type="email" inputmode="email" autocomplete="email" autocapitalize="off" spellcheck="false" placeholder="you@example.com" required>
+        <div class="row">
+          <div><label for="r-pin">Choose a PIN <span class="opt">(6–12 digits)</span></label>
+            <input class="field pin" id="r-pin" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="12" autocomplete="new-password" required></div>
+          <div><label for="r-pin2">Confirm PIN</label>
+            <input class="field pin" id="r-pin2" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="12" autocomplete="new-password" required></div>
+        </div>
 
-      <form id="connect-form" autocomplete="off" novalidate>
-        <label for="token">GitHub key</label>
-        <input class="field" id="token" name="token" type="password" placeholder="github_pat_…" autocomplete="off" autocapitalize="off" spellcheck="false" required>
-        <label class="check"><input type="checkbox" id="keep" checked> Keep me signed in on this device <span>(only use on your own phone or computer)</span></label>
-        <button class="btn btn--primary btn--block" type="submit" id="connect-btn">Connect</button>
-        <p class="form-status" id="connect-status" role="status" aria-live="polite"></p>
+        <div id="r-keywrap">
+          <details class="how-box" open>
+            <summary>One-time: connect your GitHub key</summary>
+            <ol class="how">
+              <li><a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">Open GitHub’s key page</a> (sign in if asked).</li>
+              <li>Name it <b>SLI admin</b>. Set expiry to <b>1 year</b>.</li>
+              <li>Under <b>Repository access</b> choose <b>Only select repositories</b>, then pick <b>Sli_Resources</b>.</li>
+              <li>Under <b>Permissions → Repository permissions</b> set <b>Contents</b> to <b>Read and write</b>.</li>
+              <li>Tap <b>Generate token</b>, copy it, and paste it below.</li>
+            </ol>
+          </details>
+          <label for="r-token">GitHub key</label>
+          <input class="field" id="r-token" type="password" placeholder="github_pat_…" autocomplete="off" autocapitalize="off" spellcheck="false">
+        </div>
+        <p class="notice" id="r-legacy" hidden>This device already has a GitHub key saved. It will be locked behind your new PIN.</p>
+
+        <button class="btn btn--primary btn--block" type="submit" id="reg-btn">Create login</button>
+        <p class="form-status" id="reg-status" role="status" aria-live="polite"></p>
       </form>
-      <p class="fine">Your key stays on this device and is sent only to GitHub. It is never saved in the website’s code.</p>
+      <p class="fine">Your key is encrypted with your PIN and kept only on this device. It is sent only to GitHub, never saved in the website’s code.</p>
+    </div>
+  </section>
+
+  <!-- ============ 1b. LOGIN ============ -->
+  <section id="view-login" class="connect" hidden>
+    <div class="a-card">
+      <span class="eyebrow">Admin</span>
+      <h1>Welcome back.</h1>
+      <p class="lead">Enter your email and PIN to manage your site.</p>
+      <form id="login-form" autocomplete="off" novalidate>
+        <label for="l-email">Email</label>
+        <input class="field" id="l-email" type="email" inputmode="email" autocomplete="email" autocapitalize="off" spellcheck="false" required>
+        <label for="l-pin">PIN</label>
+        <input class="field pin" id="l-pin" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="12" autocomplete="current-password" required>
+        <button class="btn btn--primary btn--block" type="submit" id="login-btn">Sign in</button>
+        <p class="form-status" id="login-status" role="status" aria-live="polite"></p>
+      </form>
+      <p class="fine"><button class="linkbtn" id="forgot" type="button">Forgot your PIN?</button></p>
     </div>
   </section>
 
@@ -70,6 +102,7 @@
       <button role="tab" id="tab-products" aria-controls="panel-products" aria-selected="true" type="button">Products</button>
       <button role="tab" id="tab-site" aria-controls="panel-site" aria-selected="false" type="button" tabindex="-1">Contact info</button>
       <button role="tab" id="tab-announce" aria-controls="panel-announce" aria-selected="false" type="button" tabindex="-1">Announcement</button>
+      <button role="tab" id="tab-security" aria-controls="panel-security" aria-selected="false" type="button" tabindex="-1">Security</button>
     </div>
 
     <!-- Products -->
@@ -89,7 +122,7 @@
           <div><label for="s-phone">Phone (as shown)</label><input class="field" id="s-phone" inputmode="tel" autocomplete="off" placeholder="+234 902 322 6544"></div>
         </div>
         <div class="row">
-          <div><label for="s-email">Email</label><input class="field" id="s-email" type="email" inputmode="email" autocomplete="off" placeholder="you@example.com"></div>
+          <div><label for="s-newemail">Email</label><input class="field" id="s-email" type="email" inputmode="email" autocomplete="off" placeholder="you@example.com"></div>
           <div><label for="s-linkedin">LinkedIn link</label><input class="field" id="s-linkedin" type="url" inputmode="url" autocomplete="off" placeholder="https://www.linkedin.com/in/…"></div>
         </div>
         <div class="row">
@@ -113,6 +146,29 @@
         <p class="label-like">Preview</p>
         <div class="announce preview" id="a-preview" aria-live="polite"></div>
       </form>
+    </div>
+    <!-- Security -->
+    <div role="tabpanel" id="panel-security" aria-labelledby="tab-security" hidden>
+      <form class="a-card" id="sec-form" autocomplete="off" novalidate>
+        <h2 class="a-h">Login details</h2>
+        <p class="fine left">Signed in as <b id="sec-email"></b></p>
+        <label for="s-newemail">Email</label>
+        <input class="field" id="s-newemail" type="email" autocomplete="email" autocapitalize="off" spellcheck="false">
+        <label for="s-cur">Current PIN <span class="opt">(needed to change anything)</span></label>
+        <input class="field pin" id="s-cur" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="12" autocomplete="current-password">
+        <label for="s-new">New PIN <span class="opt">(leave empty to keep the same)</span></label>
+        <div class="row">
+          <input class="field pin" id="s-new" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="12" autocomplete="new-password" aria-label="New PIN">
+          <input class="field pin" id="s-new2" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="12" autocomplete="new-password" aria-label="Confirm new PIN" placeholder="Confirm">
+        </div>
+        <button class="btn btn--primary" type="submit" id="sec-save">Save login details</button>
+        <p class="form-status" id="sec-status" role="status" aria-live="polite"></p>
+      </form>
+      <div class="a-card">
+        <h2 class="a-h">This device</h2>
+        <p class="fine left">Removes your saved login and GitHub key from this browser. Your website is not affected. You will need to register again.</p>
+        <button class="btn btn--ghost" type="button" id="forget">Remove login from this device</button>
+      </div>
     </div>
   </section>
 </main>
